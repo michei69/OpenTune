@@ -547,4 +547,6 @@ Aplicația se va reporni automat."</string>
     <string name="error_invalid_album">Eroare: ID album invalid</string>
     <string name="downloaded">Descărcat</string>
     <string name="download_failed">Descărcarea a eșuat</string>
+    <string name="applying">Se aplică...</string>
+    <string name="restarting">Se reîncarcă...</string>
 </resources>

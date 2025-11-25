@@ -108,9 +108,9 @@ data class LanguageItem(
 /** Estado de completitud de las traducciones */
 enum class CompletionStatus(val label: String, val color: @Composable () -> Color) {
     COMPLETE("", { Color.Transparent }),
-    INCOMPLETE("Incompleta", { MaterialTheme.colorScheme.tertiary }),
+    INCOMPLETE("Incomplete", { MaterialTheme.colorScheme.tertiary }),
     BETA("Beta", { MaterialTheme.colorScheme.primary }),
-    EXPERIMENTAL("Exp", { MaterialTheme.colorScheme.secondary })
+    EXPERIMENTAL("Experimental", { MaterialTheme.colorScheme.secondary })
 }
 
 /** Estados de la operación de cambio de idioma */
@@ -347,7 +347,7 @@ class LocaleManager private constructor(private val context: Context) {
             languages.add(
                 LanguageItem(
                     code = SYSTEM_DEFAULT,
-                    displayName = "Sistema ($systemDisplayName)",
+                    displayName = "System ($systemDisplayName)",
                     nativeName = systemDisplayName,
                     completionStatus = CompletionStatus.COMPLETE,
                     isSystemDefault = true,
@@ -366,18 +366,19 @@ class LocaleManager private constructor(private val context: Context) {
 
                     // Obtener metadata (bandera y estado)
                     val metadata = LANGUAGE_METADATA[localeCode]
-                        ?: LanguageMetadata("🌍", CompletionStatus.COMPLETE)
 
-                    languages.add(
-                        LanguageItem(
-                            code = localeCode,
-                            displayName = displayName,
-                            nativeName = nativeName,
-                            completionStatus = metadata.completionStatus,
-                            isSystemDefault = false,
-                            flag = metadata.flag
+                    if (metadata != null) {
+                        languages.add(
+                            LanguageItem(
+                                code = localeCode,
+                                displayName = displayName,
+                                nativeName = nativeName,
+                                completionStatus = metadata.completionStatus,
+                                isSystemDefault = false,
+                                flag = metadata.flag
+                            )
                         )
-                    )
+                    }
                 } catch (e: Exception) {
                     Timber.tag(TAG).e(e, "Error procesando locale: $localeCode")
                 }
@@ -764,7 +765,7 @@ private fun ChangeStateIndicator(
             )
             Spacer(modifier = Modifier.width(12.dp))
             Text(
-                text = "Aplicando...",
+                text = stringResource(R.string.applying),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -777,7 +778,7 @@ private fun ChangeStateIndicator(
             )
             Spacer(modifier = Modifier.width(12.dp))
             Text(
-                text = "Reiniciando...",
+                text = stringResource(R.string.restarting),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

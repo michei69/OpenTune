@@ -570,4 +570,6 @@
     <string name="download_failed">Download failed</string>
     <string name="avatars">Avatars</string>
     <string name="choose_predefined_avatar">Choose an avatar</string>
+    <string name="applying">Applying...</string>
+    <string name="restarting">Restarting...</string>
 </resources>
