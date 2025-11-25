@@ -138,7 +138,7 @@ fun VersionCard(uriHandler: UriHandler) {
     Spacer(Modifier.height(16.dp))
 
     SettingsCategory(
-        title = stringResource(R.string.app_info), // Añade este string: "Información de la app"
+        title = stringResource(R.string.app_info), // Add this string: “App information”
         items = listOf(
             SettingsCategoryItem(
                 icon = painterResource(R.drawable.info),
@@ -560,12 +560,12 @@ fun SettingsScreen(
                 var imageLoadError by remember { mutableStateOf(false) }
                 var isImageLoading by remember { mutableStateOf(false) }
 
-                // Avatar con efecto de ondas y sombra suave
+                // Avatar with wave effect and soft shadow
                 Box(
                     contentAlignment = Alignment.Center
                 ) {
 
-                    // Avatar principal
+                    // Main avatar
                     Box(
                         modifier = Modifier
                             .size(96.dp)
@@ -709,7 +709,7 @@ fun SettingsScreen(
                         }
                     }
 
-                    // Indicador de estado online (opcional)
+                    // Online status indicator (optional)
                     Box(
                         modifier = Modifier
                             .size(20.dp)
@@ -729,7 +729,7 @@ fun SettingsScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Nombre con animación sutil
+                // Name with subtle animation
                 AnimatedContent(
                     targetState = accountName.replace("@", "").takeIf { it.isNotBlank() } ?: "",
                     transitionSpec = { fadeIn() togetherWith fadeOut() },
@@ -747,12 +747,12 @@ fun SettingsScreen(
 
 
             } else {
-                // Estado no logueado - más compacto y elegante
+                // Not logged in - more compact and elegant
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    // Logo con efecto glassmorphism
+                    // Logo with glassmorphism effect
                     Box(
                         modifier = Modifier
                             .size(80.dp)
@@ -802,7 +802,7 @@ fun SettingsScreen(
             }
         }
 
-        // Categoría principal de configuraciones
+        // Main category of settings
         SettingsCategory(
             title = stringResource(R.string.general_settings),
             items = listOf(
@@ -856,7 +856,7 @@ fun SettingsScreen(
 
         Spacer(Modifier.height(16.dp))
 
-        // Categoría de comunidad e información
+        // Community category and information
         SettingsCategory(
             title = stringResource(R.string.community),
             items = listOf(
@@ -881,16 +881,16 @@ fun SettingsScreen(
 
         Spacer(Modifier.height(16.dp))
 
-        // Card de actualización disponible
+        // Update available card
         UpdateCard()
 
-        // Card de versión
+        // Version card
         VersionCard(uriHandler)
 
         Spacer(Modifier.height(16.dp))
     }
 
-    // Diálogo de traducción
+    // Translation dialogue
     if (showTranslateDialog) {
         AlertDialog(
             onDismissRequest = { showTranslateDialog = false },
@@ -909,7 +909,7 @@ fun SettingsScreen(
         )
     }
 
-    // Bottom Sheet de Changelog
+    // Bottom Sheet of Changelog
     if (showChangelogSheet) {
         ModalBottomSheet(
             onDismissRequest = { showChangelogSheet = false },

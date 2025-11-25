@@ -121,7 +121,7 @@ data class ColorPreset(
     val customization: ImageCustomization
 )
 
-// Presets unificados
+// Unified presets
 val colorPresets = listOf(
     ColorPreset(
         "Dark",

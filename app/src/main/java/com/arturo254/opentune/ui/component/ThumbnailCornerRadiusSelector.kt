@@ -72,20 +72,20 @@ import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 
-// Extensión de contexto para DataStore
+// Context extension for DataStore
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "app_settings")
 
 object AppConfig {
     private val THUMBNAIL_CORNER_RADIUS_KEY = floatPreferencesKey("thumbnail_corner_radius")
 
-    // Guardar el valor de thumbnail corner radius
+    // Save the thumbnail corner radius value
     suspend fun saveThumbnailCornerRadius(context: Context, radius: Float) {
         context.dataStore.edit { preferences ->
             preferences[THUMBNAIL_CORNER_RADIUS_KEY] = radius
         }
     }
 
-    // Obtener el valor de thumbnail corner radius, o un valor por defecto si no está presente
+    // Get the value of thumbnail corner radius, or a default value if it is not present.
     suspend fun getThumbnailCornerRadius(context: Context, defaultValue: Float = 16f): Float {
         return context.dataStore.data
             .map { preferences ->
@@ -238,7 +238,7 @@ fun ThumbnailCornerRadiusModal(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // Previsualización con imagen de fondo
+                    // Preview with background image
                     Box(
                         modifier = Modifier
                             .size(160.dp)
@@ -251,13 +251,13 @@ fun ThumbnailCornerRadiusModal(
                             ),
                         contentAlignment = Alignment.Center
                     ) {
-                        // Imagen de ejemplo con bordes redondeados
+                        // Example image with rounded edges
                         Box(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .clip(RoundedCornerShape(thumbnailCornerRadius.dp))
                         ) {
-                            // Usando un painterResource para cargar una imagen local
+                            // Using a painterResource to load a local image
                             Image(
                                 painter = painterResource(id = R.drawable.previewalbum),
                                 contentDescription = null,
@@ -266,7 +266,7 @@ fun ThumbnailCornerRadiusModal(
                             )
                         }
 
-                        // Overlay para mostrar el valor del radio
+                        // Overlay to display the radius value
                         Box(
                             modifier = Modifier
                                 .align(Alignment.BottomCenter)
@@ -287,7 +287,7 @@ fun ThumbnailCornerRadiusModal(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    // Chips con Layout mejorado y adaptable usando un enfoque alternativo a FlowRow
+                    // Chips with improved and adaptable layout using an alternative approach to FlowRow
                     ChipsGrid(
                         values = presetValues,
                         selectedValue = if (isCustomSelected) null else thumbnailCornerRadius,
@@ -299,7 +299,7 @@ fun ThumbnailCornerRadiusModal(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    // Campo personalizado con mejor disposición
+                    // Custom field with improved layout
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically
@@ -367,7 +367,7 @@ fun ThumbnailCornerRadiusModal(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    // Sección del slider mejorada para más feedback
+                    // Improved slider section for more feedback
                     Column(
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -430,7 +430,7 @@ fun ThumbnailCornerRadiusModal(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    // Divisor para separar visualmente los botones de acción
+                    // Divider to visually separate action buttons
                     HorizontalDivider(
                         modifier = Modifier.fillMaxWidth(),
                         thickness = 1.dp,
@@ -439,7 +439,7 @@ fun ThumbnailCornerRadiusModal(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // Botones de acción con mejor UX
+                    // Action buttons with improved UX
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.End),
@@ -500,7 +500,7 @@ private fun ChipsGrid(
     selectedValue: Float?,
     onValueSelected: (Float) -> Unit
 ) {
-    val chunkedValues = values.chunked(3) // Divide en filas de 3 elementos
+    val chunkedValues = values.chunked(3) // Divide into rows of 3 elements
 
     Column(
         modifier = Modifier.fillMaxWidth(),

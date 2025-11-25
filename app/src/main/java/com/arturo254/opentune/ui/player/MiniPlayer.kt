@@ -1,6 +1,6 @@
 package com.arturo254.opentune.ui.player
 
-// Agregar las importaciones correctas
+// Add the correct imports
 import android.content.res.Configuration
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.Animatable
@@ -103,7 +103,7 @@ fun MiniPlayer(
     val canSkipPrevious by playerConnection.canSkipPrevious.collectAsState()
     val currentSong by playerConnection.currentSong.collectAsState(initial = null)
 
-    // Obtener el estado del tema para calcular el color de fondo correcto
+    // Get the theme state to calculate the correct background color
     val isSystemInDarkTheme = isSystemInDarkTheme()
     val darkTheme by rememberEnumPreference(DarkModeKey, defaultValue = DarkMode.AUTO)
     val pureBlack by rememberPreference(PureBlackKey, defaultValue = false)
@@ -112,7 +112,7 @@ fun MiniPlayer(
         if (darkTheme == DarkMode.AUTO) isSystemInDarkTheme else darkTheme == DarkMode.ON
     }
 
-    // Calcular el color de fondo correcto
+    // Calculate the correct background color
     val miniPlayerBackgroundColor = when {
         useDarkTheme && pureBlack -> Color.Black.copy(alpha = 0.95f)
         else -> MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.95f)
@@ -141,7 +141,7 @@ fun MiniPlayer(
         animationSpec = animationSpec
     )
 
-    // Convertir RoundedPolygon a Shape usando la API oficial
+    // Convert RoundedPolygon to Shape using the official API
     val currentThumbnailShape = if (isPlaying) {
         remember { MaterialShapes.Cookie9Sided }.toShape()
     } else {
@@ -323,7 +323,7 @@ fun MiniPlayer(
                                     )
                             )
 
-                            // Icono de play/replay
+                            // Play/Replay icon
                             androidx.compose.animation.AnimatedVisibility(
                                 visible = playbackState == Player.STATE_ENDED || !isPlaying,
                                 enter = fadeIn(),

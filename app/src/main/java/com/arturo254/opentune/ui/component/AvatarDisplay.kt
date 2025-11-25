@@ -27,8 +27,7 @@ import coil.request.ImageRequest
 import com.arturo254.opentune.R
 
 /**
- * Componente para mostrar el avatar del usuario en cualquier parte de la
- * app
+ * Component to display the user's avatar anywhere in the app
  */
 @Composable
 fun AvatarDisplay(
@@ -95,7 +94,7 @@ fun AvatarDisplay(
     }
 }
 
-/** Variante pequeña para usar en listas o elementos compactos */
+/** Small variant for use in lists or compact elements */
 @Composable
 fun SmallAvatarDisplay(
     modifier: Modifier = Modifier,
@@ -109,7 +108,7 @@ fun SmallAvatarDisplay(
     )
 }
 
-/** Variante grande para perfiles o pantallas principales */
+/** Large variant for main profiles or screens */
 @Composable
 fun LargeAvatarDisplay(
     modifier: Modifier = Modifier,
@@ -125,7 +124,7 @@ fun LargeAvatarDisplay(
     )
 }
 
-/** Avatar con indicador de estado online/offline */
+/** Avatar with online/offline status indicator */
 @Composable
 fun AvatarWithStatus(
     isOnline: Boolean = true,
@@ -140,7 +139,7 @@ fun AvatarWithStatus(
             contentDescription = contentDescription
         )
 
-        // Indicador de estado
+        // Status indicator
         if (isOnline) {
             Box(
                 modifier = Modifier
@@ -171,7 +170,7 @@ fun AvatarWithStatus(
     }
 }
 
-/** Icono de avatar por defecto */
+/** Default avatar icon */
 @Composable
 private fun DefaultAvatarIcon(contentDescription: String? = null) {
     Icon(
@@ -183,12 +182,11 @@ private fun DefaultAvatarIcon(contentDescription: String? = null) {
 }
 
 /**
- * Utilidad para obtener el avatar actual de manera síncrona (para casos
- * especiales)
+ * Utility to obtain the current avatar synchronously (for special cases).
  */
 class AvatarUtils {
     companion object {
-        /** Obtiene la URI del avatar personalizado si está seleccionado */
+        /** Get the URI of the custom avatar if it is selected */
         fun getCustomAvatarUri(selection: AvatarSelection): String? {
             return when (selection) {
                 is AvatarSelection.Custom -> selection.uri
@@ -196,7 +194,7 @@ class AvatarUtils {
             }
         }
 
-        /** Obtiene la URL del avatar DiceBear si está seleccionado */
+        /** Get the URL of the DiceBear avatar if selected */
         fun getDiceBearAvatarUrl(selection: AvatarSelection): String? {
             return when (selection) {
                 is AvatarSelection.DiceBear -> selection.url
@@ -204,22 +202,22 @@ class AvatarUtils {
             }
         }
 
-        /** Verifica si el avatar actual es personalizado */
+        /** Check if the current avatar is customized */
         fun isCustomAvatar(selection: AvatarSelection): Boolean {
             return selection is AvatarSelection.Custom
         }
 
-        /** Verifica si el avatar actual es DiceBear */
+        /** Check if the current avatar is DiceBear */
         fun isDiceBearAvatar(selection: AvatarSelection): Boolean {
             return selection is AvatarSelection.DiceBear
         }
 
-        /** Verifica si el avatar actual es por defecto */
+        /** Check if the current avatar is the default one. */
         fun isDefaultAvatar(selection: AvatarSelection): Boolean {
             return selection is AvatarSelection.Default
         }
 
-        /** Obtiene la URL o URI del avatar actual */
+        /** Get the URL or URI of the current avatar  */
         fun getAvatarSource(selection: AvatarSelection): String? {
             return when (selection) {
                 is AvatarSelection.Custom -> selection.uri

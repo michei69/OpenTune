@@ -27,7 +27,7 @@ data class SectionListRenderer(
                 data class ChipCloudChipRenderer(
                     val isSelected: Boolean,
                     val navigationEndpoint: NavigationEndpoint,
-                    val onDeselectedCommand: NavigationEndpoint? = null, // agregado
+                    val onDeselectedCommand: NavigationEndpoint? = null, // added
                     // The close button doesn't have the following two fields
                     val text: Runs?,
                     val uniqueId: String?,
@@ -45,8 +45,8 @@ data class SectionListRenderer(
         val musicCardShelfRenderer: MusicCardShelfRenderer?,
         val musicPlaylistShelfRenderer: MusicPlaylistShelfRenderer?,
         val musicDescriptionShelfRenderer: MusicDescriptionShelfRenderer?,
-        val musicResponsiveHeaderRenderer: BrowseResponse.Header.MusicHeaderRenderer?, // mantiene compatibilidad
-        val musicEditablePlaylistDetailHeaderRenderer: BrowseResponse.Header.MusicEditablePlaylistDetailHeaderRenderer?, // mantiene compatibilidad
+        val musicResponsiveHeaderRenderer: BrowseResponse.Header.MusicHeaderRenderer?, // maintain compatibility
+        val musicEditablePlaylistDetailHeaderRenderer: BrowseResponse.Header.MusicEditablePlaylistDetailHeaderRenderer?, // maintain compatibility
         val gridRenderer: GridRenderer?,
     )
 }

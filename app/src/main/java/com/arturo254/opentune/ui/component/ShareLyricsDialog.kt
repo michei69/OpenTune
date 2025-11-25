@@ -916,7 +916,7 @@ fun ShareLyricsImageCustomizationSheet(
                                 )
 
                                 val timestamp = System.currentTimeMillis()
-                                // Crear nombre de archivo seguro con artista y canción
+                                // Create secure file name with artist and song
                                 val safeArtistName = artists.replace("[^a-zA-Z0-9\\s]".toRegex(), "").trim().replace("\\s+".toRegex(), "_")
                                 val safeSongTitle = songTitle.replace("[^a-zA-Z0-9\\s]".toRegex(), "").trim().replace("\\s+".toRegex(), "_")
 

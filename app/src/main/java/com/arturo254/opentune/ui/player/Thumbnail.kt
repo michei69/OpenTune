@@ -43,7 +43,7 @@ import kotlin.math.roundToInt
 @Composable
 fun Thumbnail(
     sliderPositionProvider: () -> Long?,
-    onOpenFullscreenLyrics: () -> Unit, // NUEVO PARÁMETRO
+    onOpenFullscreenLyrics: () -> Unit, // NEW PARAMETER
     modifier: Modifier = Modifier,
     changeColor: Boolean = false,
 ) {
@@ -70,13 +70,13 @@ fun Thumbnail(
             visible = !showLyrics && error == null,
             enter = fadeIn(),
             exit = fadeOut(),
-            modifier = Modifier, // QUITADO: .fillMaxSize() y .statusBarsPadding()
+            modifier = Modifier, // REMOVED: .fillMaxSize() and .statusBarsPadding()
         ) {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier =
                     Modifier
-                        .fillMaxWidth() // SOLO ancho completo, no altura
+                        .fillMaxWidth() // Full width ONLY, no height
                         .padding(horizontal = PlayerHorizontalPadding)
                         .pointerInput(Unit) {
                             detectHorizontalDragGestures(
@@ -103,10 +103,10 @@ fun Thumbnail(
                             )
                         },
             ) {
-                var cornerRadius by remember { mutableFloatStateOf(16f) } // Valor por defecto
+                var cornerRadius by remember { mutableFloatStateOf(16f) } // Default value
                 val context = LocalContext.current
 
-                // Recuperar el valor de DataStore de manera segura
+                // Retrieve the value of DataStore securely
                 LaunchedEffect(Unit) {
                     cornerRadius = AppConfig.getThumbnailCornerRadius(context)
                 }
@@ -123,7 +123,7 @@ fun Thumbnail(
                         .pointerInput(Unit) {
                             detectTapGestures(
                                 onTap = {
-                                    // MODIFICADO: Ahora abre letras en pantalla completa
+                                    // MODIFIED: Now opens lyrics in full screen mode
                                     onOpenFullscreenLyrics()
                                 },
                                 onDoubleTap = { offset ->

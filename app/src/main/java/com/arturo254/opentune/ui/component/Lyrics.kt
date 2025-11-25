@@ -187,7 +187,7 @@ fun Lyrics(
         targetValue = 360f,
         animationSpec = infiniteRepeatable(
             animation = tween(
-                durationMillis = 20000, // 20 segundos por rotación completa
+                durationMillis = 20000, // 20 seconds per complete rotation
                 easing = LinearEasing
             ),
             repeatMode = RepeatMode.Restart
@@ -200,7 +200,7 @@ fun Lyrics(
     val mediaMetadata by playerConnection.mediaMetadata.collectAsState()
     val currentSongId = mediaMetadata?.id
 
-    // Estados que se resetean cuando cambia la canción
+    // States that reset when the song changes
     var currentLineIndex by remember { mutableIntStateOf(-1) }
     var deferredCurrentLineIndex by remember(currentSongId) { mutableIntStateOf(0) }
     var previousLineIndex by remember(currentSongId) { mutableIntStateOf(0) }
@@ -214,12 +214,12 @@ fun Lyrics(
     var showControls by remember { mutableStateOf(true) }
     var cornerRadius by remember { mutableFloatStateOf(16f) }
 
-    // Sistema de selección mejorado
+    // Improved selection system
     var isSelectionModeActive by remember(currentSongId) { mutableStateOf(false) }
     val selectedIndices = remember(currentSongId) { mutableStateListOf<Int>() }
     var showMaxSelectionToast by remember { mutableStateOf(false) }
 
-    // Estados para compartir
+    // States for sharing
     var showProgressDialog by remember { mutableStateOf(false) }
     var showShareDialog by remember { mutableStateOf(false) }
     var shareDialogData by remember { mutableStateOf<Triple<String, String, String>?>(null) }
@@ -228,7 +228,7 @@ fun Lyrics(
     var isAnimating by remember { mutableStateOf(false) }
     val maxSelectionLimit = 5
 
-    // Sistema de cache optimizado
+    // Optimized cache system
     var lyricsCache by remember { mutableStateOf<Map<String, LyricsEntity>>(emptyMap()) }
     var currentLyricsEntity by remember(currentSongId) {
         mutableStateOf<LyricsEntity?>(lyricsCache[currentSongId])
@@ -268,7 +268,7 @@ fun Lyrics(
 
             withContext(Dispatchers.IO) {
                 try {
-                    // Primero, intentar cargar desde la BD
+                    // First, attempt to load from the database.
                     val existingLyrics = try {
                         database.getLyrics(songId)
                     } catch (e: Throwable) {
@@ -282,7 +282,7 @@ fun Lyrics(
                         lyricsCache = newCache
                         currentLyricsEntity = existingLyrics
                     } else {
-                        // Si no hay en BD, intentar obtener desde la API mediante LyricsHelper
+                        // If not in the database, try to obtain from the API using LyricsHelper.
                         try {
                             val entryPoint = EntryPointAccessors.fromApplication(
                                 context.applicationContext,
@@ -297,13 +297,13 @@ fun Lyrics(
                                 LyricsEntity(songId, LYRICS_NOT_FOUND)
                             }
 
-                            // Guardar/upsert en BD para cache
+                            // Save/upsert to database for cache
                             try {
                                 database.query {
                                     upsert(entity)
                                 }
                             } catch (e: Throwable) {
-                                // Si el upsert falla, no bloquear el flujo: seguir con cache temporal
+                                // If the upsert fails, do not block the flow: continue with temporary cache
                             }
 
                             val newCache = lyricsCache.toMutableMap().apply {
@@ -312,7 +312,7 @@ fun Lyrics(
                             lyricsCache = newCache
                             currentLyricsEntity = entity
                         } catch (e: Throwable) {
-                            // Si falla la obtención por red/entrypoint, guardar marcador de "no encontrado"
+                            // If retrieval via network/entry point fails, save “not found” marker.
                             val errorEntity = LyricsEntity(songId, LYRICS_NOT_FOUND)
                             val newCache = lyricsCache.toMutableMap().apply {
                                 put(songId, errorEntity)
@@ -335,7 +335,7 @@ fun Lyrics(
         }
     }
 
-// REEMPLAZAR tu función remember(lyrics, currentSongId) por:
+// REPLACE your remember(lyrics, currentSongId) function with:
     val lines = remember(lyrics, scope) {
         if (lyrics == null || lyrics == LYRICS_NOT_FOUND) {
             emptyList()
@@ -352,7 +352,7 @@ fun Lyrics(
 
 
 
-    // AGREGAR este LaunchedEffect justo después de definir 'lines'
+    // ADD this LaunchedEffect right after defining 'lines'
     LaunchedEffect(lines) {
         isSelectionModeActive = false
         selectedIndices.clear()
@@ -380,7 +380,7 @@ fun Lyrics(
     var duration by rememberSaveable(playbackState) { mutableLongStateOf(playerConnection.player.duration) }
 
 
-    // BackHandler inteligente
+    // intelligent BackHandler
     BackHandler(enabled = isSelectionModeActive || isFullscreen) {
         when {
             isSelectionModeActive -> {
@@ -394,7 +394,7 @@ fun Lyrics(
 
     LaunchedEffect(Unit) {
         if (isFullscreen) {
-            cornerRadius = 16f // Usar valor fijo en lugar de AppConfig
+            cornerRadius = 16f // Use fixed value instead of AppConfig
         }
     }
 
@@ -474,7 +474,7 @@ fun Lyrics(
     }
 
 
-    // REEMPLAZAR tu LaunchedEffect(currentLineIndex...) con:
+    // REPLACE your LaunchedEffect(currentLineIndex...) with:
     LaunchedEffect(currentLineIndex, lastPreviewTime, initialScrollDone) {
         if (!isSynced) return@LaunchedEffect
 
@@ -557,9 +557,9 @@ fun Lyrics(
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .fillMaxSize()
-                            .blur(50.dp) // Blur ANTES del graphicsLayer
+                            .blur(50.dp) // Blur BEFORE the graphicsLayer
                             .graphicsLayer {
-                                // Escala mucho más agresiva para compensar el blur y rotación
+                                // Much more aggressive scaling to compensate for blur and rotation
                                 scaleX = 2.5f
                                 scaleY = 2.5f
                                 if (rotateBackground) {
@@ -577,7 +577,7 @@ fun Lyrics(
                 }
             }
 
-            // Header con controles
+            // Header with controls
             AnimatedVisibility(
                 visible = showControls,
                 enter = fadeIn(tween(300)) + slideInVertically(tween(300)) { -it },
@@ -643,7 +643,7 @@ fun Lyrics(
                             }
                         }
 
-                        // Botón para despejar pantalla
+                        // Button to clear screen
                         IconButton(
                             onClick = { showControls = !showControls },
                             colors = IconButtonDefaults.iconButtonColors(
@@ -726,7 +726,7 @@ fun Lyrics(
                 }
             }
 
-            // Controles de reproducción
+            // Playback controls
             AnimatedVisibility(
                 visible = showControls,
                 enter = fadeIn(tween(300)) + slideInVertically(tween(300)) { it },
@@ -949,7 +949,7 @@ fun Lyrics(
                 }
             }
 
-            // Overlay de imagen
+            // Image overlay
             AnimatedVisibility(
                 visible = showImageOverlay,
                 enter = fadeIn(tween(300)),
@@ -999,7 +999,7 @@ fun Lyrics(
                 }
             }
 
-            // Indicador de modo selección
+            // Mode selection indicator
             AnimatedVisibility(
                 visible = isSelectionModeActive,
                 enter = slideInVertically(
@@ -1051,7 +1051,7 @@ fun Lyrics(
             }
         }
 
-        // Contenido principal de letras
+        // Main content of lyrics
         BoxWithConstraints(
             contentAlignment = if (isFullscreen) Alignment.TopStart else Alignment.Center,
             modifier = Modifier
@@ -1268,7 +1268,7 @@ fun Lyrics(
                     }
                 }
 
-                // Letras no encontradas
+                // Letters not found
                 if (lyrics == LYRICS_NOT_FOUND) {
                     if (isFullscreen) {
                         Card(
@@ -1333,7 +1333,7 @@ fun Lyrics(
         }
 
 
-        // Botones para modo flotante (no pantalla completa)
+        // Buttons for floating mode (not full screen)
         if (!isFullscreen) {
             mediaMetadata?.let { metadata ->
                 if (isSelectionModeActive) {
@@ -1348,7 +1348,7 @@ fun Lyrics(
                             horizontalArrangement = Arrangement.spacedBy(12.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            // Botón cerrar
+                            // Close button
                             Box(
                                 modifier = Modifier
                                     .size(48.dp)
@@ -1370,7 +1370,7 @@ fun Lyrics(
                                 )
                             }
 
-                            // Botón compartir
+                            // Share button
                             Row(
                                 modifier = Modifier
                                     .background(
@@ -1419,7 +1419,7 @@ fun Lyrics(
                         }
                     }
                 } else {
-                    // Botones normales en modo flotante
+                    // Normal buttons in floating mode
                     Row(
                         modifier = Modifier
                             .align(Alignment.BottomEnd)
@@ -1461,7 +1461,7 @@ fun Lyrics(
         }
     }
 
-    // Diálogos
+    // Dialogs
     if (showProgressDialog) {
         BasicAlertDialog(onDismissRequest = { /* No permitir cerrar */ }) {
             Card(
@@ -1526,7 +1526,7 @@ private fun ShareLyricsDialog(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Compartir como texto
+                // Share as text
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -1565,7 +1565,7 @@ private fun ShareLyricsDialog(
                     )
                 }
 
-                // Compartir como imagen
+                // Share as image
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -1588,7 +1588,7 @@ private fun ShareLyricsDialog(
                     )
                 }
 
-                // Botón cancelar
+                // Cancel button
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -1611,6 +1611,6 @@ private fun ShareLyricsDialog(
 }
 
 
-// Constante de tiempo de vista previa
+// Preview time constant
 val LyricsPreviewTime = 2.seconds
 const val ANIMATE_SCROLL_DURATION = 300L

@@ -89,11 +89,11 @@ import java.io.File
 import java.io.FileOutputStream
 import kotlin.random.Random
 
-// Extension property para el DataStore
+// Extension property for the DataStore
 val Context.avatarDataStore: DataStore<Preferences> by preferencesDataStore(name = "avatar_preferences")
 
 /**
- * Gestor de preferencias para el avatar
+ * Avatar preference manager
  */
 class AvatarPreferenceManager(private val context: Context) {
     companion object {
@@ -142,7 +142,7 @@ class AvatarPreferenceManager(private val context: Context) {
 }
 
 /**
- * Tipos de selección de avatar
+ * Types of avatar selection
  */
 sealed class AvatarSelection {
     object Default : AvatarSelection()
@@ -151,7 +151,7 @@ sealed class AvatarSelection {
 }
 
 /**
- * Estilos disponibles de DiceBear
+ * Available styles of DiceBear
  */
 enum class DiceBearStyle(val value: String, val displayName: String) {
     ADVENTURER("adventurer", "Adventurer"),
@@ -188,7 +188,7 @@ enum class DiceBearStyle(val value: String, val displayName: String) {
 
 
 /**
- * Generador de URLs de DiceBear
+ * DiceBear URL Generator
  */
 object DiceBearGenerator {
     private const val BASE_URL = "https://api.dicebear.com/7.x"
@@ -198,7 +198,7 @@ object DiceBearGenerator {
         seed: String? = null,
         size: Int = 200,
         backgroundColor: String? = null,
-        format: String = "png" // 👈 antes estaba "svg"
+        format: String = "png" // 👈 it used to be “svg”
     ): String {
         val actualSeed = seed ?: generateRandomSeed()
         var url = "$BASE_URL/${style.value}/$format?seed=$actualSeed&size=$size"
@@ -242,7 +242,7 @@ object DiceBearGenerator {
 }
 
 /**
- * Estado de la UI para el avatar
+ * UI status for the avatar
  */
 data class AvatarUiState(
     val isLoading: Boolean = false,
@@ -252,7 +252,7 @@ data class AvatarUiState(
 )
 
 /**
- * Componente principal del selector de avatar
+ * Main component of the avatar selector
  */
 @Composable
 fun AvatarSelector(
@@ -266,14 +266,14 @@ fun AvatarSelector(
         mutableStateOf(AvatarUiState(currentSelection = currentSelection))
     }
 
-    // Actualizar el estado cuando cambia la selección
+    // Update status when selection changes
     LaunchedEffect(currentSelection) {
         uiState = uiState.copy(currentSelection = currentSelection)
     }
 
     val coroutineScope = rememberCoroutineScope()
 
-    // Launcher para seleccionar imagen personalizada
+    // Launcher to select a custom image
     val galleryLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
@@ -300,7 +300,7 @@ fun AvatarSelector(
         }
     }
 
-    // Mostrar error temporalmente
+    // Show error temporarily
     uiState.error?.let { error ->
         LaunchedEffect(error) {
             delay(4000)
@@ -318,7 +318,7 @@ fun AvatarSelector(
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            // Título
+            // Title
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
@@ -341,7 +341,7 @@ fun AvatarSelector(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Avatar actual seleccionado
+            // Currently selected avatar
             CurrentAvatarDisplay(
                 selection = uiState.currentSelection,
                 isLoading = uiState.isLoading,
@@ -350,7 +350,7 @@ fun AvatarSelector(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Botones de acción
+            // Action buttons
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -388,7 +388,7 @@ fun AvatarSelector(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Botón para restaurar por defecto
+            // Button to restore default settings
             OutlinedButton(
                 onClick = {
                     coroutineScope.launch {
@@ -402,7 +402,7 @@ fun AvatarSelector(
                 Text(stringResource(id = R.string.restore_default_avatar))
             }
 
-            // Mostrar mensaje de error
+            // Display error message
             AnimatedVisibility(visible = uiState.error != null) {
                 uiState.error?.let { error ->
                     Spacer(modifier = Modifier.height(12.dp))
@@ -435,7 +435,7 @@ fun AvatarSelector(
         }
     }
 
-    // Dialog para seleccionar avatars DiceBear
+    // Dialog for selecting DiceBear avatars
     if (uiState.showDiceBearDialog) {
         DiceBearAvatarDialog(
             onDismiss = {
@@ -453,7 +453,7 @@ fun AvatarSelector(
 }
 
 /**
- * Dialog para seleccionar avatars de DiceBear
+ * Dialog for selecting DiceBear avatars
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -469,14 +469,14 @@ private fun DiceBearAvatarDialog(
     var isLoading by remember { mutableStateOf(false) }
     var showStyleDialog by remember { mutableStateOf(false) }
 
-    // 🔄 Regenera avatares al cambiar estilo
+    // 🔄 Regenerate avatars when changing style
     LaunchedEffect(selectedStyle) {
         isLoading = true
         avatarUrls = DiceBearGenerator.getPresetAvatars(selectedStyle)
         isLoading = false
     }
 
-    // BottomSheet principal
+    // Main BottomSheet
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState = sheetState,
@@ -567,7 +567,7 @@ private fun DiceBearAvatarDialog(
         }
     }
 
-    // Dialog para seleccionar estilo
+    // Dialog to select style
     if (showStyleDialog) {
         Dialog(
             onDismissRequest = { showStyleDialog = false },
@@ -576,7 +576,7 @@ private fun DiceBearAvatarDialog(
             Card(
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
-                    .fillMaxHeight(0.7f), // máximo 70% de altura de pantalla
+                    .fillMaxHeight(0.7f), // maximum 70% of screen height
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Column(
@@ -621,7 +621,7 @@ private fun DiceBearAvatarDialog(
 
 
 /**
- * Item individual de avatar DiceBear
+ * DiceBear individual avatar item
  */
 @Composable
 private fun DiceBearAvatarItem(
@@ -655,7 +655,7 @@ private fun DiceBearAvatarItem(
             contentScale = ContentScale.Crop
         )
 
-        // Indicador de selección
+        // Selection indicator
         if (isSelected) {
             Box(
                 modifier = Modifier
@@ -677,7 +677,7 @@ private fun DiceBearAvatarItem(
 }
 
 /**
- * Muestra el avatar actualmente seleccionado
+ * Displays the currently selected avatar
  */
 @Composable
 private fun CurrentAvatarDisplay(
@@ -743,7 +743,7 @@ private fun CurrentAvatarDisplay(
 }
 
 /**
- * Icono de avatar por defecto
+ * Default avatar icon
  */
 @Composable
 private fun DefaultAvatarIcon() {
@@ -755,7 +755,7 @@ private fun DefaultAvatarIcon() {
     )
 }
 
-// Funciones utilitarias (las mismas del código anterior)
+// Utility functions (same as in the previous code)
 private suspend fun saveImageToInternalStorage(
     context: Context,
     uri: Uri

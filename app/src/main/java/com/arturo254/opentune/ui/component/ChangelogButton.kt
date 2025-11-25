@@ -81,7 +81,7 @@ import java.util.Date
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
 
-// Data classes mejoradas
+// Enhanced data classes
 data class ChangelogState(
     val releases: List<Release> = emptyList(),
     val commits: List<Commit> = emptyList(),
@@ -172,7 +172,7 @@ fun ChangelogScreen(viewModel: ChangelogViewModel = viewModel()) {
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Header con título principal
+        // Header with main title
         Text(
             text = stringResource(R.string.changelogs),
             style = MaterialTheme.typography.headlineMedium,
@@ -180,13 +180,13 @@ fun ChangelogScreen(viewModel: ChangelogViewModel = viewModel()) {
             modifier = Modifier.padding(horizontal = 8.dp)
         )
 
-        // Tabs mejoradas con Material Design 3
+        // Enhanced tabs with Material Design 3
         ImprovedTabRow(
             selectedTab = selectedTab,
             onTabSelected = { selectedTab = it }
         )
 
-        // Contenido basado en la tab seleccionada
+        // Content based on the selected tab
         when (selectedTab) {
             ChangelogTab.RELEASES -> {
                 ReleasesContent(
@@ -338,7 +338,7 @@ private fun ErrorContent(error: String, onRetry: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Icon(
-                painter = painterResource(R.drawable.schedule), // Cambiar por icono de error
+                painter = painterResource(R.drawable.schedule), // Change to error icon
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onErrorContainer,
                 modifier = Modifier.size(24.dp)
@@ -384,7 +384,7 @@ private fun EmptyContent(message: String) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Icon(
-                painter = painterResource(R.drawable.schedule), // Cambiar por icono apropiado
+                painter = painterResource(R.drawable.schedule), // Change to appropriate icon
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(48.dp)
@@ -572,7 +572,7 @@ private fun ReleaseCard(release: Release) {
                     )
                     Icon(
                         painter = painterResource(
-                            if (expanded) R.drawable.schedule else R.drawable.schedule // Cambiar por iconos de expandir/contraer
+                            if (expanded) R.drawable.schedule else R.drawable.schedule // Switch to expand/collapse icons
                         ),
                         contentDescription = if (expanded) "Contraer" else "Expandir",
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -609,7 +609,7 @@ private fun ReleaseCard(release: Release) {
     }
 }
 
-// [El resto de las funciones de markdown permanecen igual...]
+// [The rest of the markdown functions remain the same...]
 @Composable
 fun AdvancedMarkdownText(
     markdown: String,
@@ -1026,7 +1026,7 @@ private fun formatDate(dateString: String): String {
         outputFormat.format(date ?: Date())
     } catch (e: Exception) {
         try {
-            // Formato alternativo para commits
+            // Alternative format for commits
             val inputFormat2 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX", Locale.getDefault())
             val outputFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
             val date = inputFormat2.parse(dateString)
@@ -1037,17 +1037,17 @@ private fun formatDate(dateString: String): String {
     }
 }
 
-// ViewModel mejorado con funcionalidad de commits
+// Enhanced ViewModel with commit functionality
 class ChangelogViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(ChangelogState())
     val uiState: StateFlow<ChangelogState> = _uiState.asStateFlow()
 
     private val cache = ConcurrentHashMap<String, Pair<Any, Long>>()
-    private val cacheTimeMs = 30 * 60 * 1000 // 30 minutos
+    private val cacheTimeMs = 30 * 60 * 1000 // 30 minutes
 
     fun loadChangelog(repoOwner: String, repoName: String) {
         viewModelScope.launch {
-            // Cargar releases y commits en paralelo
+            // Upload releases and commits in parallel
             launch { loadReleases(repoOwner, repoName) }
             launch { loadCommits(repoOwner, repoName) }
         }

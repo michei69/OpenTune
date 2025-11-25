@@ -329,7 +329,7 @@ fun LibraryPlaylistsScreen(
                                         },
                                     )
                                     .animateItem(),
-                            context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                            context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                         )
                     }
 
@@ -406,7 +406,7 @@ fun LibraryPlaylistsScreen(
                                         },
                                     )
                                     .animateItem(),
-                            context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                            context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                         )
                     }
 
@@ -427,7 +427,7 @@ fun LibraryPlaylistsScreen(
                                         },
                                     )
                                     .animateItem(),
-                            context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                            context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                         )
                     }
 
@@ -448,7 +448,7 @@ fun LibraryPlaylistsScreen(
                                         },
                                     )
                                     .animateItem(),
-                            context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                            context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                         )
                     }
 
@@ -469,7 +469,7 @@ fun LibraryPlaylistsScreen(
                                         },
                                     )
                                     .animateItem(),
-                            context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                            context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                         )
                     }
 
@@ -490,7 +490,7 @@ fun LibraryPlaylistsScreen(
                                 coroutineScope = coroutineScope,
                                 playlist = playlist,
                                 modifier = Modifier.animateItem(),
-                                context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                                context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                             )
                         }
                     }

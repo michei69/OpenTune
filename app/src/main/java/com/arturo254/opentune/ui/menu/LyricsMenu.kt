@@ -62,7 +62,7 @@ fun LyricsMenu(
     lyricsProvider: () -> LyricsEntity?,
     mediaMetadataProvider: () -> MediaMetadata,
     onDismiss: () -> Unit,
-    onLyricsUpdated: () -> Unit = {}, // NUEVO: Callback para notificar actualización
+    onLyricsUpdated: () -> Unit = {}, // NEW: Callback to notify update
     viewModel: LyricsMenuViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
@@ -88,7 +88,7 @@ fun LyricsMenu(
                         ),
                     )
                 }
-                // NUEVO: Notificar que las letras fueron actualizadas
+                // NEW: Notify that the lyrics have been updated
                 onLyricsUpdated()
                 onDismiss()
             },
@@ -224,7 +224,7 @@ fun LyricsMenu(
                                         ),
                                     )
                                 }
-                                // NUEVO: Notificar actualización antes de cerrar
+                                // NEW: Notify update before closing
                                 onLyricsUpdated()
                                 showSearchResultDialog = false
                                 onDismiss()
@@ -324,7 +324,7 @@ fun LyricsMenu(
             title = R.string.refetch,
         ) {
             viewModel.refetchLyrics(mediaMetadataProvider(), lyricsProvider())
-            // NUEVO: Notificar actualización cuando se recargan las letras
+            // NEW: Notify update when lyrics are reloaded
             onLyricsUpdated()
             onDismiss()
         }

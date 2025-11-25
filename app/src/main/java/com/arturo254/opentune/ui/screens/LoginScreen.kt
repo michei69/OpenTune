@@ -62,12 +62,12 @@ fun LoginScreen(navController: NavController) {
     suspend fun fetchAccountInfoWithRetry(retryCount: Int = 0) {
         try {
             YouTube.accountInfo().onSuccess { accountInfo ->
-                // Verificar que la información no esté vacía
+                // Verify that the information is not empty
                 val name = accountInfo.name.takeIf { it.isNotBlank() } ?: ""
                 val email = accountInfo.email?.takeIf { it.isNotBlank() } ?: ""
                 val handle = accountInfo.channelHandle?.takeIf { it.isNotBlank() } ?: ""
 
-                // Solo actualizar si tenemos al menos el nombre
+                // Only update if we have at least the name
                 if (name.isNotEmpty()) {
                     accountName = name
                     accountEmail = email
@@ -77,7 +77,7 @@ fun LoginScreen(navController: NavController) {
                         .d("Account info retrieved successfully: $name, $email, $handle")
                     isLoadingAccountInfo = false
                 } else {
-                    // Si el nombre está vacío, reintentar
+                    // If the name is empty, try again
                     if (retryCount < MAX_RETRY_ATTEMPTS) {
                         Timber.tag("WebView")
                             .w("Account name is empty, retrying... Attempt ${retryCount + 1}")
@@ -140,12 +140,12 @@ fun LoginScreen(navController: NavController) {
                                 isLoadingAccountInfo = true
 
                                 GlobalScope.launch {
-                                    // Pequeña espera para asegurar que las cookies se establezcan correctamente
+                                    // Wait a moment to ensure that cookies are set correctly.
                                     delay(500)
                                     fetchAccountInfoWithRetry()
                                 }
 
-                                // Obtener visitor data
+                                // Obtain visitor data
                                 loadUrl("javascript:Android.onRetrieveVisitorData(window.yt.config_.VISITOR_DATA)")
                             } else {
                                 innerTubeCookie = ""

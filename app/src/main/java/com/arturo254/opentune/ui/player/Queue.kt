@@ -314,7 +314,7 @@ fun Queue(
                         to.index - headerItems,
                     )
 
-                    // Mover la lógica de onDragEnd aquí
+                    // Move the onDragEnd logic here
                     val safeFrom = (from.index - headerItems).coerceIn(0, mutableQueueWindows.lastIndex)
                     val safeTo = (to.index - headerItems).coerceIn(0, mutableQueueWindows.lastIndex)
                     val toAdjusted = if (safeTo == 0) 1 else safeTo
@@ -385,7 +385,7 @@ fun Queue(
                     key = { _, item -> item.uid.hashCode() },
                 ) { index, window ->
                     ReorderableItem(
-                        state = reorderableState, // Cambiar reorderableState por state
+                        state = reorderableState, // Change reorderableState to state
                         key = window.uid.hashCode(),
                     ) {
                         val currentItem by rememberUpdatedState(window)

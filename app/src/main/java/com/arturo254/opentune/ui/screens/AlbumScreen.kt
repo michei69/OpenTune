@@ -177,7 +177,7 @@ fun AlbumScreen(
                                 .size(AlbumThumbnailSize)
                                 .clip(RoundedCornerShape(ThumbnailCornerRadius))
                         ) {
-                            // Mostrar la imagen del álbum
+                            // Display the album image
                             AsyncImage(
                                 model = albumWithSongs.album.thumbnailUrl,
                                 contentDescription = null,
@@ -185,10 +185,10 @@ fun AlbumScreen(
                                 contentScale = ContentScale.Crop
                             )
 
-                            // Botón de descarga superpuesto
+                            // Overlay download button
                             IconButton(
                                 onClick = {
-                                    // Lanza una coroutine para guardar la imagen
+                                    // Launch a coroutine to save the image
                                     CoroutineScope(Dispatchers.IO).launch {
                                         albumWithSongs.album.thumbnailUrl?.let {
                                             saveAlbumImageToGallery(
@@ -200,18 +200,18 @@ fun AlbumScreen(
                                     }
                                 },
                                 modifier = Modifier
-                                    .align(Alignment.BottomEnd) // Ubicar el botón en la esquina inferior derecha
-                                    .padding(8.dp) // Margen desde el borde
-                                    .size(40.dp) // Hacerlo más pequeño
-                                    .clip(RoundedCornerShape(24.dp)) // Bordes redondeados
+                                    .align(Alignment.BottomEnd) // Place the button in the lower right corner
+                                    .padding(8.dp) // Margin from the edge
+                                    .size(40.dp) // Make it smaller
+                                    .clip(RoundedCornerShape(24.dp)) // Rounded edges
                                     .background(
-                                        MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.6f) // Fondo semitransparente
+                                        MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.6f) // Semi-transparent background
                                     )
                             ) {
                                 Icon(
                                     painter = painterResource(R.drawable.download),
                                     contentDescription = stringResource(R.string.icon_save_img),
-                                    tint = MaterialTheme.colorScheme.onSecondaryContainer // Color del ícono
+                                    tint = MaterialTheme.colorScheme.onSecondaryContainer // Icon color
                                 )
                             }
                         }
@@ -660,7 +660,7 @@ fun AlbumScreen(
 
 suspend fun saveAlbumImageToGallery(context: Context, imageUrl: String, albumTitle: String) {
     try {
-        // Cargar la imagen usando Coil
+        // Upload the image using Coil
         val request = ImageRequest.Builder(context)
             .data(imageUrl)
             .build()
@@ -670,9 +670,9 @@ suspend fun saveAlbumImageToGallery(context: Context, imageUrl: String, albumTit
         if (drawable != null) {
             val bitmap = drawable.toBitmap()
 
-            // Usar el título del álbum para el nombre del archivo
+            // Use the album title for the file name
             val displayName = "${albumTitle.replace(" ", "_")}.png"
-            val mimeType = "image/png" // Tipo MIME para PNG
+            val mimeType = "image/png" // MIME type for PNG
 
 
             val contentValues = ContentValues().apply {
@@ -692,7 +692,7 @@ suspend fun saveAlbumImageToGallery(context: Context, imageUrl: String, albumTit
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
                 }
 
-                // Mostrar un mensaje de éxito
+                // Display a success message
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
                         context,

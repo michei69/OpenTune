@@ -510,7 +510,7 @@ fun LibraryMixScreen(
                                         },
                                     )
                                     .animateItem(),
-                            context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                            context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                         )
                     }
 
@@ -531,7 +531,7 @@ fun LibraryMixScreen(
                                         },
                                     )
                                     .animateItem(),
-                            context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                            context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                         )
                     }
 
@@ -552,7 +552,7 @@ fun LibraryMixScreen(
                                         },
                                     )
                                     .animateItem(),
-                            context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                            context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                         )
                     }
                     item(
@@ -572,7 +572,7 @@ fun LibraryMixScreen(
                                         },
                                     )
                                     .animateItem(),
-                            context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                            context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                         )
                     }
 
@@ -605,7 +605,7 @@ fun LibraryMixScreen(
                                                 },
                                             )
                                             .animateItem(),
-                                    context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+                                    context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
                                 )
                             }
 

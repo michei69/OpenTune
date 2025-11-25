@@ -178,7 +178,7 @@ class BackupRestoreViewModel @Inject constructor(
 
     fun resetVisitorData(context: Context) {
         runCatching {
-            // Implementa aquí cómo borras VISITOR_DATA, por ejemplo, desde DataStore
+            // Implement how to clear VISITOR_DATA here, for example from DataStore
             val visitorDataFile = context.filesDir / "datastore" / SETTINGS_FILENAME
             if (visitorDataFile.exists()) {
                 // Borra solo la parte de VISITOR_DATA si es posible, o reinicia el archivo

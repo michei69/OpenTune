@@ -10,7 +10,7 @@ java {
 dependencies {
 
     // OkHttp (to JossRedClient)
-    implementation(libs.okhttp) // o la versión más reciente
+    implementation(libs.okhttp) // or the latest version
 
     // If you also need interceptors for logging (optional)
     implementation(libs.logging.interceptor)

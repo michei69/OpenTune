@@ -342,13 +342,13 @@ fun PlayerMenu(
                     )
                 }
 
-                // Divisor
+                // Divider
                 HorizontalDivider(
                     modifier = Modifier.padding(vertical = 16.dp),
                     color = MaterialTheme.colorScheme.outlineVariant
                 )
 
-                // Grid de opciones
+                // Options grid
                 GridMenu(
                     contentPadding = PaddingValues(
                         bottom = WindowInsets.navigationBars.asPaddingValues()

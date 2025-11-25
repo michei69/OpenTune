@@ -144,13 +144,13 @@ fun ArtistScreen(
             if (artistPage != null) {
                 item(key = "header") {
                     Column {
-                        // Hero Header con imagen de fondo desvanecida
+                        // Hero Header with faded background image
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(380.dp)
                         ) {
-                            // Imagen de fondo con desvanecimiento
+                            // Background image with fade
                             Box(
                                 modifier = Modifier.fillMaxSize()
                             ) {
@@ -174,7 +174,7 @@ fun ArtistScreen(
                                 )
                             }
 
-                            // Gradiente adicional para mejor legibilidad
+                            // Additional gradient for improved readability
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -192,14 +192,14 @@ fun ArtistScreen(
                                     )
                             )
 
-                            // Contenido sobre la imagen
+                            // Image content
                             Column(
                                 modifier = Modifier
                                     .align(Alignment.BottomStart)
                                     .padding(horizontal = 20.dp, vertical = 20.dp),
                                 verticalArrangement = Arrangement.spacedBy(12.dp)
                             ) {
-                                // Avatar circular del artista
+                                // Circular avatar of the artist
                                 Surface(
                                     shape = CircleShape,
                                     shadowElevation = 8.dp,
@@ -214,7 +214,7 @@ fun ArtistScreen(
 
                                 Spacer(modifier = Modifier.height(4.dp))
 
-                                // Nombre del artista con sombra sutil
+                                // Artist name with subtle shadow
                                 Text(
                                     text = artistPage.artist.title,
                                     style = MaterialTheme.typography.headlineLarge,
@@ -226,7 +226,7 @@ fun ArtistScreen(
                             }
                         }
 
-                        // Barra de acciones principales
+                        // Main action bar
                         Surface(
                             color = MaterialTheme.colorScheme.surface,
                             modifier = Modifier.fillMaxWidth()
@@ -238,7 +238,7 @@ fun ArtistScreen(
                                     .fillMaxWidth()
                                     .padding(horizontal = 16.dp, vertical = 12.dp)
                             ) {
-                                // Botón Suscribirse/Suscrito
+                                // Subscribe/Subscribed button
                                 Button(
                                     onClick = {
                                         database.transaction {
@@ -294,7 +294,7 @@ fun ArtistScreen(
 
                                 Spacer(Modifier.weight(1f))
 
-                                // Botón Shuffle
+                                // Shuffle Button
                                 artistPage.artist.shuffleEndpoint?.let { shuffleEndpoint ->
                                     Surface(
                                         shape = CircleShape,
@@ -316,7 +316,7 @@ fun ArtistScreen(
                                     }
                                 }
 
-                                // Botón Compartir
+                                // Share Button
                                 Surface(
                                     shape = CircleShape,
                                     color = MaterialTheme.colorScheme.surfaceVariant,
@@ -351,7 +351,7 @@ fun ArtistScreen(
                     }
                 }
 
-                // Canciones de la biblioteca
+                // Songs from the library
                 if (librarySongs.isNotEmpty()) {
                     item {
                         NavigationTitle(
@@ -420,7 +420,7 @@ fun ArtistScreen(
                     }
                 }
 
-                // Secciones del artista
+                // Sections by the artist
                 artistPage.sections.fastForEach { section ->
                     if (section.items.isNotEmpty()) {
                         item {
@@ -601,7 +601,7 @@ fun ArtistScreen(
                     }
                 }
             } else {
-                // Estado de carga
+                // Charge/Loading status
                 item(key = "shimmer") {
                     ShimmerHost {
                         Box(
@@ -645,7 +645,7 @@ fun ArtistScreen(
         }
     }
 
-    // TopAppBar con transición suave
+    // TopAppBar with smooth transition
     TopAppBar(
         title = {
             if (!transparentAppBar) {

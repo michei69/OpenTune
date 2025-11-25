@@ -67,7 +67,7 @@ constructor(
 
                     _newReleaseAlbums.value = sortedAlbums
 
-                    // Verificar si hay nuevos lanzamientos
+                    // Check for new releases
                     checkForNewReleases()
 
                 }.onFailure {
@@ -83,7 +83,7 @@ constructor(
             val lastCheckTime = context.dataStore.get(LastNewReleaseCheckKey, 0L)
             val currentTime = System.currentTimeMillis()
 
-            // Si es la primera vez que se verifica, no mostrar notificación
+            // If it's the first time checking, don't show notification
             if (lastCheckTime == 0L) {
                 context.dataStore.updateData { it.toMutablePreferences().apply {
                     set(LastNewReleaseCheckKey, currentTime)
@@ -92,7 +92,7 @@ constructor(
                 return
             }
 
-            // Si hay álbumes y ha pasado suficiente tiempo desde la última verificación
+            // If there are albums and enough time has passed since the last check
             val hasNewReleases = _newReleaseAlbums.value.isNotEmpty() &&
                     (currentTime - lastCheckTime) > (24 * 60 * 60 * 1000) // 24 horas
 

@@ -61,14 +61,14 @@ class PlayerConnection(
     val service = binder.service
     val player = service.player
 
-    // Estados básicos del reproductor
+    // Basic player states
     private val _playbackState = MutableStateFlow(player.playbackState)
     val playbackState: StateFlow<Int> = _playbackState.asStateFlow()
 
     private val _playWhenReady = MutableStateFlow(player.playWhenReady)
     val playWhenReady: StateFlow<Boolean> = _playWhenReady.asStateFlow()
 
-    // Estado combinado de reproducción
+    // Combined playback states
     val isPlaying = combine(playbackState, playWhenReady) { playbackState, playWhenReady ->
         playWhenReady && (playbackState == STATE_READY || playbackState == Player.STATE_BUFFERING)
     }.stateIn(
@@ -77,14 +77,14 @@ class PlayerConnection(
         player.playWhenReady && player.playbackState == STATE_READY
     )
 
-    // Estados de conexión y salud del reproductor
+    // Player connection and health states
     private val _isConnected = MutableStateFlow(true)
     val isConnected: StateFlow<Boolean> = _isConnected.asStateFlow()
 
     private val _connectionState = MutableStateFlow(ConnectionState.CONNECTED)
     val connectionState: StateFlow<ConnectionState> = _connectionState.asStateFlow()
 
-    // Metadatos y información de la canción actual
+    // Metadata and information about the current song
     private val _mediaMetadata = MutableStateFlow(player.currentMetadata)
     val mediaMetadata: StateFlow<com.arturo254.opentune.models.MediaMetadata?> =
         _mediaMetadata.asStateFlow()
@@ -101,7 +101,7 @@ class PlayerConnection(
         database.format(mediaMetadata?.id)
     }
 
-    // Estados de la cola de reproducción
+    // Playback queue states
     private val _queueTitle = MutableStateFlow<String?>(service.queueTitle)
     val queueTitle: StateFlow<String?> = _queueTitle.asStateFlow()
 
@@ -114,21 +114,21 @@ class PlayerConnection(
     private val _currentWindowIndex = MutableStateFlow(-1)
     val currentWindowIndex: StateFlow<Int> = _currentWindowIndex.asStateFlow()
 
-    // Estados de control
+    // Control states
     private val _shuffleModeEnabled = MutableStateFlow(false)
     val shuffleModeEnabled: StateFlow<Boolean> = _shuffleModeEnabled.asStateFlow()
 
     private val _repeatMode = MutableStateFlow(REPEAT_MODE_OFF)
     val repeatMode: StateFlow<Int> = _repeatMode.asStateFlow()
 
-    // Estados de navegación
+    // Navigation states
     private val _canSkipPrevious = MutableStateFlow(true)
     val canSkipPrevious: StateFlow<Boolean> = _canSkipPrevious.asStateFlow()
 
     private val _canSkipNext = MutableStateFlow(true)
     val canSkipNext: StateFlow<Boolean> = _canSkipNext.asStateFlow()
 
-    // Estados de progreso y posición
+    // Progress and status states
     private val _currentPosition = MutableStateFlow(0L)
     val currentPosition: StateFlow<Long> = _currentPosition.asStateFlow()
 
@@ -138,22 +138,22 @@ class PlayerConnection(
     private val _bufferedPosition = MutableStateFlow(0L)
     val bufferedPosition: StateFlow<Long> = _bufferedPosition.asStateFlow()
 
-    // Estados de audio y volumen
+    // Audio and volume states
     private val _volume = MutableStateFlow(1.0f)
     val volume: StateFlow<Float> = _volume.asStateFlow()
 
     private val _isMuted = MutableStateFlow(false)
     val isMuted: StateFlow<Boolean> = _isMuted.asStateFlow()
 
-    // Estados de favoritos y valoraciones
+    // Favorites and rating states
     private val _isLiked = MutableStateFlow(false)
     val isLiked: StateFlow<Boolean> = _isLiked.asStateFlow()
 
-    // Estados de error
+    // Error states
     private val _error = MutableStateFlow<PlaybackException?>(null)
     val error: StateFlow<PlaybackException?> = _error.asStateFlow()
 
-    // Control de actualizaciones
+    // Update control
     private val updateScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     private val progressUpdateHandler = Handler(Looper.getMainLooper())
     private var progressUpdateRunnable: Runnable? = null
@@ -161,7 +161,7 @@ class PlayerConnection(
     private val widgetUpdateHandler = Handler(Looper.getMainLooper())
     private var pendingWidgetUpdate: Runnable? = null
 
-    // Estados previos para detectar cambios
+    // Previous states to detect changes
     private var lastPlaybackState: Int = player.playbackState
     private var lastPlayWhenReady: Boolean = player.playWhenReady
     private var lastMediaItemIndex: Int = player.currentMediaItemIndex
@@ -176,7 +176,7 @@ class PlayerConnection(
 
         instance = this
 
-        // Listener adicional para actualizaciones del widget
+        // Additional listener for widget updates
         player.addListener(object : Player.Listener {
             override fun onEvents(player: Player, events: Player.Events) {
                 handlePlayerEvents(player, events)
@@ -207,7 +207,7 @@ class PlayerConnection(
             _bufferedPosition.value = player.bufferedPosition
             _volume.value = player.volume
 
-            // Inicializar estado de like
+            // Initialize like status
             CoroutineScope(Dispatchers.IO).launch {
                 updateLikeStatusForCurrentSong()
             }
@@ -277,7 +277,7 @@ class PlayerConnection(
                     try {
                         updateProgressStates()
 
-                        // Programar siguiente actualización
+                        // Schedule next update
                         if (player.playWhenReady && player.playbackState == STATE_READY) {
                             progressUpdateHandler.postDelayed(this, PROGRESS_UPDATE_INTERVAL)
                         } else {
@@ -308,7 +308,7 @@ class PlayerConnection(
             val totalDuration = player.duration
             val buffered = player.bufferedPosition
 
-            // Solo actualizar si hay cambios significativos
+            // Only update if there are significant changes.
             if (kotlin.math.abs(currentPos - lastPosition) > 500L ||
                 _duration.value != totalDuration
             ) {
@@ -319,7 +319,7 @@ class PlayerConnection(
 
                 lastPosition = currentPos
 
-                // Enviar broadcast para actualización de progreso
+                // Send broadcast for progress update
                 sendProgressUpdateBroadcast()
             }
         } catch (e: Exception) {
@@ -328,10 +328,10 @@ class PlayerConnection(
     }
 
     private fun scheduleWidgetUpdate() {
-        // Cancelar actualización pendiente
+        // Cancel pending update
         pendingWidgetUpdate?.let { widgetUpdateHandler.removeCallbacks(it) }
 
-        // Programar nueva actualización con debounce
+        // Schedule new update with debounce
         pendingWidgetUpdate = Runnable {
             sendStateChangedBroadcast()
         }
@@ -372,13 +372,13 @@ class PlayerConnection(
         try {
             Timber.tag(TAG).d("Toggling like for current track. Current state: ${_isLiked.value}")
 
-            // Llamar al servicio para cambiar el estado en la base de datos
+            // Call the service to change the status in the database
             service.toggleLike()
 
-            // Actualizar estado local
+            // Update local status
             _isLiked.value = !_isLiked.value
 
-            // Notificar cambios al widget
+            // Notify changes to the widget
             scheduleWidgetUpdate()
 
             Log.d(TAG, "Like toggled to: ${_isLiked.value}")
@@ -498,7 +498,7 @@ class PlayerConnection(
         }
     }
 
-    // Listeners del reproductor sobrescritos
+    // Overwritten player listeners
     override fun onPlaybackStateChanged(state: Int) {
         Log.d(TAG, "Playback state changed: $lastPlaybackState -> $state")
         _playbackState.value = state
@@ -529,7 +529,7 @@ class PlayerConnection(
         _currentMediaItemIndex.value = player.currentMediaItemIndex
         _currentWindowIndex.value = player.getCurrentQueueIndex()
 
-        // Actualizar estado de like cuando cambia la canción
+        // Update like status when the song changes
         CoroutineScope(Dispatchers.IO).launch {
             updateLikeStatusForCurrentSong()
         }
@@ -545,8 +545,8 @@ class PlayerConnection(
         try {
             val currentSongId = player.currentMediaItem?.mediaId
             if (currentSongId != null) {
-                // Consultar la base de datos para obtener el estado actual del like
-                // Similar a como lo hace Player.kt con currentSong?.song?.liked
+                // Check the database for the current status of the like
+                // Similar to how Player.kt does it with currentSong?.song?.liked
                 val songWithInfo = database.song(currentSongId).first()
                 _isLiked.value = songWithInfo?.song?.liked ?: false
                 Timber.tag(TAG).d("Like status updated for song $currentSongId: ${_isLiked.value}")
@@ -655,7 +655,7 @@ class PlayerConnection(
 
         stopProgressUpdates()
 
-        // Cancelar actualizaciones pendientes
+        // Cancel pending updates
         pendingWidgetUpdate?.let { widgetUpdateHandler.removeCallbacks(it) }
 
         try {
@@ -669,7 +669,7 @@ class PlayerConnection(
         Log.d(TAG, "PlayerConnection disposed")
     }
 
-    // Estados de conexión
+    // Connection states
     enum class ConnectionState {
         IDLE,
         CONNECTING,

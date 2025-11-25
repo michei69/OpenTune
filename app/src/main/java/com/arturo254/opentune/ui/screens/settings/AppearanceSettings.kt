@@ -161,7 +161,7 @@ fun AppearanceSettings(
             if (darkMode == DarkMode.AUTO) isSystemInDarkTheme else darkMode == DarkMode.ON
         }
 
-    // Desactivar automáticamente pureBlack cuando se cambia a modo claro
+    // Automatically disable pureBlack when switching to light mode
     LaunchedEffect(useDarkTheme) {
         if (!useDarkTheme && pureBlack) {
             onPureBlackChange(false)
@@ -361,7 +361,7 @@ fun AppearanceSettings(
             title = stringResource(R.string.player),
         )
 
-        // Determinar las opciones disponibles según la versión de Android
+        // Determine the options available based on the Android version
         val availableBackgroundStyles = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             enumValues<PlayerBackgroundStyle>().toList()
         } else {
@@ -370,16 +370,16 @@ fun AppearanceSettings(
             }
         }
 
-        // También asegurarnos de que el valor seleccionado sea compatible
+        // Also ensure that the selected value is compatible.
         val safeSelectedValue = if (playerBackground == PlayerBackgroundStyle.BLUR &&
             Build.VERSION.SDK_INT < Build.VERSION_CODES.S
         ) {
-            PlayerBackgroundStyle.DEFAULT // O cualquier otro valor por defecto
+            PlayerBackgroundStyle.DEFAULT // Or any other default value
         } else {
             playerBackground
         }
 
-        // Usar el componente actualizado
+        // Use the updated component
         EnumListPreference(
             title = { Text(stringResource(R.string.player_background_style)) },
             icon = { Icon(painterResource(R.drawable.gradient), null) },
@@ -398,7 +398,7 @@ fun AppearanceSettings(
         ThumbnailCornerRadiusSelectorButton(
             modifier = Modifier.padding(16.dp),
             onRadiusSelected = { selectedRadius ->
-                // Aquí puedes manejar el valor del radio seleccionado
+                // Here you can manage the value of the selected radius.
                 Timber.tag("Thumbnail").d("Radio seleccionado: $selectedRadius")
             }
         )
@@ -406,7 +406,7 @@ fun AppearanceSettings(
         SmallButtonShapeSelectorButton(
             currentShapeName = smallButtonsShapeState.value,
             onShapeSelected = { newShape ->
-                smallButtonsShapeState.value = newShape // Esto guarda automáticamente en DataStore
+                smallButtonsShapeState.value = newShape // This automatically saves to DataStore.
             }
         )
 
@@ -555,7 +555,7 @@ fun AppearanceSettings(
             },
         )
 
-        // Nuevo selector de avatar
+        // New avatar selector
         AvatarSelector(modifier = Modifier.padding(vertical = 8.dp))
     }
 

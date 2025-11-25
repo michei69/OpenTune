@@ -287,10 +287,10 @@ fun AboutScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            shape = RoundedCornerShape(28.dp), // Bordes muy redondeados estilo MD3
+            shape = RoundedCornerShape(28.dp), // Very rounded edges, MD3 style
             elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
             colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant, // Color de fondo MD3
+                containerColor = MaterialTheme.colorScheme.surfaceVariant, // Background color MD3
             )
         ) {
             Row(

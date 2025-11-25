@@ -97,7 +97,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import java.util.Locale
 import timber.log.Timber
 
-/** Modelo de datos para representar un idioma */
+/** Data model for representing a language */
 data class LanguageItem(
     val code: String,
     val displayName: String,
@@ -107,7 +107,7 @@ data class LanguageItem(
     val flag: String = ""
 )
 
-/** Estado de completitud de las traducciones */
+/** Translation completion status */
 enum class CompletionStatus(val label: String, val color: @Composable () -> Color) {
     COMPLETE("", { Color.Transparent }),
     INCOMPLETE("Incomplete", { MaterialTheme.colorScheme.tertiary }),
@@ -115,7 +115,7 @@ enum class CompletionStatus(val label: String, val color: @Composable () -> Colo
     EXPERIMENTAL("Experimental", { MaterialTheme.colorScheme.secondary })
 }
 
-/** Estados de la operación de cambio de idioma */
+/** Language change operation statuses */
 sealed class LanguageChangeState {
     object Idle : LanguageChangeState()
     object Changing : LanguageChangeState()
@@ -141,7 +141,7 @@ class LocaleManager private constructor(private val context: Context) {
             }
         }
 
-        // Mapeo de banderas y estados de traducción
+        // Mapping of flags and translation statuses
         private val LANGUAGE_METADATA = mapOf(
             "en" to LanguageMetadata("🇺🇸", CompletionStatus.COMPLETE),
             "es" to LanguageMetadata("🇪🇸", CompletionStatus.COMPLETE),
@@ -231,7 +231,7 @@ class LocaleManager private constructor(private val context: Context) {
                 val pm = context.packageManager
                 val res = pm.getResourcesForApplication(context.packageName)
 
-                // Intentar detectar mediante configuraciones disponibles
+                // Attempt to detect using available configurations
                 val configs = res.assets.locales
                 configs.forEach { locale ->
                     if (locale.isNotEmpty()) {
@@ -257,7 +257,7 @@ class LocaleManager private constructor(private val context: Context) {
             Timber.tag(TAG).d("Idiomas detectados: $availableLocales")
         } catch (e: Exception) {
             Timber.tag(TAG).e(e, "Error detectando idiomas disponibles")
-            // Fallback al idioma por defecto
+            // Fallback to default language
             availableLocales.add("en")
         }
 
@@ -265,7 +265,7 @@ class LocaleManager private constructor(private val context: Context) {
     }
 
     /**
-     * Verifica si existen traducciones para un locale específico
+     * Check if translations exist for a specific locale
      */
     private fun hasTranslationsForLocale(localeCode: String): Boolean {
         return try {
@@ -281,7 +281,7 @@ class LocaleManager private constructor(private val context: Context) {
             val localizedContext = context.createConfigurationContext(config)
             val localizedResources = localizedContext.resources
 
-            // Intentar obtener un string básico para verificar
+            // Attempt to obtain a basic string for verification purposes
             try {
                 val appName = localizedResources.getString(R.string.app_name)
                 true
@@ -313,7 +313,7 @@ class LocaleManager private constructor(private val context: Context) {
     }
 
     /**
-     * Convierte código de locale a Locale
+     * Convert locale code to Locale
      */
     private fun parseLocaleCode(code: String): Locale {
         return when {
@@ -338,7 +338,7 @@ class LocaleManager private constructor(private val context: Context) {
 
             val languages = mutableListOf<LanguageItem>()
 
-            // Agregar opción de sistema
+            // Add system option
             val systemDisplayName = try {
                 val locale = parseLocaleCode(systemLanguageCode)
                 locale.displayLanguage.replaceFirstChar { it.uppercase() }
@@ -357,7 +357,7 @@ class LocaleManager private constructor(private val context: Context) {
                 )
             )
 
-            // Agregar idiomas detectados
+            // Add detected languages
             availableLocaleCodes.forEach { localeCode ->
                 try {
                     val locale = parseLocaleCode(localeCode)
@@ -366,7 +366,7 @@ class LocaleManager private constructor(private val context: Context) {
                     val nativeName = locale.getDisplayLanguage(locale)
                         .replaceFirstChar { it.uppercase() }
 
-                    // Obtener metadata (bandera y estado)
+                    // Get metadata (flag and status)
                     val metadata = LANGUAGE_METADATA[localeCode]
 
                     if (metadata != null) {
@@ -386,7 +386,7 @@ class LocaleManager private constructor(private val context: Context) {
                 }
             }
 
-            // Ordenar por: sistema primero, luego completos, luego alfabéticamente
+            // Sort by: system first, then complete, then alphabetically
             val sorted = languages.sortedWith(
                 compareBy<LanguageItem> { !it.isSystemDefault }
                     .thenBy { it.completionStatus.ordinal }
@@ -521,7 +521,7 @@ class LocaleManager private constructor(private val context: Context) {
     }
 }
 
-// Los composables permanecen igual...
+// The composables remain the same...
 // (LanguageSelector, SearchBar, ChangeStateIndicator, etc.)
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -849,7 +849,7 @@ private fun LanguageItem(
                 .padding(horizontal = 16.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Bandera
+            // Flag
             Text(
                 text = language.flag,
                 style = MaterialTheme.typography.headlineMedium,
@@ -859,7 +859,7 @@ private fun LanguageItem(
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            // Información
+            // Information
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = language.displayName,
@@ -892,7 +892,7 @@ private fun LanguageItem(
                 }
             }
 
-            // Badge de estado
+            // Status badge
             if (language.completionStatus != CompletionStatus.COMPLETE) {
                 val statusColor = language.completionStatus.color()
 

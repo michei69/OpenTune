@@ -135,7 +135,7 @@ fun NewReleaseScreen(
                 }
             }
         } else {
-            // Estado de carga
+            // Charge/Loading status
             LazyVerticalGrid(
                 columns = GridCells.Adaptive(minSize = GridThumbnailHeight + 24.dp),
                 contentPadding = PaddingValues(

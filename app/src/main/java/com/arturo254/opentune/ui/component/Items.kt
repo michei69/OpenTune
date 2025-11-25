@@ -1194,7 +1194,7 @@ fun PlaylistGridItem(
     badges: @Composable RowScope.() -> Unit = { },
     fillMaxWidth: Boolean = false,
     autoPlaylist: Boolean = false,
-    context: Context // Agregamos el contexto para obtener la URI de la imagen
+    context: Context // We add the context to obtain the image URI.
 ) = GridItem(
     title = playlist.playlist.name,
     subtitle = if (autoPlaylist) {
@@ -1213,10 +1213,10 @@ fun PlaylistGridItem(
     badges = badges,
     thumbnailContent = {
         val thumbnailUri =
-            getPlaylistImageUri(context, playlist.playlist.id) // Obtener URI de la miniatura
+            getPlaylistImageUri(context, playlist.playlist.id) // Get thumbnail URI
 
         if (thumbnailUri != null) {
-            // Si la URI de la imagen existe, la mostramos
+            // If the image URI exists, we display it.
             AsyncImage(
                 model = thumbnailUri,
                 contentDescription = null,
@@ -1226,7 +1226,7 @@ fun PlaylistGridItem(
                         .clip(RoundedCornerShape(ThumbnailCornerRadius)),
             )
         } else {
-            // Si no hay miniatura, mostrar la imagen predeterminada
+            // If there is no thumbnail, display the default image.
             val painter =
                 when (playlist.playlist.name) {
                     stringResource(R.string.liked) -> R.drawable.favorite_border

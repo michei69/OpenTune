@@ -191,7 +191,7 @@ fun OnlinePlaylistScreen(
         }
     }
 
-    // Calcular el padding del contenido considerando WindowInsets
+    // Calculate content padding considering WindowInsets
     val contentPadding = LocalPlayerAwareWindowInsets.current.union(WindowInsets.ime)
         .asPaddingValues()
     val wrappedSongs = filteredSongs.map { item -> ItemWrapper(item) }.toMutableList()

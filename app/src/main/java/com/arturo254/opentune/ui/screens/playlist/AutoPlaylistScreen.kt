@@ -270,7 +270,7 @@ fun AutoPlaylistScreen(
     Box(
         modifier = Modifier.fillMaxSize(),
     ) {
-        // VerticalFastScroller envuelve el LazyColumn
+        // VerticalFastScroller wraps the LazyColumn
         VerticalFastScroller(
             listState = lazyListState,
             topContentPadding = 16.dp,

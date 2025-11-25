@@ -108,7 +108,7 @@ fun BackupAndRestore(
     val coroutineScope = rememberCoroutineScope()
     val playerCache = LocalPlayerConnection.current?.service?.playerCache
 
-    // Estados
+    // Statuses
     var uploadStatus by remember { mutableStateOf<UploadStatus?>(null) }
     var showVisitorDataDialog by remember { mutableStateOf(false) }
     var showVisitorDataResetDialog by remember { mutableStateOf(false) }
@@ -118,7 +118,7 @@ fun BackupAndRestore(
     var isProgressStarted by remember { mutableStateOf(false) }
     var progressPercentage by remember { mutableIntStateOf(0) }
 
-    // NUEVO: Estado para controlar la subida automática a la nube
+    // NEW: Status to control automatic upload to the cloud
     var enableCloudUpload by remember {
         mutableStateOf(
             context.getSharedPreferences("backup_settings", Context.MODE_PRIVATE)
@@ -135,7 +135,7 @@ fun BackupAndRestore(
         label = "playerCacheProgress"
     )
 
-    // Actualizar tamaño del caché
+    // Update cache size
     LaunchedEffect(playerCache) {
         while (true) {
             delay(1000)
@@ -149,7 +149,7 @@ fun BackupAndRestore(
             if (uri != null) {
                 viewModel.backup(context, uri)
 
-                // MODIFICADO: Solo subir a la nube si el usuario lo ha activado
+                // MODIFIED: Only upload to the cloud if the user has enabled it.
                 if (enableCloudUpload) {
                     coroutineScope.launch {
                         uploadStatus = UploadStatus.Uploading
@@ -226,12 +226,12 @@ fun BackupAndRestore(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // NUEVO: Card de configuración de subida a la nube
+            // NEW: Cloud upload configuration card
             MinimalCloudUploadCard(
                 enabled = enableCloudUpload,
                 onToggle = { isEnabled ->
                     enableCloudUpload = isEnabled
-                    // Guardar preferencia
+                    // Save preference
                     context.getSharedPreferences("backup_settings", Context.MODE_PRIVATE)
                         .edit()
                         .putBoolean("enable_cloud_upload", isEnabled)
@@ -270,7 +270,7 @@ fun BackupAndRestore(
                 }
             )
 
-            // Estado de carga
+            // Upload status
             AnimatedVisibility(
                 visible = uploadStatus != null,
                 enter = fadeIn() + expandVertically(),
@@ -294,7 +294,7 @@ fun BackupAndRestore(
         }
     }
 
-    // Diálogos
+    // Dialogs
     if (showVisitorDataDialog) {
         MinimalInfoDialog(
             icon = painterResource(R.drawable.info),
@@ -316,15 +316,15 @@ fun BackupAndRestore(
                 isClearing = true
                 coroutineScope.launch(Dispatchers.IO) {
                     try {
-                        // Limpiar caché de canciones
+                        // Clear song cache
                         playerCache?.keys?.toList()?.forEach { key ->
                             tryOrNull { playerCache.removeResource(key) }
                         }
 
-                        // Resetear VISITOR_DATA
+                        // Reset VISITOR_DATA
                         viewModel.resetVisitorData(context)
 
-                        delay(500) // Pequeño delay para asegurar que se complete
+                        delay(500) // Short delay to ensure completion
 
                         withContext(Dispatchers.Main) {
                             playerCacheSize = 0L
@@ -332,7 +332,7 @@ fun BackupAndRestore(
                             showVisitorDataResetDialog = false
                         }
                     } catch (e: Exception) {
-                        Log.e("BackupRestore", "Error al resetear", e)
+                        Log.e("BackupRestore", "Error when resetting VISITOR_DATA", e)
                         withContext(Dispatchers.Main) {
                             isClearing = false
                             showVisitorDataResetDialog = false
@@ -369,7 +369,7 @@ fun BackupAndRestore(
     }
 }
 
-// NUEVO: Composable para el card de configuración de subida a la nube
+// NEW: Composable for the cloud upload configuration card
 @Composable
 private fun MinimalCloudUploadCard(
     enabled: Boolean,
@@ -560,7 +560,7 @@ private fun MinimalVisitorDataCard(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            // Indicador de caché
+            // Cache indicator
             if (playerCacheSize > 0 || isClearing) {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     LinearProgressIndicator(
@@ -864,7 +864,7 @@ private fun MinimalConfirmDialog(
     )
 }
 
-// Función de subida a Filebin (sin cambios significativos)
+// Filebin upload function (no significant changes)
 @SuppressLint("LogNotTimber")
 suspend fun uploadBackupToFilebin(
     context: Context,

@@ -231,7 +231,7 @@ fun LibraryPlaylistGridItem(
     coroutineScope: CoroutineScope,
     playlist: Playlist,
     modifier: Modifier = Modifier,
-    context: Context // Agregamos el contexto para obtener la URI de la miniatura
+    context: Context // We add the context to obtain the thumbnail URI.
 ) = PlaylistGridItem(
     playlist = playlist,
     fillMaxWidth = true,
@@ -283,6 +283,6 @@ fun LibraryPlaylistGridItem(
                 }
             }
         ),
-    context = LocalContext.current // Pasamos el contexto actual para obtener la URI de la miniatura
+    context = LocalContext.current // We pass the current context to obtain the thumbnail URI.
 )
 

@@ -48,7 +48,7 @@ import androidx.graphics.shapes.RoundedPolygon
 import com.arturo254.opentune.R
 
 /**
- * Data class que representa una forma disponible para botones pequeños
+ * Data class representing a form available for small buttons
  */
 data class SmallButtonShapeOption(
     val name: String,
@@ -57,8 +57,8 @@ data class SmallButtonShapeOption(
 )
 
 /**
- * Bottom Sheet selector de formas para botones pequeños (radio, download, sleep, more)
- * Diseño Material 3 Expressive con animaciones sutiles y jerarquía clara
+ * Bottom Sheet shape selector for small buttons (radio, download, sleep, more)
+ * Material 3 Expressive design with subtle animations and clear hierarchy
  */
 @OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -68,7 +68,7 @@ fun SmallButtonShapeBottomSheet(
     onDismiss: () -> Unit,
     sheetState: SheetState = rememberModalBottomSheetState()
 ) {
-    // Lista COMPLETA de formas apropiadas para botones pequeños
+    // COMPLETE list of appropriate shapes for small buttons
     val availableShapes = remember {
         listOf(
             SmallButtonShapeOption("Pill", MaterialShapes.Pill, "Pill"),
@@ -119,7 +119,7 @@ fun SmallButtonShapeBottomSheet(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Drag handle personalizado Material 3
+                // Custom drag handle Material 3
                 Box(
                     modifier = Modifier
                         .padding(top = 12.dp, bottom = 8.dp)
@@ -137,7 +137,7 @@ fun SmallButtonShapeBottomSheet(
                 .padding(horizontal = 24.dp)
                 .padding(bottom = 24.dp)
         ) {
-            // Título con jerarquía clara
+            // Title with clear hierarchy
             Text(
                 text = "Small Buttons Shape",
                 style = MaterialTheme.typography.titleLarge,
@@ -145,7 +145,7 @@ fun SmallButtonShapeBottomSheet(
                 modifier = Modifier.padding(bottom = 20.dp)
             )
 
-            // Grid de formas con espaciado coherente
+            // Grid of shapes with consistent spacing
             LazyVerticalGrid(
                 columns = GridCells.Fixed(4),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -168,7 +168,7 @@ fun SmallButtonShapeBottomSheet(
 }
 
 /**
- * Item individual de forma con animaciones sutiles y feedback visual
+ * Individual form item with subtle animations and visual feedback
  */
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -177,7 +177,7 @@ private fun SmallButtonShapeItem(
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
-    // Animación de escala suave
+    // Smooth scale animation
     val scale by animateFloatAsState(
         targetValue = if (isSelected) 1.05f else 1f,
         animationSpec = spring(
@@ -187,7 +187,7 @@ private fun SmallButtonShapeItem(
         label = "scale"
     )
 
-    // Transición de color del contenedor
+    // Container color transition
     val backgroundColor by animateColorAsState(
         targetValue = if (isSelected)
             MaterialTheme.colorScheme.primaryContainer
@@ -197,7 +197,7 @@ private fun SmallButtonShapeItem(
         label = "backgroundColor"
     )
 
-    // Color del borde con transición
+    // Border color with transition
     val borderColor by animateColorAsState(
         targetValue = if (isSelected)
             MaterialTheme.colorScheme.primary
@@ -223,7 +223,7 @@ private fun SmallButtonShapeItem(
             .clickable(onClick = onClick)
             .padding(8.dp)
     ) {
-        // Preview de la forma
+        // Preview of the form
         Box(
             modifier = Modifier
                 .size(40.dp)
@@ -236,7 +236,7 @@ private fun SmallButtonShapeItem(
                 )
         )
 
-        // Nombre de la forma
+        // Name of the form
         Text(
             text = shapeOption.displayName,
             style = MaterialTheme.typography.labelSmall,
@@ -252,7 +252,7 @@ private fun SmallButtonShapeItem(
 }
 
 /**
- * Botón para abrir el bottom sheet de formas
+ * Button to open the shapes bottom sheet
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

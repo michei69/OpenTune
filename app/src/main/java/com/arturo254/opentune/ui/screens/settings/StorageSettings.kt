@@ -146,7 +146,7 @@ fun StorageSettings(
                 .padding(horizontal = 16.dp, vertical = 8.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Descargas
+            // Downloads
             StorageCard(
                 title = stringResource(R.string.downloaded_songs),
                 icon = R.drawable.download,
@@ -167,7 +167,7 @@ fun StorageSettings(
                 onManageClick = null
             )
 
-            // Caché de canciones
+            // Song cache
             StorageCard(
                 title = stringResource(R.string.song_cache),
                 icon = R.drawable.music_note,
@@ -200,7 +200,7 @@ fun StorageSettings(
                 }
             )
 
-            // Caché de imágenes
+            // Image cache
             StorageCard(
                 title = stringResource(R.string.image_cache),
                 icon = R.drawable.image,
@@ -248,7 +248,7 @@ fun StorageSettings(
         )
     }
 
-    // Bottom Sheet para gestionar canciones en caché
+    // Bottom Sheet for managing songs in cache
     if (showCachedSongsSheet) {
         CachedSongsBottomSheet(
             playerCache = playerCache,
@@ -281,7 +281,7 @@ private fun StorageCard(
             modifier = Modifier.padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Header con icono y título
+            // Header with icon and title
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -310,7 +310,7 @@ private fun StorageCard(
                 }
             }
 
-            // Barra de progreso
+            // Progress bar
             if (usedSize > 0) {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     LinearProgressIndicator(
@@ -348,10 +348,10 @@ private fun StorageCard(
                 )
             }
 
-            // Contenido extra (ListPreference)
+            // Extra content (ListPreference)
             extraContent?.invoke()
 
-            // Botones de acción
+            // Action buttons
             if (usedSize > 0) {
                 HorizontalDivider(
                     thickness = 0.5.dp,
@@ -444,12 +444,12 @@ private fun CachedSongsBottomSheet(
     val coroutineScope = rememberCoroutineScope()
     val events by viewModel.events.collectAsState()
 
-    // Obtener IDs de canciones en caché
+    // Get cached song IDs
     val cachedSongIds = remember(playerCache) {
         playerCache.keys.map { it.toString() }.toSet()
     }
 
-    // Obtener canciones completas desde el historial (similar a CachePlaylistScreen)
+    // Get full songs from history (similar to CachePlaylistScreen)
     val cachedSongs = remember(events, cachedSongIds) {
         events.values.flatten()
             .map { it.song }
@@ -457,7 +457,7 @@ private fun CachedSongsBottomSheet(
             .filter { it.id in cachedSongIds }
     }
 
-    // Obtener tamaños de caché - MEJORA: Filtrar canciones con tamaño 0
+    // Get cache sizes - IMPROVEMENT: Filter songs with size 0
     val cachedSongsWithSize = remember(cachedSongs, playerCache) {
         cachedSongs.mapNotNull { song ->
             val size = tryOrNull {
@@ -531,11 +531,11 @@ private fun CachedSongsBottomSheet(
                         onClick = {
                             coroutineScope.launch(Dispatchers.IO) {
                                 try {
-                                    // MEJORA: Conversión a lista antes de iterar
+                                    // IMPROVEMENT: Convert to list before iterating
                                     playerCache.keys.toList().forEach { key ->
                                         tryOrNull { playerCache.removeResource(key) }
                                     }
-                                    // MEJORA: Actualización del UI con withContext
+                                    // IMPROVEMENT: UI update with withContext
                                     withContext(Dispatchers.Main) {
                                         displayedSongs = emptyList()
                                     }
@@ -555,7 +555,7 @@ private fun CachedSongsBottomSheet(
                 }
             }
 
-            // Lista de canciones
+            // Song list
             LazyColumn(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -566,7 +566,7 @@ private fun CachedSongsBottomSheet(
                         onDeleteClick = {
                             coroutineScope.launch(Dispatchers.IO) {
                                 try {
-                                    // MEJORA: Búsqueda correcta de keys por canción
+                                    // IMPROVEMENT: Correct search for keys by song
                                     val keysToRemove = playerCache.keys.filter { key ->
                                         key.contains(songInfo.song.id)
                                     }
@@ -575,7 +575,7 @@ private fun CachedSongsBottomSheet(
                                         tryOrNull { playerCache.removeResource(key) }
                                     }
 
-                                    // MEJORA: Actualización del UI con withContext
+                                    // IMPROVEMENT: UI update with withContext
                                     withContext(Dispatchers.Main) {
                                         displayedSongs = displayedSongs.filter {
                                             it.song.id != songInfo.song.id

@@ -9,48 +9,48 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
-/** Guarda una imagen personalizada para una playlist */
+/** Save a custom image for a playlist */
 fun saveCustomPlaylistImage(context: Context, playlistId: String, imageUri: Uri) {
     try {
-        // Crear directorio para imágenes de playlist si no existe
+        // Create directory for playlist images if it doesn't exist
         val playlistImagesDir = File(context.filesDir, "playlist_images")
         if (!playlistImagesDir.exists()) {
             playlistImagesDir.mkdirs()
         }
 
-        // Nombre del archivo basado en el ID de la playlist (usando el ID como String)
+        // File name based on the playlist ID (using the ID as a string)
         val imageFile = File(playlistImagesDir, "playlist_${playlistId}.jpg")
 
-        // Copiar la imagen seleccionada al directorio interno
+        // Copy the selected image to the internal directory
         context.contentResolver.openInputStream(imageUri)?.use { input ->
             FileOutputStream(imageFile).use { output ->
                 input.copyTo(output)
             }
         }
 
-        // Guardar la referencia en SharedPreferences
+        // Save the reference in SharedPreferences
         context.getSharedPreferences("playlist_images", Context.MODE_PRIVATE).edit {
             putString("playlist_$playlistId", imageFile.toUri().toString())
         }
     } catch (e: IOException) {
-        Timber.e(e, "Error al guardar imagen de playlist")
+        Timber.e(e, "Error saving playlist image")
     }
 }
 
-/** Obtiene la URI de la imagen personalizada para una playlist */
+/** Get the custom image URI for a playlist */
 fun getPlaylistImageUri(context: Context, playlistId: String): Uri? {
     val uriString = context.getSharedPreferences("playlist_images", Context.MODE_PRIVATE)
         .getString("playlist_$playlistId", null)
 
     return if (uriString != null) {
         val uri = uriString.toUri()
-        // Verificar que el archivo existe
+        // Verify that the file exists
         val file = File(uri.path ?: "")
         if (file.exists()) uri else null
     } else null
 }
 
-/** Elimina la imagen personalizada de una playlist */
+/** Remove the custom image from a playlist */
 fun deletePlaylistImage(context: Context, playlistId: String) {
     val uriString = context.getSharedPreferences("playlist_images", Context.MODE_PRIVATE)
         .getString("playlist_$playlistId", null)
@@ -61,7 +61,7 @@ fun deletePlaylistImage(context: Context, playlistId: String) {
             file.delete()
         }
 
-        // Eliminar referencia de SharedPreferences
+        // Remove reference from SharedPreferences
         context.getSharedPreferences("playlist_images", Context.MODE_PRIVATE).edit {
             remove("playlist_$playlistId")
         }

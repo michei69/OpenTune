@@ -69,7 +69,7 @@ fun AccountSettings(
         innerTubeCookie.isNotEmpty() && "SAPISID" in parseCookieString(innerTubeCookie)
     }
 
-    // Función para obtener el nombre de cuenta de manera segura
+    // Function to securely obtain the account name
     val getAccountDisplayName =
         remember(accountName, accountEmail, accountChannelHandle, isLoggedIn) {
             when {
@@ -77,11 +77,11 @@ fun AccountSettings(
                 accountName.isNotBlank() -> accountName
                 accountEmail.isNotBlank() -> accountEmail.substringBefore("@")
                 accountChannelHandle.isNotBlank() -> accountChannelHandle
-                else -> "Usuario sin nombre" // Fallback para evitar crashes
+                else -> "No username" // Fallback to prevent crashes
             }
         }
 
-    // Función para obtener la descripción de la cuenta de manera segura
+    // Function to securely obtain the account description
     val getAccountDescription = remember(accountEmail, accountChannelHandle, isLoggedIn) {
         when {
             !isLoggedIn -> null
@@ -151,7 +151,7 @@ fun AccountSettings(
                 trailingContent = {
                     if (isLoggedIn) {
                         OutlinedButton(onClick = {
-                            // Limpiar todos los datos de la cuenta
+                            // Clear all account data
                             onInnerTubeCookieChange("")
                             onAccountNameChange("")
                             onAccountEmailChange("")
