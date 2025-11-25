@@ -505,8 +505,6 @@ Aplicația se va reporni automat."</string>
     <string name="choose_predefined_avatar">"Alege un avatar predefinit"</string>
 
     <!-- Avatar Descriptions for Predefined Avatars -->
-    <string name="blue_initial_avatar">"Avatar Albastru cu Inițialele Tale"</string>
-    <string name="music_note_avatar">"Avatar Notă Muzicală"</string>
     <string name="discord_use_details">"Folosește details în loc de state"</string>
     <string name="discord_use_details_description">"Arată mai proeminent titlul melodiei în loc de numele artiștilor"</string>
     <string name="community">"Comunitate"</string>
