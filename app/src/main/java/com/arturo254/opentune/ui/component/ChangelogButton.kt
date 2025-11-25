@@ -165,7 +165,7 @@ fun ChangelogScreen(viewModel: ChangelogViewModel = viewModel()) {
     var selectedTab by remember { mutableStateOf(ChangelogTab.RELEASES) }
 
     LaunchedEffect(Unit) {
-        viewModel.loadChangelog("Arturo254", "OpenTune")
+        viewModel.loadChangelog("michei69", "OpenTune")
     }
 
     Column(
@@ -194,7 +194,7 @@ fun ChangelogScreen(viewModel: ChangelogViewModel = viewModel()) {
                     isLoading = uiState.isLoadingReleases,
                     error = uiState.releasesError,
                     lastUpdated = uiState.lastUpdated,
-                    onRetry = { viewModel.loadChangelog("Arturo254", "OpenTune") }
+                    onRetry = { viewModel.loadChangelog("michei69", "OpenTune") }
                 )
             }
 
@@ -204,7 +204,7 @@ fun ChangelogScreen(viewModel: ChangelogViewModel = viewModel()) {
                     isLoading = uiState.isLoadingCommits,
                     error = uiState.commitsError,
                     lastUpdated = uiState.lastUpdated,
-                    onRetry = { viewModel.loadChangelog("Arturo254", "OpenTune") }
+                    onRetry = { viewModel.loadChangelog("michei69", "OpenTune") }
                 )
             }
         }
@@ -268,9 +268,9 @@ private fun ReleasesContent(
     onRetry: () -> Unit
 ) {
     when {
-        isLoading -> LoadingIndicator("Cargando releases...")
+        isLoading -> LoadingIndicator("Loading releases...")
         error != null -> ErrorContent(error, onRetry)
-        releases.isEmpty() -> EmptyContent("No hay releases disponibles")
+        releases.isEmpty() -> EmptyContent("No releases available")
         else -> SuccessReleasesContent(releases, lastUpdated)
     }
 }
@@ -284,9 +284,9 @@ private fun CommitsContent(
     onRetry: () -> Unit
 ) {
     when {
-        isLoading -> LoadingIndicator("Cargando commits...")
+        isLoading -> LoadingIndicator("Loading commits...")
         error != null -> ErrorContent(error, onRetry)
-        commits.isEmpty() -> EmptyContent("No hay commits disponibles")
+        commits.isEmpty() -> EmptyContent("No commits available")
         else -> SuccessCommitsContent(commits, lastUpdated)
     }
 }
@@ -433,7 +433,7 @@ private fun LastUpdatedIndicator(lastUpdated: String?) {
             shape = RoundedCornerShape(16.dp)
         ) {
             Text(
-                text = "Última actualización: $it",
+                text = stringResource(R.string.last_update) + " $it",
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onPrimaryContainer,
                 modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
@@ -557,7 +557,7 @@ private fun ReleaseCard(release: Release) {
                     }
                     release.author?.let { author ->
                         Text(
-                            text = "por $author",
+                            text = stringResource(R.string.by, author),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.padding(top = 4.dp)

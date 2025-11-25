@@ -573,4 +573,6 @@
     <string name="applying">Applying...</string>
     <string name="restarting">Restarting...</string>
     <string name="search_language">Search languages...</string>
+    <string name="last_update">Last update:</string>
+    <string name="by">by %1$s</string>
 </resources>

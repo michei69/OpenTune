@@ -319,7 +319,7 @@ fun AboutScreen(
                     )
                 }
                 IconButton(
-                    onClick = { uriHandler.openUri("https://github.com/Arturo254/OpenTune") }
+                    onClick = { uriHandler.openUri("https://github.com/michei69/OpenTune") }
                 ) {
                     Icon(
                         modifier = Modifier.size(20.dp),

@@ -708,7 +708,7 @@ fun EnhancedRichPresence(
                         onClick = {
                             val intent = Intent(
                                 Intent.ACTION_VIEW,
-                                "https://github.com/Arturo254/OpenTune".toUri()
+                                "https://github.com/michei69/OpenTune".toUri()
                             )
                             context.startActivity(intent)
                         },
