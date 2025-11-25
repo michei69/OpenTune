@@ -549,4 +549,5 @@ Aplicația se va reporni automat."</string>
     <string name="download_failed">Descărcarea a eșuat</string>
     <string name="applying">Se aplică...</string>
     <string name="restarting">Se reîncarcă...</string>
+    <string name="search_language">Caută limbi...</string>
 </resources>

@@ -572,4 +572,5 @@
     <string name="choose_predefined_avatar">Choose an avatar</string>
     <string name="applying">Applying...</string>
     <string name="restarting">Restarting...</string>
+    <string name="search_language">Search languages...</string>
 </resources>
