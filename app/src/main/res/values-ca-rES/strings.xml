@@ -207,8 +207,6 @@ Treu el m'agrada a tot"</string>
     </plurals>
 
     <!-- Snackbar -->
-    <string name="playlist_imported">"S'ha importat la llista de reproducció"</string>
-    <string name="imported_playlist">"Llista de reproducció importada"</string>
     <string name="removed_song_from_playlist">"S'ha eliminat \"%s\" de la llista de reproducció"</string>
     <string name="playlist_synced">"S'ha sincronitzat la llista de reproducció"</string>
     <string name="undo">"Desfés"</string>
@@ -225,8 +223,6 @@ Treu el m'agrada a tot"</string>
     <string name="error_no_internet">"No hi ha cap connexió de xarxa"</string>
     <string name="error_timeout">"S'ha esgotat el temps"</string>
     <string name="error_unknown">"S'ha produït un error desconegut"</string>
-    <string name="seek_backward">"5 segons enrere"</string>
-    <string name="seek_forward">"5 segons endavant"</string>
 
     <!-- Player action -->
     <string name="action_like">"M'agrada"</string>
@@ -265,7 +261,6 @@ Treu el m'agrada a tot"</string>
     <string name="enable_squiggly_slider">"Activa el control lliscant ondulat"</string>
     <string name="enable_swipe_thumbnail">"Activa lliscar per a canviar de cançó"</string>
     <string name="pure_black">"Negre pur"</string>
-    <string name="customize_navigation_tabs">"Personalitza les pestanyes de navegació"</string>
     <string name="player">"Reproductor"</string>
     <string name="player_text_alignment">"Alineament de text del reproductor"</string>
     <string name="lyrics_text_position">"Posició del text de la lletra"</string>
@@ -306,13 +301,9 @@ Treu el m'agrada a tot"</string>
     <string name="default_lib_chips">"Canvia el xip de biblioteca predeterminat"</string>
     <string name="set_quick_picks">"Defineix les seleccions ràpides"</string>
     <string name="last_song_listened">"Segons l'última cançó que has escoltat"</string>
-    <string name="restart_to_take_effect">"Reinicia per a activar"</string>
     <string name="app_language">"Idioma de l'app (Beta)"</string>
     <string name="configure_app_language">"Configureu els idiomes de l'app"</string>
-    <string name="intent_app_language_not_found">"No s'han trobat paràmetres de l'idioma de l'app, configureu-ho a mà"</string>
-    <string name="open_supported_links">"Obre l'enllaç compatible predeterminat"</string>
     <string name="configure_supported_links">"Configureu els enllaços compatibles"</string>
-    <string name="intent_supported_links_not_found">"No se han encontrado enlaces compatibles, por favor configúrelos manualmente."</string>
     <string name="enable_kugou">"Habilitar el proveedor de letras KuGou"</string>
     <string name="enable_lrclib">"Habilita les lletres de LrcLib"</string>
     <string name="set_first_lyrics_provider">"Proveïdor preferit de lletres"</string>
@@ -373,12 +364,10 @@ Treu el m'agrada a tot"</string>
     <string name="login_failed">"No s'ha pogut accedir"</string>
     <string name="enable_discord_rpc">"Activar Rich Presence"</string>
     <string name="default_links">"Obre els enllaços compatibles"</string>
-    <string name="open_app_settings_error">"No s'han pogut obrir els paràmetres de l'aplicació"</string>
     <string name="release_notes">"Notes de publicació"</string>
     <string name="about">"Quant a"</string>
     <string name="app_version">"Versió de l'aplicació"</string>
     <string name="new_version_available">"Hi ha disponible una versió nova"</string>
-    <string name="translation_models">"Models de traducció"</string>
     <string name="clear_translation_models">"Buida els models de traducció"</string>
     <string name="all_time">"De sempre"</string>
     <string name="past_24_hours">"Les últimes 24 hores"</string>
@@ -388,18 +377,17 @@ Treu el m'agrada a tot"</string>
     <string name="top_length">"Duración de mi lista"</string>
     <string name="history_duration">"Durada de l'historial"</string>
     <string name="contributors">"Col·laboradors"</string>
-    <string name="Donate">"Feu una donació"</string>
-    <string name="Telegramchanel">"Canal de Telegram"</string>
+    <string name="donate">"Feu una donació"</string>
+    <string name="telegram_channel">"Canal de Telegram"</string>
     <string name="contribution">"Col·laboració"</string>
-    <string name="Hi">"Hola"</string>
-    <string name="NewVersion">"Versió nova"</string>
-    <string name="Changelog">"Registre de canvis"</string>
+    <string name="new_version">"Versió nova"</string>
+    <string name="changelog">"Registre de canvis"</string>
     <string name="changelogs">"registres de canvis"</string>
     <string name="no_changes">"sense canvis"</string>
-    <string name="Translate">"Traduiu"</string>
-    <string name="Redirección">"Redirecció"</string>
+    <string name="translate">"Traduiu"</string>
+    <string name="redirect">"Redirecció"</string>
     <string name="poeditor_redirect">"Sereu redirigits a poeditor.com"</string>
-    <string name="barwar">"Atención al restaurar las copias de seguridad, las canciones previamente descargadas no se descargan. es ALTAMENTE RECOMENDABLE reproducir las canciones restauradas para evitar errores de descarga."</string>
+    <string name="backup_restore_warning">"Atención al restaurar las copias de seguridad, las canciones previamente descargadas no se descargan. es ALTAMENTE RECOMENDABLE reproducir las canciones restauradas para evitar errores de descarga."</string>
     <string name="backup_link_title">"S'ha pujat amb exit la còpia de seguretat"</string>
     <string name="backup_link_description">"La còpia de seguretat estarà disponible durant 14 dies"</string>
     <string name="copy_link">"Copia l'enllaç"</string>
@@ -413,17 +401,13 @@ Treu el m'agrada a tot"</string>
     <string name="mute">"Silencia"</string>
     <string name="explore">"Explora"</string>
     <string name="custom_avatar">"Avatar personalitzat (BETA)"</string>
-    <string name="custom_avatar_beta">"Avatar personalitzat (BETA)"</string>
     <string name="select_image">"Trieu una imatge"</string>
     <string name="default_avatar">"Avatar predeterminat"</string>
     <string name="restore_default_avatar">"Recupera l'avatar predeterminat"</string>
-    <string name="SearchResutls">"Resultats de la cerca"</string>
-    <string name="Sujestions">"Suggeriments"</string>
-    <string name="SearchHistory">"Historial de cerca"</string>
+    <string name="search_results">"Resultats de la cerca"</string>
+    <string name="suggestions">"Suggeriments"</string>
     <string name="collapse">"Col·lapse"</string>
     <string name="expand">"Expandeix"</string>
-    <string name="reset_to_default">"Reinicia a valors predeterminats"</string>
-    <string name="Presets">"Predefinits"</string>
     <string name="custom">"Personalitzat"</string>
     <string name="close">"Tanca"</string>
     <string name="custom_value">"Valor personalitzat"</string>
@@ -435,11 +419,11 @@ Treu el m'agrada a tot"</string>
     <string name="secondary_color_style">"Estil del color secundari"</string>
     <string name="update_version">"Actualitza v%1$s"</string>
     <string name="download_question">"Voleu baixar la versió nova?"</string>
-    <string name="downloadup">"Baixa"</string>
-    <string name="downloadingup">"S'està baixant l'actualització"</string>
+    <string name="update_download">"Baixa"</string>
+    <string name="update_downloading">"S'està baixant l'actualització"</string>
     <string name="download_completed">"S'ha completat la baixada "</string>
     <string name="install">"Instal·la"</string>
-    <string name="download_errorup">"S'ha produït un error baixant l'actualització"</string>
+    <string name="update_download_error">"S'ha produït un error baixant l'actualització"</string>
     <string name="tap_to_update">"Toqueu per actualitzar"</string>
     <string name="info_title">"Informació"</string>
     <string name="info_description">"Esta sección proporciona detalles clave sobre el proceso de copia de seguridad y restauración, incluyendo la seguridad de sus datos y cómo garantizar que su información permanezca segura y sea fácilmente accesible."</string>
@@ -449,8 +433,7 @@ Treu el m'agrada a tot"</string>
     <string name="restore_description">"Recupera les dades d'un fitxer de còpia de seguretat"</string>
     <string name="keep_listening">"Continua escoltant"</string>
     <string name="link_copied">"Enllaç copiat"</string>
-    <string name="redireccion">"redirecció"</string>
-    <string name="Version">"Versió"</string>
+    <string name="version">"Versió"</string>
     <string name="notification">"notificació"</string>
     <string name="cached_playlist">"Llista de reproducció en memòria cau"</string>
     <string name="added_to_queue">"S'ha afegit a la cus"</string>
@@ -463,7 +446,6 @@ Treu el m'agrada a tot"</string>
     <string name="clear_song_cache_confirmation">"confirmación para borrar la caché de canciones"</string>
     <string name="clear_image_cache_confirmation">"confirmación para borrar la caché de imágenes"</string>
     <string name="confirm">"confirma"</string>
-    <string name="problem_solver">"Solucionador de problemas"</string>
     <string name="action_login">"Iniciar sesión"</string>
     <string name="generating_image">"S'està generant la imatge..."</string>
     <string name="please_wait">"Espereu..."</string>
@@ -475,10 +457,9 @@ Treu el m'agrada a tot"</string>
     <string name="customize_colors">"Personalitza els colors"</string>
     <string name="more_options">"Más opciones"</string>
     <string name="text_color">"Color del texto"</string>
-    <string name="secondary_text_color">"Color del texto secundario"</string>
     <string name="background_color">"Color de fondo"</string>
     <string name="back">"enrere"</string>
-    <string name="navigation_error">"Error de navegación"</string>
+    <string name="error_navigation">"Error de navegación"</string>
     <string name="notifications_enabled">"Notificaciones habilitadas"</string>
     <string name="notifications_disabled">"Notificaciones desabilitadas"</string>
     <string name="visitor_data_title"></string>
@@ -505,42 +486,23 @@ Treu el m'agrada a tot"</string>
 
     <!-- Avatar Selection -->
     <string name="avatar_selection"></string>
-    <string name="choose_predefined_avatar"></string>
 
     <!-- Avatar Descriptions for Predefined Avatars -->
-    <string name="geometric_avatar_1"></string>
-    <string name="geometric_avatar_2"></string>
-    <string name="geometric_avatar_3"></string>
-    <string name="geometric_avatar_4"></string>
-    <string name="geometric_avatar_5"></string>
-    <string name="geometric_avatar_6"></string>
-    <string name="purple_initial_avatar"></string>
     <string name="blue_initial_avatar"></string>
-    <string name="green_initial_avatar"></string>
-    <string name="orange_initial_avatar"></string>
-    <string name="red_initial_avatar"></string>
-    <string name="teal_initial_avatar"></string>
-    <string name="dots_pattern_avatar"></string>
-    <string name="waves_pattern_avatar"></string>
-    <string name="gradient_pattern_avatar"></string>
-    <string name="music_note_avatar"></string>
-    <string name="equalizer_avatar"></string>
-    <string name="headphones_avatar"></string>
     <string name="discord_use_details"></string>
     <string name="discord_use_details_description"></string>
     <string name="community"></string>
     <string name="app_info"></string>
     <string name="hide_controls">"Amaga els controls"</string>
     <string name="show_controls">"Mostra els controls"</string>
-    <string name="customize_lyrics_image">"Personalitza la imatge de la lletra"</string>
     <string name="customize_image">"Personalitza la imatge"</string>
     <string name="select_theme">"Trieu un tema"</string>
     <string name="from_cover">"De la portada"</string>
-    <string name="presets">"Predefinits"</string>
+    <string name="preset_themes">"Predefinits"</string>
     <string name="share_lyrics_image">"Compartiu la imatge de la lletra"</string>
     <string name="error_generating_image">"S'ha produït un error generant la imatge"</string>
     <string name="cover_color">"Color de la portada"</string>
-    <string name="Rotatelyricsbackground"></string>
+    <string name="rotate_lyrics_background"></string>
     <string name="playlist_add_local_to_synced_note"></string>
     <string name="manage">"Gestiona"</string>
     <string name="clear">"Neteja"</string>

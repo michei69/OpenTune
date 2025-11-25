@@ -162,7 +162,8 @@ class LocaleManager private constructor(private val context: Context) {
             "nl" to LanguageMetadata("🇳🇱", CompletionStatus.INCOMPLETE),
             "id" to LanguageMetadata("🇮🇩", CompletionStatus.BETA),
             "uk" to LanguageMetadata("🇺🇦", CompletionStatus.BETA),
-            "he" to LanguageMetadata("🇮🇱", CompletionStatus.BETA)
+            "he" to LanguageMetadata("🇮🇱", CompletionStatus.BETA),
+            "ro" to LanguageMetadata("🇷🇴", CompletionStatus.BETA)
         )
 
         private data class LanguageMetadata(
@@ -241,7 +242,7 @@ class LocaleManager private constructor(private val context: Context) {
                 val commonLocales = listOf(
                     "en", "es", "fr", "de", "it", "pt", "pt-rBR",
                     "ru", "zh-rCN", "zh-rTW", "ja", "ko", "ar",
-                    "hi", "th", "vi", "tr", "pl", "nl", "id", "uk", "he"
+                    "hi", "th", "vi", "tr", "pl", "nl", "id", "uk", "he", "ro"
                 )
 
                 commonLocales.forEach { localeCode ->

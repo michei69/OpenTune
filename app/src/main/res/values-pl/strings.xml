@@ -226,8 +226,6 @@
     </plurals>
 
     <!-- Snackbar -->
-    <string name="playlist_imported">"Playlista zaimportowana"</string>
-    <string name="imported_playlist">"Importowana playlista"</string>
     <string name="removed_song_from_playlist">"Usunięto \"%s\" utworów z playlisty"</string>
     <string name="playlist_synced">"Playlista zsynchronizowana"</string>
     <string name="undo">"Cofnij"</string>
@@ -246,8 +244,6 @@
     <string name="error_no_internet">"Brak połączenia sieciowego"</string>
     <string name="error_timeout">"Przekroczono limit czasu"</string>
     <string name="error_unknown">"Nieznany błąd"</string>
-    <string name="seek_backward">"5 sekund wstecz"</string>
-    <string name="seek_forward">"5 sekund do przodu"</string>
 
     <!-- Player action -->
     <string name="action_like">"Polub"</string>
@@ -286,7 +282,6 @@
     <string name="enable_squiggly_slider">"Włącz falowany suwak"</string>
     <string name="enable_swipe_thumbnail">"Zmieniaj utwór przesuwając palcem"</string>
     <string name="pure_black">"Czysta czerń"</string>
-    <string name="customize_navigation_tabs">"Dostosuj zakładki nawigacji"</string>
     <string name="player">"Odtwarzacz"</string>
     <string name="player_text_alignment">"Ustawienie tekstu odtwarzacza"</string>
     <string name="lyrics_text_position">"Pozycja tekstu"</string>
@@ -327,13 +322,9 @@
     <string name="default_lib_chips">"Zmień domyślny czip biblioteki"</string>
     <string name="set_quick_picks">"Szybki wybór na stronie głównej"</string>
     <string name="last_song_listened">"Na podstawie poprzednio słuchanego utworu"</string>
-    <string name="restart_to_take_effect">"Zrestartuj, aby zastosować zmiany"</string>
     <string name="app_language">"Język aplikacji (Beta)"</string>
     <string name="configure_app_language">"Konfiguruj język aplikacji"</string>
-    <string name="intent_app_language_not_found">"Nie znalazłem aplikacji dla ustawień języka, proszę skonfiguruj je manualnie"</string>
-    <string name="open_supported_links">"Otwórz wspierany link domyślnie"</string>
     <string name="configure_supported_links">"Konfiguruj wspierane linki"</string>
-    <string name="intent_supported_links_not_found">"Nie znalazłem aplikacji dla ustawień linków, proszę skonfiguruj je manualnie"</string>
     <string name="enable_kugou">"Włącz szukanie tekstu w KuGou"</string>
     <string name="enable_lrclib">"Włącz szukanie tekstu w LrcLib"</string>
     <string name="set_first_lyrics_provider">"Preferowany dostawca tekstów"</string>
@@ -394,12 +385,10 @@
     <string name="login_failed">"Logowanie nieudane"</string>
     <string name="enable_discord_rpc">"Włącz Rich Presence"</string>
     <string name="default_links">"Otwórz wspierane linki"</string>
-    <string name="open_app_settings_error">"Nie udało się otworzyć ustawień aplikacji"</string>
     <string name="release_notes">"Informacje o wydaniach"</string>
     <string name="about">"O projekcie"</string>
     <string name="app_version">"Wersja aplikacji"</string>
     <string name="new_version_available">"Nowsza wersja dostępna"</string>
-    <string name="translation_models">"Modele tłumaczeń"</string>
     <string name="clear_translation_models">"Wyczyść modele tłumaczeń"</string>
     <string name="all_time">"Cały czas"</string>
     <string name="past_24_hours">"Ostatnie 24 godziny"</string>
@@ -409,18 +398,17 @@
     <string name="top_length">"Długość listy Moje Top"</string>
     <string name="history_duration">"Czas dodania utworu do historii"</string>
     <string name="contributors">"Kontrybutorzy"</string>
-    <string name="Donate">"Darowizna"</string>
-    <string name="Telegramchanel">"Kanał Telegram"</string>
+    <string name="donate">"Darowizna"</string>
+    <string name="telegram_channel">"Kanał Telegram"</string>
     <string name="contribution">"Kontrybutorzy"</string>
-    <string name="Hi">"Cześć"</string>
-    <string name="NewVersion">"Nowa wersja"</string>
-    <string name="Changelog">"Lista zmian"</string>
+    <string name="new_version">"Nowa wersja"</string>
+    <string name="changelog">"Lista zmian"</string>
     <string name="changelogs">"Lista zmian"</string>
     <string name="no_changes">"Bez zmian"</string>
-    <string name="Translate">"Tłumaczenie"</string>
-    <string name="Redirección">"Przekierowanie"</string>
+    <string name="translate">"Tłumaczenie"</string>
+    <string name="redirect">"Przekierowanie"</string>
     <string name="poeditor_redirect">"Zostaniesz przekierowany na poeditor.com"</string>
-    <string name="barwar">"Uwaga jeśli przywracasz kopie zapasową, wcześniej pobrane utwory nie zostaną pobrane. ZALECA SIĘ odtworzenie przywróconych utworów w celu uniknięcia błędów pobierania."</string>
+    <string name="backup_restore_warning">"Uwaga jeśli przywracasz kopie zapasową, wcześniej pobrane utwory nie zostaną pobrane. ZALECA SIĘ odtworzenie przywróconych utworów w celu uniknięcia błędów pobierania."</string>
     <string name="backup_link_title">"Kopia opublikowana poprawnie!"</string>
     <string name="backup_link_description">"Twoja kopia będzie dostępna przez 14 dni."</string>
     <string name="copy_link">"Kopiuj link"</string>
@@ -436,17 +424,13 @@
     <string name="mute">"Wycisz"</string>
     <string name="explore">"Odkrywaj"</string>
     <string name="custom_avatar">"Własny awatar (BETA)"</string>
-    <string name="custom_avatar_beta">"Własny awatar (BETA)"</string>
     <string name="select_image">"Wybierz obraz"</string>
     <string name="default_avatar">"Domyślny awatar"</string>
     <string name="restore_default_avatar">"Przywróć domyślny awatar"</string>
-    <string name="SearchResutls">"Wyniki wyszukiwania"</string>
-    <string name="Sujestions">"Sugestie"</string>
-    <string name="SearchHistory">"Historia wyszukiwania"</string>
+    <string name="search_results">"Wyniki wyszukiwania"</string>
+    <string name="suggestions">"Sugestie"</string>
     <string name="collapse">"Zminimalizuj"</string>
     <string name="expand">"Rozwiń"</string>
-    <string name="reset_to_default">"Resetuj do ustawień domyślnych"</string>
-    <string name="Presets">"Presety"</string>
     <string name="custom">"Własny"</string>
     <string name="close">"Zamknij"</string>
     <string name="custom_value">"Własna wartość"</string>
@@ -458,11 +442,11 @@
     <string name="secondary_color_style">"Drugi kolor"</string>
     <string name="update_version">"Wersja v%1$s"</string>
     <string name="download_question">"Czy chcesz pobrać nową wersję?"</string>
-    <string name="downloadup">"Pobierz"</string>
-    <string name="downloadingup">"Pobieranie aktualizacji..."</string>
+    <string name="update_download">"Pobierz"</string>
+    <string name="update_downloading">"Pobieranie aktualizacji..."</string>
     <string name="download_completed">"Pobieranie ukończone"</string>
     <string name="install">"Zainstaluj"</string>
-    <string name="download_errorup">"Błąd pobierania aktualizacji"</string>
+    <string name="update_download_error">"Błąd pobierania aktualizacji"</string>
     <string name="tap_to_update">"Kliknij, aby zaktualizować"</string>
     <string name="info_title">"Informacja"</string>
     <string name="info_description">"W tej sekcji znajdziesz najważniejsze informacje o procesie tworzenia kopii zapasowej i przywracania danych, w tym o bezpieczeństwie danych oraz sposobie zapewnienia, że ​​informacje pozostaną bezpieczne i łatwo dostępne."</string>
@@ -472,8 +456,7 @@
     <string name="restore_description">"Przywróc swoje dane z kopii zapasowej"</string>
     <string name="keep_listening">"Słuchaj dalej"</string>
     <string name="link_copied">"Link skopiowany"</string>
-    <string name="redireccion">"Przekierowanie"</string>
-    <string name="Version">"Wersja"</string>
+    <string name="version">"Wersja"</string>
     <string name="notification">"Powiadomienia"</string>
     <string name="cached_playlist">"Podręczne"</string>
     <string name="added_to_queue">"Dodano do kolejki"</string>
@@ -486,7 +469,6 @@
     <string name="clear_song_cache_confirmation">"Czy jesteś pewien, że chcesz usunąć pamięć tymczasową utworów? Ta akcja zwolni miejsce pamięci, ale przez chwile odtwarzanie będzie musiało pobrać aktualnie odtwarzane utwory."</string>
     <string name="clear_image_cache_confirmation">"Czy jesteś pewien, że chcesz usunąć pamięć tymczasową obrazów? Obrazy albumów i artystów będą musiały być pobrane ponownie."</string>
     <string name="confirm">"Potwierdź"</string>
-    <string name="problem_solver">"Rozwiąż problemy"</string>
     <string name="action_login">"Zaloguj się"</string>
     <string name="generating_image">"Tworzenie obrazu"</string>
     <string name="please_wait">"Proszę czekać"</string>
@@ -498,10 +480,9 @@
     <string name="customize_colors">"Dostosuj kolory"</string>
     <string name="more_options">"Więcej opcji"</string>
     <string name="text_color">"Kolor tekstu"</string>
-    <string name="secondary_text_color">"Drugi kolor tekstu"</string>
     <string name="background_color">"Kolor tła"</string>
     <string name="back">"powrót"</string>
-    <string name="navigation_error">"Błąd nawigacji"</string>
+    <string name="error_navigation">"Błąd nawigacji"</string>
     <string name="notifications_enabled">"Powiadomienia włączone"</string>
     <string name="notifications_disabled">"Powiadomienia wyłączone"</string>
     <string name="visitor_data_title">"Rozwiązywanie problemów"</string>
@@ -533,42 +514,23 @@ Aplikacja zrestartuje się automatycznie."</string>
 
     <!-- Avatar Selection -->
     <string name="avatar_selection">"Wybór avatara"</string>
-    <string name="choose_predefined_avatar">"Wybierz predefiniowany awatar"</string>
 
     <!-- Avatar Descriptions for Predefined Avatars -->
-    <string name="geometric_avatar_1">"Geometryczny awatar 1"</string>
-    <string name="geometric_avatar_2">"Geometryczny awatar 2"</string>
-    <string name="geometric_avatar_3">"Geometryczny awatar 3"</string>
-    <string name="geometric_avatar_4">"Geometryczny awatar 4"</string>
-    <string name="geometric_avatar_5">"Geometryczny awatar 5"</string>
-    <string name="geometric_avatar_6">"Geometryczny awatar 6"</string>
-    <string name="purple_initial_avatar">"Fioletowe awatary"</string>
     <string name="blue_initial_avatar">"Niebieskie awatary"</string>
-    <string name="green_initial_avatar">"Zielone awatary"</string>
-    <string name="orange_initial_avatar">"Pomarańczowe awatary"</string>
-    <string name="red_initial_avatar">"Czerwone awatary"</string>
-    <string name="teal_initial_avatar">"Morskie awatary"</string>
-    <string name="dots_pattern_avatar">"Kropki"</string>
-    <string name="waves_pattern_avatar">"Fale"</string>
-    <string name="gradient_pattern_avatar">"Gradient"</string>
-    <string name="music_note_avatar">"Nuta"</string>
-    <string name="equalizer_avatar">"Equalizer"</string>
-    <string name="headphones_avatar">"Słuchawki"</string>
     <string name="discord_use_details">"Wyświetl utwór zamiast artysty"</string>
     <string name="discord_use_details_description">"Priorytetowo pokazuje tytuł utworu zamiast nazwy artystów"</string>
     <string name="community">"Społeczność"</string>
     <string name="app_info">"Informacje"</string>
     <string name="hide_controls">"Ukryj kontrolki"</string>
     <string name="show_controls">"Pokaż kontrolki"</string>
-    <string name="customize_lyrics_image">"Dostosuj obraz tekstu"</string>
     <string name="customize_image">"Dostosuj obraz"</string>
     <string name="select_theme">"Wybierz motyw"</string>
     <string name="from_cover">"Z okładki"</string>
-    <string name="presets">"Presety"</string>
+    <string name="preset_themes">"Presety"</string>
     <string name="share_lyrics_image">"Udostępnij tekst jako obraz"</string>
     <string name="error_generating_image">"Błąd przy generowaniu obrazu"</string>
     <string name="cover_color">"Kolor okładki"</string>
-    <string name="Rotatelyricsbackground">"Obracaj tło za tekstem utworu"</string>
+    <string name="rotate_lyrics_background">"Obracaj tło za tekstem utworu"</string>
     <string name="playlist_add_local_to_synced_note">"Notka: Dodanie lokalnych utworów do zsynchronizowanych/zdalnych playlist nie jest wspierane. Każda inna kombinacja jest prawidłowa"</string>
     <string name="manage">"Zarządzaj"</string>
     <string name="clear">"Wyczyść"</string>

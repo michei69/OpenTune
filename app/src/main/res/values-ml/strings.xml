@@ -206,8 +206,6 @@
     </plurals>
 
     <!-- Snackbar -->
-    <string name="playlist_imported">"പ്ലേലിസ്റ്റ് ഇറക്കുമതി ചെയ്തു"</string>
-    <string name="imported_playlist">"ഇറക്കുമതി ചെയ്ത പ്ലേലിസ്റ്റ്"</string>
     <string name="removed_song_from_playlist">"പ്ലേലിസ്റ്റിൽ നിന്ന് \"%s\" നീക്കം ചെയ്തു"</string>
     <string name="playlist_synced">"പ്ലേലിസ്റ്റ് സമന്വയിപ്പിച്ചു"</string>
     <string name="undo">"പഴയപടിയാക്കുക"</string>
@@ -224,8 +222,6 @@
     <string name="error_no_internet">"നെറ്റ്‌വർക്ക് കണക്ഷൻ ഇല്ല"</string>
     <string name="error_timeout">"ടൈം ഔട്ട്"</string>
     <string name="error_unknown">"അജ്ഞാത പിശക്"</string>
-    <string name="seek_backward">"5 സെക്കൻഡ് പിന്നിലേക്ക്"</string>
-    <string name="seek_forward">"5 സെക്കൻഡ് മുന്നോട്ട്"</string>
 
     <!-- Player action -->
     <string name="action_like">"ഇഷ്ടപ്പെടുക"</string>
@@ -264,7 +260,6 @@
     <string name="enable_squiggly_slider">"സ്ക്വിഗ്ലി സ്ലൈഡർ പ്രാപ്തമാക്കുക"</string>
     <string name="enable_swipe_thumbnail">"പാട്ട് മാറ്റാൻ സ്വൈപ്പ് പ്രവർത്തനക്ഷമമാക്കുക"</string>
     <string name="pure_black">"തങ്ക കറുപ്പ്"</string>
-    <string name="customize_navigation_tabs">"നാവിഗേഷൻ ടാബുകൾ ഇഷ്ടാനുസൃതമാക്കുക"</string>
     <string name="player">"പ്ലെയർ"</string>
     <string name="player_text_alignment">"പ്ലെയർ ടെക്സ്റ്റ് വിന്യാസം"</string>
     <string name="lyrics_text_position">"വരികളുടെ വാചക സ്ഥാനം"</string>
@@ -305,13 +300,9 @@
     <string name="default_lib_chips">"ഡിഫോൾട്ട് ലൈബ്രറി ചിപ്പ് മാറ്റുക"</string>
     <string name="set_quick_picks">"ദ്രുത തിരഞ്ഞെടുക്കലുകൾ സജ്ജമാക്കുക"</string>
     <string name="last_song_listened">"അവസാനം കേട്ട പാട്ടിനെ അടിസ്ഥാനമാക്കി"</string>
-    <string name="restart_to_take_effect">"പ്രാബല്യത്തിൽ വരാൻ പുനരാരംഭിക്കുക"</string>
     <string name="app_language">"ആപ്പ് ഭാഷ (ബീറ്റ)"</string>
     <string name="configure_app_language">"ആപ്പ് ഭാഷകൾ കോൺഫിഗർ ചെയ്യുക"</string>
-    <string name="intent_app_language_not_found">"ആപ്പ് ഭാഷാ ക്രമീകരണങ്ങൾ കണ്ടെത്താനായില്ല, ദയവായി അവ നേരിട്ട് കോൺഫിഗർ ചെയ്യുക."</string>
-    <string name="open_supported_links">"പിന്തുണയ്ക്കുന്ന ലിങ്ക് ഡിഫോൾട്ടായി തുറക്കുക"</string>
     <string name="configure_supported_links">"പിന്തുണയ്ക്കുന്ന ലിങ്കുകൾ കോൺഫിഗർ ചെയ്യുക"</string>
-    <string name="intent_supported_links_not_found">"പിന്തുണയ്ക്കുന്ന ലിങ്കുകളുടെ ക്രമീകരണങ്ങൾ കണ്ടെത്താനായില്ല, ദയവായി അവ നേരിട്ട് കോൺഫിഗർ ചെയ്യുക."</string>
     <string name="enable_kugou">"KuGou വരികൾ ദാതാവിനെ പ്രാപ്തമാക്കുക"</string>
     <string name="enable_lrclib">"LrcLib വരികൾ ദാതാവിനെ പ്രാപ്തമാക്കുക"</string>
     <string name="set_first_lyrics_provider">"ഇഷ്ടപ്പെട്ട ഗാനരചനാ ദാതാവ്"</string>
@@ -372,12 +363,10 @@
     <string name="login_failed">"ലോഗിൻ ചെയ്യുന്നത് പരാജയപ്പെട്ടു"</string>
     <string name="enable_discord_rpc">"റിച്ച് പ്രെസെൻസ് പ്രാപ്തമാക്കുക"</string>
     <string name="default_links">"പിന്തുണയ്ക്കുന്ന ലിങ്കുകൾ തുറക്കുക"</string>
-    <string name="open_app_settings_error">"ആപ്പ് ക്രമീകരണം തുറക്കാനായില്ല"</string>
     <string name="release_notes">"റിലീസ് കുറിപ്പുകൾ"</string>
     <string name="about">"കുറിച്ച്"</string>
     <string name="app_version">"ആപ്പ് പതിപ്പ്"</string>
     <string name="new_version_available">"പുതിയ പതിപ്പ് ലഭ്യമാണ്"</string>
-    <string name="translation_models">"വിവർത്തന മാതൃകകൾ"</string>
     <string name="clear_translation_models">"വിവർത്തന മോഡലുകൾ മായ്‌ക്കുക"</string>
     <string name="all_time">"എല്ലാ സമയത്തും"</string>
     <string name="past_24_hours">"കഴിഞ്ഞ 24 മണിക്കൂർ"</string>
@@ -387,18 +376,17 @@
     <string name="top_length">"എന്റെ മികച്ച പട്ടികയുടെ ദൈർഘ്യം"</string>
     <string name="history_duration">"ചരിത്ര ദൈർഘ്യം"</string>
     <string name="contributors">"സംഭാവകർ"</string>
-    <string name="Donate">"സംഭാവന ചെയ്യുക"</string>
-    <string name="Telegramchanel">"ടെലിഗ്രാം ചാനൽ"</string>
+    <string name="donate">"സംഭാവന ചെയ്യുക"</string>
+    <string name="telegram_channel">"ടെലിഗ്രാം ചാനൽ"</string>
     <string name="contribution">"സംഭാവന"</string>
-    <string name="Hi">"ഹായ്"</string>
-    <string name="NewVersion">"പുതിയ പതിപ്പ്"</string>
-    <string name="Changelog">"ചേഞ്ച്‌ലോഗ്"</string>
+    <string name="new_version">"പുതിയ പതിപ്പ്"</string>
+    <string name="changelog">"ചേഞ്ച്‌ലോഗ്"</string>
     <string name="changelogs">"ചേഞ്ച്‌ലോഗുകൾ"</string>
     <string name="no_changes">"മാറ്റങ്ങളൊന്നുമില്ല"</string>
-    <string name="Translate">"വിവർത്തനം ചെയ്യുക"</string>
-    <string name="Redirección">"റീഡിറക്ഷൻ"</string>
+    <string name="translate">"വിവർത്തനം ചെയ്യുക"</string>
+    <string name="redirect">"റീഡിറക്ഷൻ"</string>
     <string name="poeditor_redirect">"നിങ്ങളെ poeditor.com ലേക്ക് റീഡയറക്‌ട് ചെയ്യാൻ പോകുന്നു."</string>
-    <string name="barwar">"ബാക്കപ്പുകൾ പുനഃസ്ഥാപിക്കുമ്പോൾ ശ്രദ്ധിക്കുക, മുമ്പ് ഡൗൺലോഡ് ചെയ്ത പാട്ടുകൾ ഡൗൺലോഡ് ചെയ്യപ്പെടുന്നില്ല. ഡൗൺലോഡ് പിശകുകൾ ഒഴിവാക്കാൻ പുനഃസ്ഥാപിച്ച പാട്ടുകൾ പ്ലേ ചെയ്യാൻ വളരെ ശുപാർശ ചെയ്യുന്നു."</string>
+    <string name="backup_restore_warning">"ബാക്കപ്പുകൾ പുനഃസ്ഥാപിക്കുമ്പോൾ ശ്രദ്ധിക്കുക, മുമ്പ് ഡൗൺലോഡ് ചെയ്ത പാട്ടുകൾ ഡൗൺലോഡ് ചെയ്യപ്പെടുന്നില്ല. ഡൗൺലോഡ് പിശകുകൾ ഒഴിവാക്കാൻ പുനഃസ്ഥാപിച്ച പാട്ടുകൾ പ്ലേ ചെയ്യാൻ വളരെ ശുപാർശ ചെയ്യുന്നു."</string>
     <string name="backup_link_title">"ബാക്കപ്പ് വിജയകരമായി അപ്‌ലോഡ് ചെയ്തു!"</string>
     <string name="backup_link_description">"നിങ്ങളുടെ ബാക്കപ്പ് 14 ദിവസത്തേക്ക് ലഭ്യമാകും."</string>
     <string name="copy_link">"ലിങ്ക് പകർത്തുക"</string>
@@ -412,17 +400,13 @@
     <string name="mute">"നിശബ്ദമാക്കുക"</string>
     <string name="explore">"പര്യവേക്ഷണം ചെയ്യുക"</string>
     <string name="custom_avatar">"ഇഷ്ടാനുസൃത അവതാർ (ബീറ്റ)"</string>
-    <string name="custom_avatar_beta">"ഇഷ്ടാനുസൃത അവതാർ (ബീറ്റ)"</string>
     <string name="select_image">"ചിത്രം തിരഞ്ഞെടുക്കുക"</string>
     <string name="default_avatar">"ഡിഫോൾട്ട് അവതാർ"</string>
     <string name="restore_default_avatar">"ഡിഫോൾട്ട് അവതാർ പുനഃസ്ഥാപിക്കുക"</string>
-    <string name="SearchResutls">"തിരയൽ ഫലങ്ങൾ"</string>
-    <string name="Sujestions">"നിർദ്ദേശങ്ങൾ"</string>
-    <string name="SearchHistory">"തിരയൽ ചരിത്രം"</string>
+    <string name="search_results">"തിരയൽ ഫലങ്ങൾ"</string>
+    <string name="suggestions">"നിർദ്ദേശങ്ങൾ"</string>
     <string name="collapse">"ചുരുക്കുക"</string>
     <string name="expand">"വികസിപ്പിക്കുക"</string>
-    <string name="reset_to_default">"സ്ഥിരസ്ഥിതിയിലേക്ക് പുനഃസജ്ജമാക്കുക"</string>
-    <string name="Presets">"പ്രീസെറ്റുകൾ"</string>
     <string name="custom">"കസ്റ്റം"</string>
     <string name="close">"അടയ്ക്കുക"</string>
     <string name="custom_value">"ഇഷ്ടാനുസൃത മൂല്യം"</string>
@@ -434,11 +418,11 @@
     <string name="secondary_color_style">"ദ്വിതീയ വർണ്ണ ശൈലി"</string>
     <string name="update_version">"v%1$s അപ്ഡേറ്റ് ചെയ്യുക"</string>
     <string name="download_question">"പുതിയ പതിപ്പ് ഡൗൺലോഡ് ചെയ്യാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ?"</string>
-    <string name="downloadup">"ഇറക്കുമതി"</string>
-    <string name="downloadingup">"അപ്‌ഡേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നു..."</string>
+    <string name="update_download">"ഇറക്കുമതി"</string>
+    <string name="update_downloading">"അപ്‌ഡേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നു..."</string>
     <string name="download_completed">"ഡൗൺലോഡ് പൂർത്തിയായി"</string>
     <string name="install">"ഇന്‍സ്റ്റാളുചെയ്യുക"</string>
-    <string name="download_errorup">"അപ്ഡേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നതിൽ പിശക്"</string>
+    <string name="update_download_error">"അപ്ഡേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നതിൽ പിശക്"</string>
     <string name="tap_to_update">"അപ്ഡേറ്റ് ചെയ്യാൻ ടാപ്പ് ചെയ്യുക"</string>
     <string name="info_title">"വിവരങ്ങൾ"</string>
     <string name="info_description">"നിങ്ങളുടെ ഡാറ്റയുടെ സുരക്ഷയും നിങ്ങളുടെ വിവരങ്ങൾ സുരക്ഷിതമായും എളുപ്പത്തിൽ ആക്‌സസ് ചെയ്യാവുന്നതുമാണെന്ന് എങ്ങനെ ഉറപ്പാക്കാമെന്നതും ഉൾപ്പെടെയുള്ള ബാക്കപ്പ്, പുനഃസ്ഥാപന പ്രക്രിയയെക്കുറിച്ചുള്ള പ്രധാന വിശദാംശങ്ങൾ ഈ വിഭാഗം നൽകുന്നു."</string>
@@ -448,8 +432,7 @@
     <string name="restore_description">"ഒരു ബാക്കപ്പ് ഫയലിൽ നിന്ന് നിങ്ങളുടെ ഡാറ്റ വീണ്ടെടുക്കുക"</string>
     <string name="keep_listening">"സെഗുയർ_എസ്‌കുച്ച"</string>
     <string name="link_copied">"എൻലേസ് കോപിയാഡോ"</string>
-    <string name="redireccion">"റീഡയറക്ഷൻ"</string>
-    <string name="Version">"പതിപ്പ്"</string>
+    <string name="version">"പതിപ്പ്"</string>
     <string name="notification">"അറിയിപ്പ്"</string>
     <string name="cached_playlist">"ലിസ്റ്റാസ് എൻ കാഷെ"</string>
     <string name="added_to_queue">"അനദിർ എ ലാ കോള"</string>
@@ -462,7 +445,6 @@
     <string name="clear_song_cache_confirmation">"പാട്ടിന്റെ കാഷെ കോൺഫി മായ്‌ക്കുക"</string>
     <string name="clear_image_cache_confirmation">"ഇമേജ് കാഷെ സ്ഥിരീകരണം മായ്‌ക്കുക"</string>
     <string name="confirm">"സ്ഥിരീകരിക്കുക"</string>
-    <string name="problem_solver">"പ്രശ്നപരിഹാരി"</string>
     <string name="action_login">"ആക്ഷൻ ലോഗിൻ"</string>
     <string name="generating_image">"ചിത്രം സൃഷ്ടിക്കുന്നു "</string>
     <string name="please_wait">"കാത്തിരിക്കൂ"</string>
@@ -474,10 +456,9 @@
     <string name="customize_colors">"ഇഷ്ടാനുസൃത നിറങ്ങൾ"</string>
     <string name="more_options">"കൂടുതൽ ഓപ്ഷനുകൾ"</string>
     <string name="text_color">"വാചക നിറം"</string>
-    <string name="secondary_text_color">"വാചക നിറം"</string>
     <string name="background_color">"പശ്ചാത്തല നിറം"</string>
     <string name="back">"തിരികെ"</string>
-    <string name="navigation_error">"നാവിഗേഷൻ പിശക്"</string>
+    <string name="error_navigation">"നാവിഗേഷൻ പിശക്"</string>
     <string name="notifications_enabled">"അറിയിപ്പ് എൻആൽബ്"</string>
     <string name="notifications_disabled">"അറിയിപ്പ് പ്രാപ്തമാക്കി"</string>
     <string name="visitor_data_title">"സന്ദർശക ഡാറ്റ ശീർഷകം"</string>
@@ -504,42 +485,23 @@
 
     <!-- Avatar Selection -->
     <string name="avatar_selection"></string>
-    <string name="choose_predefined_avatar"></string>
 
     <!-- Avatar Descriptions for Predefined Avatars -->
-    <string name="geometric_avatar_1"></string>
-    <string name="geometric_avatar_2"></string>
-    <string name="geometric_avatar_3"></string>
-    <string name="geometric_avatar_4"></string>
-    <string name="geometric_avatar_5"></string>
-    <string name="geometric_avatar_6"></string>
-    <string name="purple_initial_avatar"></string>
     <string name="blue_initial_avatar"></string>
-    <string name="green_initial_avatar"></string>
-    <string name="orange_initial_avatar"></string>
-    <string name="red_initial_avatar"></string>
-    <string name="teal_initial_avatar"></string>
-    <string name="dots_pattern_avatar"></string>
-    <string name="waves_pattern_avatar"></string>
-    <string name="gradient_pattern_avatar"></string>
-    <string name="music_note_avatar"></string>
-    <string name="equalizer_avatar"></string>
-    <string name="headphones_avatar"></string>
     <string name="discord_use_details"></string>
     <string name="discord_use_details_description"></string>
     <string name="community"></string>
     <string name="app_info"></string>
     <string name="hide_controls"></string>
     <string name="show_controls"></string>
-    <string name="customize_lyrics_image"></string>
     <string name="customize_image"></string>
     <string name="select_theme"></string>
     <string name="from_cover"></string>
-    <string name="presets"></string>
+    <string name="preset_themes"></string>
     <string name="share_lyrics_image"></string>
     <string name="error_generating_image"></string>
     <string name="cover_color"></string>
-    <string name="Rotatelyricsbackground"></string>
+    <string name="rotate_lyrics_background"></string>
     <string name="playlist_add_local_to_synced_note"></string>
     <string name="manage"></string>
     <string name="clear"></string>

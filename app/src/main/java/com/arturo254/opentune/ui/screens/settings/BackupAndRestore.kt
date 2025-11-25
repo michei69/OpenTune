@@ -311,7 +311,7 @@ fun BackupAndRestore(
             icon = painterResource(R.drawable.replay),
             title = stringResource(R.string.visitor_data_reset_title),
             message = stringResource(R.string.visitor_data_reset_message),
-            confirmText = "Resetear",
+            confirmText = stringResource(R.string.visitor_data_reset_confirm),
             onConfirm = {
                 isClearing = true
                 coroutineScope.launch(Dispatchers.IO) {
