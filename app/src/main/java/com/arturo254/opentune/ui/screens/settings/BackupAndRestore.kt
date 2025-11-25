@@ -889,7 +889,7 @@ suspend fun uploadBackupToFilebin(
                         }
                     } ?: input.available().toLong()
                 } catch (e: Exception) {
-                    Log.w("BackupRestore", "No se pudo obtener el tamaño del archivo: ${e.message}")
+                    Log.w("BackupRestore", "The file size could not be obtained: ${e.message}")
                     input.available().toLong()
                 }
 
@@ -946,14 +946,14 @@ suspend fun uploadBackupToFilebin(
             val response = client.newCall(request).execute()
 
             if (!response.isSuccessful) {
-                Log.e("BackupRestore", "Error en la respuesta del servidor: ${response.code}")
+                Log.e("BackupRestore", "Error in server response: ${response.code}")
                 return@withContext null
             }
 
             return@withContext "https://filebin.net/$binId/$fileName"
 
         } catch (e: Exception) {
-            Log.e("BackupRestore", "Error durante la subida", e)
+            Log.e("BackupRestore", "Error during upload", e)
             return@withContext null
         } finally {
             if (tempFile.exists()) {
@@ -970,7 +970,7 @@ fun copyToClipboard(context: Context, text: String) {
         val clip = ClipData.newPlainText("Backup URL", text)
         clipboard.setPrimaryClip(clip)
     } catch (e: Exception) {
-        Log.e("BackupRestore", "Error al copiar al portapapeles: ${e.message}")
+        Log.e("BackupRestore", "Error copying to clipboard: ${e.message}")
     }
 }
 

@@ -399,7 +399,7 @@ fun AppearanceSettings(
             modifier = Modifier.padding(16.dp),
             onRadiusSelected = { selectedRadius ->
                 // Here you can manage the value of the selected radius.
-                Timber.tag("Thumbnail").d("Radio seleccionado: $selectedRadius")
+                Timber.tag("Thumbnail").d("Selected radio: $selectedRadius")
             }
         )
 

@@ -207,7 +207,7 @@ class LocaleManager private constructor(private val context: Context) {
 
                 formatLocaleCode(systemLocale)
             } catch (e: Exception) {
-                Timber.tag(TAG).e(e, "Error obteniendo idioma del sistema")
+                Timber.tag(TAG).e(e, "Error obtaining system language")
                 "en"
             }
             _cachedSystemLanguage = systemCode
@@ -254,9 +254,9 @@ class LocaleManager private constructor(private val context: Context) {
                 }
             }
 
-            Timber.tag(TAG).d("Idiomas detectados: $availableLocales")
+            Timber.tag(TAG).d("Languages detected: $availableLocales")
         } catch (e: Exception) {
-            Timber.tag(TAG).e(e, "Error detectando idiomas disponibles")
+            Timber.tag(TAG).e(e, "Error detecting available languages")
             // Fallback to default language
             availableLocales.add("en")
         }
@@ -382,7 +382,7 @@ class LocaleManager private constructor(private val context: Context) {
                         )
                     }
                 } catch (e: Exception) {
-                    Timber.tag(TAG).e(e, "Error procesando locale: $localeCode")
+                    Timber.tag(TAG).e(e, "Error processing locale: $localeCode")
                 }
             }
 
@@ -405,7 +405,7 @@ class LocaleManager private constructor(private val context: Context) {
 
         return try {
             _changeState.value = LanguageChangeState.Changing
-            Timber.tag(TAG).d("Cambiando idioma a: $languageCode")
+            Timber.tag(TAG).d("Changing language to: $languageCode")
 
             delay(ANIMATION_DELAY)
 
@@ -414,7 +414,7 @@ class LocaleManager private constructor(private val context: Context) {
             val saved = editor.commit()
 
             if (!saved) {
-                throw Exception("No se pudo guardar la preferencia")
+                throw Exception("The preference could not be saved.")
             }
 
             _currentLanguage.value = languageCode
@@ -431,11 +431,11 @@ class LocaleManager private constructor(private val context: Context) {
             _changeState.value = LanguageChangeState.Success
 
             Timber.tag(TAG)
-                .d("Idioma actualizado: $languageCode (efectivo: $effectiveLanguageCode)")
+                .d("Language updated: $languageCode (code: $effectiveLanguageCode)")
             true
         } catch (e: Exception) {
-            Timber.tag(TAG).e(e, "Error actualizando idioma a $languageCode")
-            _changeState.value = LanguageChangeState.Error(e.message ?: "Error desconocido")
+            Timber.tag(TAG).e(e, "Error updating language to $languageCode")
+            _changeState.value = LanguageChangeState.Error(e.message ?: "Unknown error")
             false
         }
     }
@@ -462,7 +462,7 @@ class LocaleManager private constructor(private val context: Context) {
             @Suppress("DEPRECATION")
             context.resources.updateConfiguration(config, context.resources.displayMetrics)
         } catch (e: Exception) {
-            Timber.tag(TAG).e(e, "Error aplicando configuración de idioma")
+            Timber.tag(TAG).e(e, "Error applying language settings")
         }
     }
 
@@ -490,7 +490,7 @@ class LocaleManager private constructor(private val context: Context) {
                 baseContext
             }
         } catch (e: Exception) {
-            Timber.tag(TAG).e(e, "Error aplicando idioma al contexto")
+            Timber.tag(TAG).e(e, "Error applying language to context")
             baseContext
         }
     }
@@ -512,7 +512,7 @@ class LocaleManager private constructor(private val context: Context) {
                 }, RESTART_DELAY)
             }
         } catch (e: Exception) {
-            Timber.tag(TAG).e(e, "Error reiniciando aplicación")
+            Timber.tag(TAG).e(e, "Error restarting application")
         }
     }
 
@@ -1050,7 +1050,7 @@ abstract class LocaleAwareApplication : android.app.Application() {
             val updatedContext = LocaleManager.getInstance(base).applyLocaleToContext(base)
             super.attachBaseContext(updatedContext)
         } catch (e: Exception) {
-            Timber.tag("LocaleAwareApplication").e(e, "Error aplicando idioma")
+            Timber.tag("LocaleAwareApplication").e(e, "Error applying language")
             super.attachBaseContext(base)
         }
     }
@@ -1059,9 +1059,9 @@ abstract class LocaleAwareApplication : android.app.Application() {
         super.onCreate()
         try {
             localeManager
-            Timber.tag("LocaleAwareApplication").d("LocaleManager inicializado")
+            Timber.tag("LocaleAwareApplication").d("LocaleManager initialized")
         } catch (e: Exception) {
-            Timber.tag("LocaleAwareApplication").e(e, "Error inicializando LocaleManager")
+            Timber.tag("LocaleAwareApplication").e(e, "Error initializing LocaleManager")
         }
     }
 

@@ -1082,11 +1082,11 @@ class ChangelogViewModel : ViewModel() {
                 )
             }
         } catch (e: Exception) {
-            Log.e("ChangelogViewModel", "Error cargando releases", e)
+            Log.e("ChangelogViewModel", "Error loading releases", e)
             _uiState.update {
                 it.copy(
                     isLoadingReleases = false,
-                    releasesError = "Error al cargar releases: ${e.message}"
+                    releasesError = "Error loading releases: ${e.message}"
                 )
             }
         }
@@ -1121,11 +1121,11 @@ class ChangelogViewModel : ViewModel() {
                 )
             }
         } catch (e: Exception) {
-            Log.e("ChangelogViewModel", "Error cargando commits", e)
+            Log.e("ChangelogViewModel", "Error loading commits", e)
             _uiState.update {
                 it.copy(
                     isLoadingCommits = false,
-                    commitsError = "Error al cargar commits: ${e.message}"
+                    commitsError = "Error when loading commits: ${e.message}"
                 )
             }
         }
