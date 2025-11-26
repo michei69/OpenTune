@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.arturo254.opentune.LocalPlayerAwareWindowInsets
 import com.arturo254.opentune.R
+import com.arturo254.opentune.constants.AnimateLyricsKey
 import com.arturo254.opentune.constants.ChipSortTypeKey
 import com.arturo254.opentune.constants.DarkModeKey
 import com.arturo254.opentune.constants.DefaultOpenTabKey
@@ -141,6 +142,10 @@ fun AppearanceSettings(
     val (gridItemSize, onGridItemSizeChange) = rememberEnumPreference(
         GridItemsSizeKey,
         defaultValue = GridItemSize.BIG
+    )
+    val (animateLyrics, onAnimateLyricsChange) = rememberPreference(
+        AnimateLyricsKey,
+        defaultValue = true
     )
 
 
@@ -508,6 +513,14 @@ fun AppearanceSettings(
                     icon = { Icon(painterResource(R.drawable.lyrics), null) },
                     checked = lyricsClick,
                     onCheckedChange = onLyricsClickChange,
+                )},
+
+                {SwitchPreference(
+                    title = { Text(stringResource(R.string.animate_lyrics)) },
+                    icon = { Icon(painterResource(R.drawable.lyrics), null) },
+                    description = stringResource(R.string.animate_lyrics_desc),
+                    checked = animateLyrics,
+                    onCheckedChange = onAnimateLyricsChange
                 )}
             )
         )

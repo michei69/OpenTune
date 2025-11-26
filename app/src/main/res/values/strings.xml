@@ -576,4 +576,6 @@
     <string name="try_another_query">Try another query</string>
     <string name="clear_search">Clear search</string>
     <string name="changing_language">Changing language...</string>
+    <string name="animate_lyrics">Animate lyrics</string>
+    <string name="animate_lyrics_desc">Smoothly transition between lyrics</string>
 </resources>

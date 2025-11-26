@@ -568,4 +568,6 @@ Aplicația se va reporni automat."</string>
     <string name="try_another_query">Încearcă alt termen</string>
     <string name="clear_search">Golește căutarea</string>
     <string name="changing_language">Se schimbă limba...</string>
+    <string name="animate_lyrics">Versuri animate</string>
+    <string name="animate_lyrics_desc">Tranziționează fluid de la un vers la altul</string>
 </resources>

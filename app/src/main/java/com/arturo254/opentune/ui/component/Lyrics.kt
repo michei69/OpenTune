@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
@@ -119,6 +120,7 @@ import coil.compose.AsyncImage
 import com.arturo254.opentune.LocalDatabase
 import com.arturo254.opentune.LocalPlayerConnection
 import com.arturo254.opentune.R
+import com.arturo254.opentune.constants.AnimateLyricsKey
 import com.arturo254.opentune.constants.DarkModeKey
 import com.arturo254.opentune.constants.LyricsClickKey
 import com.arturo254.opentune.constants.LyricsScrollKey
@@ -177,6 +179,7 @@ fun Lyrics(
     val lyricsTextPosition by rememberEnumPreference(LyricsTextPositionKey, LyricsPosition.CENTER)
     val changeLyrics by rememberPreference(LyricsClickKey, true)
     val scrollLyrics by rememberPreference(LyricsScrollKey, true)
+    val animateLyrics by rememberPreference(AnimateLyricsKey, true)
 
     var showLyrics by rememberPreference(ShowLyricsKey, defaultValue = false)
 
@@ -1149,6 +1152,21 @@ fun Lyrics(
                         ) { index, item ->
                             val isSelected = selectedIndices.contains(index)
 
+                            val distance =
+                                kotlin.math.abs(index - displayedCurrentLineIndex)
+                            val animatedScale by animateFloatAsState(when {
+                                !isSynced || index == displayedCurrentLineIndex -> 1f
+                                distance == 1 -> 0.95f
+                                distance >= 2 -> 0.9f
+                                else -> 1f
+                            }, tween(if (animateLyrics) 250 else 0))
+                            val animatedAlpha by animateFloatAsState(when {
+                                !isSynced || (isSelectionModeActive && isSelected) -> 1f
+                                index == displayedCurrentLineIndex -> 1f
+                                kotlin.math.abs(index - displayedCurrentLineIndex) == 1 -> 0.7f
+                                kotlin.math.abs(index - displayedCurrentLineIndex) == 2 -> 0.4f
+                                else -> 0.2f
+                            }, tween(if (animateLyrics) 250 else 0))
                             val itemModifier = Modifier
                                 .fillMaxWidth()
                                 .clip(RoundedCornerShape(8.dp))
@@ -1217,32 +1235,16 @@ fun Lyrics(
                                     horizontal = if (isFullscreen) 16.dp else 24.dp,
                                     vertical = 8.dp
                                 )
-                                .alpha(
-                                    when {
-                                        !isSynced || (isSelectionModeActive && isSelected) -> 1f
-                                        index == displayedCurrentLineIndex -> 1f
-                                        kotlin.math.abs(index - displayedCurrentLineIndex) == 1 -> 0.7f
-                                        kotlin.math.abs(index - displayedCurrentLineIndex) == 2 -> 0.4f
-                                        else -> 0.2f
-                                    }
-                                )
+                                .alpha(animatedAlpha)
                                 .graphicsLayer {
-                                    val distance =
-                                        kotlin.math.abs(index - displayedCurrentLineIndex)
-                                    val scale = when {
-                                        !isSynced || index == displayedCurrentLineIndex -> 1f
-                                        distance == 1 -> 0.95f
-                                        distance >= 2 -> 0.9f
-                                        else -> 1f
-                                    }
-                                    scaleX = scale
-                                    scaleY = scale
+                                    scaleX = animatedScale
+                                    scaleY = animatedScale
                                 }
 
                             Text(
                                 text = item.text,
                                 fontSize = 25.sp,
-                                color = if (index == displayedCurrentLineIndex && isSynced) {
+                                color = animateColorAsState(if (index == displayedCurrentLineIndex && isSynced) {
                                     if (isFullscreen)
                                         MaterialTheme.colorScheme.primary
                                     else
@@ -1252,7 +1254,7 @@ fun Lyrics(
                                         MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
                                     else
                                         textColor.copy(alpha = 0.8f)
-                                },
+                                }, animationSpec = tween(if (animateLyrics) 250 else 0)).value,
                                 textAlign = when (lyricsTextPosition) {
                                     LyricsPosition.LEFT -> TextAlign.Left
                                     LyricsPosition.CENTER -> TextAlign.Center
