@@ -3,7 +3,7 @@
     <string name="home">Tuiste</string>
     <string name="songs">Liedjies</string>
     <string name="artists">Kunstenaars</string>
-    <string name="albums">Album</string>
+    <string name="albums">Albums</string>
     <string name="playlists">Snitlyste</string>
 
     <!-- Top bar -->
@@ -15,15 +15,15 @@
     <!-- Home -->
     <string name="history">Geskiedenis</string>
     <string name="stats">Statistieke</string>
-    <string name="mood_and_genres">Bui en genres</string>
+    <string name="mood_and_genres">Stemming en genres</string>
     <string name="account">Rekening</string>
     <string name="quick_picks">Vinnige keuses</string>
-    <string name="quick_picks_empty">Luister na liedjies om u vinnige keuses te genereer</string>
+    <string name="quick_picks_empty">Luister na liedjies om jou vinnige keuses te genereer</string>
     <string name="new_release_albums">Nuwe vrystellings</string>
-    <string name="forgotten_favorites">Vergete gunstelinge</string>
+    <string name="forgotten_favorites">Vergeete gunstelinge</string>
     <string name="similar_to">Soortgelyk aan</string>
     <string name="keep_listening">Hou aan luister</string>
-    <string name="your_ytb_playlists">U YouTube -rekening</string>
+    <string name="your_ytb_playlists">Jou YouTube-rekening</string>
 
     <!-- History -->
     <string name="today">Vandag</string>
@@ -31,37 +31,37 @@
     <string name="this_week">Hierdie week</string>
     <string name="last_week">Verlede week</string>
     <string name="local_history">Plaaslik</string>
-    <string name="remote_history">Afgesonder</string>
+    <string name="remote_history">Afgeleë</string>
 
     <!-- Stats -->
-    <string name="most_played_songs">Die meeste liedjies gespeel</string>
-    <string name="most_played_artists">Die meeste kunstenaars gespeel</string>
-    <string name="most_played_albums">Die meeste albums gespeel</string>
+    <string name="most_played_songs">Meeste gespeelde liedjies</string>
+    <string name="most_played_artists">Meeste gespeelde kunstenaars</string>
+    <string name="most_played_albums">Meeste gespeelde albums</string>
     <string name="weeks">Weke</string>
     <string name="months">Maande</string>
     <string name="years">Jare</string>
-    <string name="continuous">Aanhoudend</string>
+    <string name="continuous">Aaneenlopend</string>
 
     <!-- Search -->
     <string name="search">Soek</string>
-    <string name="search_yt_music">Soek YouTube -musiek …</string>
-    <string name="search_library">Soekbiblioteek …</string>
+    <string name="search_yt_music">Soek YouTube Musiek…</string>
+    <string name="search_library">Soek biblioteek…</string>
     <string name="filter_library">Biblioteek</string>
     <string name="filter_liked">Hou van</string>
     <string name="filter_downloaded">Afgelaai</string>
-    <string name="filter_all">Alle</string>
+    <string name="filter_all">Alles</string>
     <string name="filter_songs">Liedjies</string>
-    <string name="filter_videos">Video"s</string>
-    <string name="filter_albums">Album</string>
+    <string name="filter_videos">Video's</string>
+    <string name="filter_albums">Albums</string>
     <string name="filter_artists">Kunstenaars</string>
     <string name="filter_playlists">Snitlyste</string>
-    <string name="filter_community_playlists">Gemeenskaps -snitlyste</string>
-    <string name="filter_featured_playlists">Gepaste snitlyste</string>
-    <string name="filter_bookmarked">Boekmerk</string>
+    <string name="filter_community_playlists">Gemeenskapsnitlyste</string>
+    <string name="filter_featured_playlists">Uitgeligte snitlyste</string>
+    <string name="filter_bookmarked">Boekgemerk</string>
     <string name="no_results_found">Geen resultate gevind nie</string>
 
     <!-- Artist screen -->
-    <string name="from_your_library">Uit u biblioteek</string>
+    <string name="from_your_library">Vanuit jou biblioteek</string>
 
     <!-- Album screen -->
     <string name="other_versions">Ander weergawes</string>
@@ -69,56 +69,56 @@
     <!-- Library -->
     <string name="liked">Hou van</string>
     <string name="offline">Afgelaai</string>
-    <string name="my_top">My bokant</string>
+    <string name="my_top">My top</string>
     <string name="library_song_empty">Biblioteekliedjies sal hier verskyn</string>
     <string name="library_artist_empty">Biblioteekkunstenaars sal hier verskyn</string>
     <string name="library_album_empty">Biblioteekalbums sal hier verskyn</string>
-    <string name="library_playlist_empty">U snitlyste sal hier verskyn</string>
+    <string name="library_playlist_empty">Jou snitlyste sal hier verskyn</string>
 
     <!-- Playlist -->
-    <string name="liked_songs">Hou van liedjies</string>
+    <string name="liked_songs">Liedjies wat ek hou van</string>
     <string name="downloaded_songs">Afgelaaide liedjies</string>
-    <string name="sync_playlist">Sync -snitlys</string>
+    <string name="sync_playlist">Sinkroniseer snitlys</string>
     <string name="playlist_is_empty">Die snitlys is leeg</string>
-    <string name="remove_download_playlist_confirm">Wil u regtig alle \ "%s \" snitlys liedjies uit die afgelaaide liedjiesberging verwyder?</string>
-    <string name="delete_playlist_confirm">Wil u regtig die snitlys \ "%s \" uitvee?</string>
-    <string name="elements_selected">%1 $ d elemente gekies</string>
-    <string name="allows_for_sync_witch_youtube">Opmerking: dit maak voorsiening vir synchronisasie met YouTube -musiek. Dit is nie later veranderbaar nie.</string>
+    <string name="remove_download_playlist_confirm">Wil jy regtig alle \"%s\" snitlysliedjies uit die Afgelaaide Liedjies-berging verwyder?</string>
+    <string name="delete_playlist_confirm">Wil jy regtig die snitlys \"%s\" uitvee?</string>
+    <string name="elements_selected">%1$d elemente gekies</string>
+    <string name="allows_for_sync_witch_youtube">Nota: Dit maak voorsiening vir sinkronisasie met YouTube Musiek. Dit is NIE later veranderbaar NIE.</string>
 
     <!-- Button -->
-    <string name="retry">Herver hierdie</string>
+    <string name="retry">Probeer weer</string>
     <string name="radio">Radio</string>
-    <string name="shuffle">Skuifel</string>
+    <string name="shuffle">Skommel</string>
     <string name="reset">Herstel</string>
 
     <!-- Menu -->
-    <string name="details">Besonderheid</string>
-    <string name="edit">Redigeer</string>
+    <string name="details">Besonderhede</string>
+    <string name="edit">Wysig</string>
     <string name="start_radio">Begin radio</string>
-    <string name="play">Toneelstuk</string>
+    <string name="play">Speel</string>
     <string name="play_next">Speel volgende</string>
-    <string name="add_to_queue">Voeg by die tou</string>
-    <string name="add_to_library">Voeg by die biblioteek</string>
-    <string name="remove_from_library">Verwyder uit die biblioteek</string>
-    <string name="remove_from_playlist">Verwyder uit die snitlys</string>
-    <string name="download">Aflaai</string>
-    <string name="downloading">Aflaai</string>
-    <string name="remove_download">Verwyder aflaai</string>
-    <string name="import_playlist">Invoer snitlys</string>
-    <string name="add_to_playlist">Voeg by die snitlys</string>
-    <string name="view_artist">View Artist</string>
-    <string name="view_album">Viewalbum</string>
-    <string name="refetch">Herlaai</string>
-    <string name="share">Gedeelte</string>
-    <string name="delete">Verwyder</string>
-    <string name="remove_from_history">Verwyder uit die geskiedenis</string>
+    <string name="add_to_queue">Voeg by tou</string>
+    <string name="add_to_library">Voeg by biblioteek</string>
+    <string name="remove_from_library">Verwyder uit biblioteek</string>
+    <string name="remove_from_playlist">Verwyder uit snitlys</string>
+    <string name="download">Laai af</string>
+    <string name="downloading">Laai tans af…</string>
+    <string name="remove_download">Verwyder afgelaaide lêer</string>
+    <string name="import_playlist">Voer snitlys in</string>
+    <string name="add_to_playlist">Voeg by snitlys</string>
+    <string name="view_artist">Bekyk kunstenaar</string>
+    <string name="view_album">Bekyk album</string>
+    <string name="refetch">Herhaal</string>
+    <string name="share">Deel</string>
+    <string name="delete">Vee uit</string>
+    <string name="remove_from_history">Verwyder uit geskiedenis</string>
     <string name="search_online">Soek aanlyn</string>
-    <string name="sync">Synchroniseer</string>
+    <string name="sync">Sinkroniseer</string>
     <string name="advanced">Gevorderd</string>
-    <string name="select">Kies All</string>
-    <string name="like_all">Soos alles</string>
-    <string name="dislike_all">Hou nie van almal nie</string>
-    <string name="tempo_and_pitch">Tyd en toon</string>
+    <string name="select">Kies alles</string>
+    <string name="like_all">Hou van alles</string>
+    <string name="dislike_all">Hou nie van alles nie</string>
+    <string name="tempo_and_pitch">Tempo en toonhoogte</string>
 
     <!-- Sort menu -->
     <string name="sort_by_create_date">Datum bygevoeg</string>
@@ -126,49 +126,49 @@
     <string name="sort_by_name">Naam</string>
     <string name="sort_by_artist">Kunstenaar</string>
     <string name="sort_by_year">Jaar</string>
-    <string name="sort_by_song_count">Liedjie -telling</string>
+    <string name="sort_by_song_count">Liedjietelling</string>
     <string name="sort_by_length">Lengte</string>
     <string name="sort_by_play_time">Speeltyd</string>
-    <string name="sort_by_custom">Aangepaste bestelling</string>
+    <string name="sort_by_custom">Aangepaste volgorde</string>
 
     <!-- Dialog -->
-    <string name="media_id">Media -ID</string>
-    <string name="mime_type">MIME -tipe</string>
-    <string name="codecs">Codecs</string>
-    <string name="bitrate">Bitrate</string>
-    <string name="sample_rate">Steekproefstempo</string>
-    <string name="loudness">Luidheid</string>
+    <string name="media_id">Media-ID</string>
+    <string name="mime_type">MIME-tipe</string>
+    <string name="codecs">Kodeks</string>
+    <string name="bitrate">Bistempo</string>
+    <string name="sample_rate">Steekproeftempo</string>
+    <string name="loudness">Geluidssterkte</string>
     <string name="volume">Volume</string>
     <string name="file_size">Lêergrootte</string>
     <string name="unknown">Onbekend</string>
-    <string name="copied">Gekopieër na knipbord</string>
+    <string name="copied">Na knipbord gekopieër</string>
 
     <string name="edit_lyrics">Wysig lirieke</string>
     <string name="search_lyrics">Soek lirieke</string>
     <string name="lyrics">Lirieke</string>
 
-    <string name="edit_song">Redigeer liedjie</string>
-    <string name="song_title">Liedjie -titel</string>
-    <string name="song_artists">Songkunstenaars</string>
-    <string name="error_song_title_empty">Song -titel kan nie leeg wees nie.</string>
-    <string name="error_song_artist_empty">Songkunstenaar kan nie leeg wees nie.</string>
-    <string name="save">Red</string>
+    <string name="edit_song">Wysig liedjie</string>
+    <string name="song_title">Liedjietitel</string>
+    <string name="song_artists">Liedjiekunstenaars</string>
+    <string name="error_song_title_empty">Liedjietitel kan nie leeg wees nie.</string>
+    <string name="error_song_artist_empty">Liedjiekunstenaar kan nie leeg wees nie.</string>
+    <string name="save">Stoor</string>
 
     <string name="choose_playlist">Kies snitlys</string>
-    <string name="edit_playlist">Wysig die snitlys</string>
+    <string name="edit_playlist">Wysig snitlys</string>
     <string name="create_playlist">Skep snitlys</string>
-    <string name="playlist_name">Snitlys naam</string>
-    <string name="error_playlist_name_empty">Die naam van die snitlys kan nie leeg wees nie.</string>
-    <string name="already_in_playlist">Reeds in die snitlys:</string>
+    <string name="playlist_name">Snitlysnaam</string>
+    <string name="error_playlist_name_empty">Snitlysnaam kan nie leeg wees nie.</string>
+    <string name="already_in_playlist">Reeds in snitlys:</string>
 
-    <string name="edit_artist">Redigeer kunstenaar</string>
+    <string name="edit_artist">Wysig kunstenaar</string>
     <string name="artist_name">Kunstenaarsnaam</string>
     <string name="error_artist_name_empty">Kunstenaarsnaam kan nie leeg wees nie.</string>
 
     <string name="duplicates">Duplikate</string>
     <string name="skip_duplicates">Slaan duplikate oor</string>
-    <string name="add_anyway">Voeg in die eerste plek</string>
-    <string name="duplicates_description_single">Die liedjie is reeds in u snitlys</string>
+    <string name="add_anyway">Voeg in elk geval by</string>
+    <string name="duplicates_description_single">Die liedjie is reeds in jou snitlys</string>
     <string name="duplicates_description_multiple">%d liedjies is reeds in jou snitlys</string>
 
     <!-- Noun -->
@@ -181,7 +181,7 @@
         <item quantity="other">%d kunstenaars</item>
     </plurals>
     <plurals name="n_album">
-        <item quantity="one">%D album</item>
+        <item quantity="one">%d album</item>
         <item quantity="other">%d albums</item>
     </plurals>
     <plurals name="n_playlist">
@@ -190,7 +190,7 @@
     </plurals>
     <plurals name="n_week">
         <item quantity="one">%d week</item>
-        <item quantity="other">%D Weke</item>
+        <item quantity="other">%d weke</item>
     </plurals>
     <plurals name="n_month">
         <item quantity="one">%d maand</item>
@@ -205,40 +205,40 @@
         <item quantity="other">%d elemente</item>
     </plurals>
     <plurals name="n_time">
-        <item quantity="one">%d tyd</item>
-        <item quantity="other">%d tye</item>
+        <item quantity="one">%d keer</item>
+        <item quantity="other">%d kere</item>
     </plurals>
 
     <!-- Snackbar -->
-    <string name="removed_song_from_playlist">Verwyder \ "%s \" van die snitlys</string>
+    <string name="removed_song_from_playlist">\"%s\" uit snitlys verwyder</string>
     <string name="playlist_synced">Snitlys gesinkroniseer</string>
-    <string name="undo">Ongedaan maak</string>
+    <string name="undo">Ontdoen</string>
 
     <!-- Player -->
     <string name="lyrics_not_found">Lirieke nie gevind nie</string>
-    <string name="sleep_timer">Slaap timer</string>
-    <string name="end_of_song">Einde van die liedjie</string>
+    <string name="sleep_timer">Slaaptimer</string>
+    <string name="end_of_song">Einde van liedjie</string>
     <plurals name="minute">
         <item quantity="one">1 minuut</item>
         <item quantity="other">%d minute</item>
     </plurals>
     <string name="error_no_stream">Geen stroom beskikbaar nie</string>
     <string name="error_no_internet">Geen netwerkverbinding nie</string>
-    <string name="error_timeout">Time -out</string>
+    <string name="error_timeout">Time-out</string>
     <string name="error_unknown">Onbekende fout</string>
 
     <!-- Player action -->
-    <string name="action_like">Soos</string>
-    <string name="action_remove_like">Verwyder soos</string>
-    <string name="action_shuffle_on">Skuifel aan</string>
+    <string name="action_like">Hou van</string>
+    <string name="action_remove_like">Verwyder hou van</string>
+    <string name="action_shuffle_on">Skommel aan</string>
     <string name="action_shuffle_off">Skommel af</string>
-    <string name="repeat_mode_off">Herhaal modus af</string>
+    <string name="repeat_mode_off">Herhaalmodus af</string>
     <string name="repeat_mode_one">Herhaal huidige liedjie</string>
     <string name="repeat_mode_all">Herhaal tou</string>
 
     <!-- Queue Title -->
     <string name="queue_all_songs">Alle liedjies</string>
-    <string name="queue_searched_songs">Soek liedjies</string>
+    <string name="queue_searched_songs">Soekliedjies</string>
     <string name="similar_content">Soortgelyke inhoud</string>
 
     <!-- Notification name -->
@@ -246,214 +246,333 @@
 
     <!-- Settings -->
     <string name="settings">Instellings</string>
-    <string name="login_settings">Aanmeldingsinstellings</string>
-    <string name="use_login_for_browse">Gebruik aanmelding om premium -inhoud te blaai</string>
-    <string name="use_login_for_browse_desc">Dit kan premium-slegs albums vertoon as u aangemeld is met "n premium-rekening</string>
+    <string name="login_settings">Aanmeldinstellings</string>
+    <string name="use_login_for_browse">Gebruik aanmelding om premium-inhoud te blaai</string>
+    <string name="use_login_for_browse_desc">Dit kan slegs-premium albums wys as jy aangemeld is met 'n Premium-rekening</string>
 
     <string name="general_settings">Algemene instellings</string>
 
-    <string name="appearance">Verskyning</string>
+    <string name="appearance">Voorkoms</string>
     <string name="theme">Tema</string>
     <string name="enable_dynamic_theme">Aktiveer dinamiese tema</string>
     <string name="dark_theme">Donker tema</string>
-    <string name="dark_theme_on">Op</string>
+    <string name="dark_theme_on">Aan</string>
     <string name="dark_theme_off">Af</string>
-    <string name="dark_theme_follow_system">Volgstelsel</string>
-    <string name="player_background_style">Speler -agtergrondstyl</string>
+    <string name="dark_theme_follow_system">Volg stelsel</string>
+    <string name="player_background_style">Speler-agtergrondstyl</string>
     <string name="follow_theme">Volg tema</string>
     <string name="gradient">Gradiënt</string>
     <string name="player_background_blur">Vervaag</string>
-    <string name="enable_swipe_thumbnail">Stel Swipe in staat om liedjie te verander</string>
+    <string name="enable_swipe_thumbnail">Aktiveer vee om liedjie te verander</string>
     <string name="pure_black">Suiwer swart</string>
-    <string name="player">Toneelspeler</string>
-    <string name="player_text_alignment">Speler teksbelyning</string>
-    <string name="lyrics_text_position">Lirieke teksposisie</string>
+    <string name="player">Speler</string>
+    <string name="player_text_alignment">Speler-teksbelyning</string>
+    <string name="lyrics_text_position">Lirieke-teksposisie</string>
     <string name="sided">Kant</string>
     <string name="left">Links</string>
     <string name="center">Middel</string>
     <string name="right">Regs</string>
     <string name="lyrics_click_change">Verander lirieke op klik</string>
-    <string name="grid_cell_size">Grid selgrootte</string>
+    <string name="grid_cell_size">Rooster selgrootte</string>
     <string name="small">Klein</string>
     <string name="big">Groot</string>
-    <string name="player_slider_style">Speler -skuifstyl</string>
-    <string name="default_">Versuim</string>
-    <string name="squiggly">Krimp</string>
-    <string name="slim">Skraal</string>
-    <string name="misc">Misling</string>
-    <string name="default_open_tab">Standaard oop oortjie</string>
-    <string name="slim_navbar">Verberg onderste navigasiebalketikette</string>
+    <string name="player_slider_style">Speler-skuifstyl</string>
+    <string name="default_">Verstek</string>
+    <string name="squiggly">Kronkel</string>
+    <string name="slim">Maer</string>
+    <string name="misc">Divers</string>
+    <string name="default_open_tab">Verstek oop oortjie</string>
+    <string name="slim_navbar">Versteek onderste navigasiebalk-etikette</string>
 
-    <string name="content">Tevrede</string>
+    <string name="content">Inhoud</string>
     <string name="google">Google</string>
-    <string name="discord">Teenstrydigheid</string>
-    <string name="login">Aanmeld</string>
-    <string name="advanced_login">Gevorderde aanmelding (Token)</string>
-    <string name="logout">Logout</string>
+    <string name="discord">Discord</string>
+    <string name="login">Meld aan</string>
+    <string name="advanced_login">Gevorderde aanmelding (token)</string>
+    <string name="logout">Meld af</string>
     <string name="not_logged_in">Nie aangemeld nie</string>
-    <string name="token_hidden">Tik om Token te wys</string>
-    <string name="token_shown">Tik weer om te kopieer of te redigeer</string>
-    <string name="token_adv_login_description">Dit is "n gevorderde aanmeldmetode. As alternatief vir die webportaal, kan u u aanmeldtoken hier direk invoer of opdateer. Byvoorbeeld, dit kan die aanmelding op verskeie toestelle bespoedig. Let daarop dat enige ongeldige token -formate die app versuim om nie te ontleed nie</string>
-    <string name="ytm_sync">Synchroniseer outomaties met u YouTube -musiekrekening</string>
-    <string name="general">Generaal</string>
-    <string name="content_language">Standaardinhoudstaal</string>
-    <string name="content_country">Standaardinhoud land</string>
-    <string name="system_default">Stelselversekering</string>
+    <string name="token_hidden">Tik om token te wys</string>
+    <string name="token_shown">Tik weer om te kopieer of te wysig</string>
+    <string name="token_adv_login_description">Dit is 'n GEVORDERDE aanmeldmetode. As alternatief vir die webportaal, kan jy jou aanmeldtoken hier direk invoer of opdateer. Byvoorbeeld, dit kan aanmelding op verskeie toestelle bespoedig. Let daarop dat enige ongeldige tokenformate wat die app nie kan ontleed nie, nie aanvaar sal word nie</string>
+    <string name="ytm_sync">Sinkroniseer outomaties met jou YouTube Musiek-rekening</string>
+    <string name="general">Algemeen</string>
+    <string name="content_language">Verstek-inhoudstaal</string>
+    <string name="content_country">Verstek-inhoudland</string>
+    <string name="system_default">Stelselverstek</string>
     <string name="proxy">Gevolmagtigde</string>
     <string name="enable_proxy">Aktiveer gevolmagtigde</string>
-    <string name="proxy_type">Proxy tipe</string>
-    <string name="proxy_url">Proxy URL</string>
-    <string name="default_lib_chips">Verander die standaardbiblioteekskyfie</string>
+    <string name="proxy_type">Gevolmagtigde tipe</string>
+    <string name="proxy_url">Gevolmagtigde URL</string>
+    <string name="default_lib_chips">Verander verstek biblioteek-skyfie</string>
     <string name="set_quick_picks">Stel vinnige keuses</string>
-    <string name="last_song_listened">Gebaseer op die laaste liedjie geluister</string>
-    <string name="app_language">Apptaal (beta)</string>
-    <string name="configure_app_language">Stel app -tale op</string>
+    <string name="last_song_listened">Gebaseer op laaste geluisterde liedjie</string>
+    <string name="app_language">App-taal (Beta)</string>
+    <string name="configure_app_language">Stel app-tale op</string>
     <string name="configure_supported_links">Stel ondersteunde skakels op</string>
-    <string name="enable_kugou">Aktiveer Kugou Lyrics -verskaffer</string>
-    <string name="enable_lrclib">Aktiveer lrclib -lirieke verskaffer</string>
-    <string name="set_first_lyrics_provider">Voorkeurlirieke Verskaffer</string>
+    <string name="enable_kugou">Aktiveer KuGou-liriekeverskaffer</string>
+    <string name="enable_lrclib">Aktiveer LrcLib-liriekeverskaffer</string>
+    <string name="set_first_lyrics_provider">Voorkeurliriekeverskaffer</string>
 
     <string name="player_and_audio">Speler en klank</string>
     <string name="audio_quality">Klankgehalte</string>
-    <string name="audio_quality_max">Max (beta)</string>
-    <string name="audio_quality_auto">Motor</string>
+    <string name="audio_quality_max">Maksimum (beta)</string>
+    <string name="audio_quality_auto">Outo</string>
     <string name="audio_quality_high">Hoog</string>
     <string name="audio_quality_low">Laag</string>
-    <string name="queue">Toustaan</string>
+    <string name="queue">Tou</string>
     <string name="persistent_queue">Aanhoudende tou</string>
-    <string name="persistent_queue_desc">Herstel u laaste tou wanneer die app begin</string>
+    <string name="persistent_queue_desc">Herstel jou laaste tou wanneer die app begin</string>
     <string name="auto_load_more">Laai outomaties meer liedjies</string>
     <string name="auto_load_more_desc">Voeg outomaties meer liedjies by wanneer die einde van die tou bereik word, indien moontlik</string>
-    <string name="enable_similar_content">Aktiveer soortgelyke inhoud</string>
+    <string name="enable_similar_content">Aktiveer Soortgelyke Inhoud</string>
     <string name="similar_content_desc">Voeg outomaties meer soortgelyke liedjies by wanneer die einde van die tou bereik word</string>
     <string name="skip_silence">Slaan stilte oor</string>
     <string name="audio_normalization">Klanknormalisering</string>
-    <string name="auto_skip_next_on_error">Outo Slaan na die volgende liedjie wanneer fout voorkom</string>
-    <string name="auto_skip_next_on_error_desc">Verseker u deurlopende afspeelervaring</string>
-    <string name="stop_music_on_task_clear">Stop musiek op die taak</string>
-    <string name="equalizer">Gelykmaker</string>
+    <string name="auto_skip_next_on_error">Slaan outomaties na volgende liedjie oor by fout</string>
+    <string name="auto_skip_next_on_error_desc">Verseker jou aaneenlopende afspeelervaring</string>
+    <string name="stop_music_on_task_clear">Stop musiek op taakvee</string>
+    <string name="equalizer">Ekwaliseerder</string>
 
-    <string name="storage">Bergplek</string>
+    <string name="storage">Berging</string>
     <string name="cache">Kas</string>
-    <string name="image_cache">Beeld -kas</string>
-    <string name="song_cache">Liedjie -kas</string>
+    <string name="image_cache">Beeldkas</string>
+    <string name="song_cache">Liedjiekas</string>
     <string name="max_cache_size">Maksimum kasgrootte</string>
     <string name="unlimited">Onbeperk</string>
-    <string name="clear_all_downloads">Maak alle downloads duidelik</string>
-    <string name="max_image_cache_size">Maksimum beeld kasgrootte</string>
-    <string name="clear_image_cache">Duidelike beeld -kas</string>
-    <string name="max_song_cache_size">Max Song Cache Size</string>
-    <string name="clear_song_cache">Duidelike liedjie -kas</string>
+    <string name="clear_all_downloads">Maak alle aflaaie skoon</string>
+    <string name="max_image_cache_size">Maksimum beeldkasgrootte</string>
+    <string name="clear_image_cache">Maak beeldkas skoon</string>
+    <string name="max_song_cache_size">Maksimum liedjiekasgrootte</string>
+    <string name="clear_song_cache">Maak liedjiekas skoon</string>
     <string name="size_used">%s gebruik</string>
 
     <string name="privacy">Privaatheid</string>
-    <string name="listen_history">Luister geskiedenis</string>
+    <string name="listen_history">Luistergeskiedenis</string>
     <string name="search_history">Soekgeskiedenis</string>
-    <string name="pause_listen_history">Pouse luister geskiedenis</string>
-    <string name="clear_listen_history">Duidelike luistergeskiedenis</string>
-    <string name="clear_listen_history_confirm">Is u seker dat u alle luistergeskiedenis wil skoonmaak?</string>
-    <string name="pause_search_history">Pouse soekgeskiedenis</string>
-    <string name="clear_search_history">Duidelike soekgeskiedenis</string>
-    <string name="clear_search_history_confirm">Is u seker dat u alle soekgeskiedenis wil skoonmaak?</string>
-    <string name="disable_screenshot">Skakel skermkiekie uit</string>
-    <string name="disable_screenshot_desc">As hierdie opsie aan is, word skermkiekies en die aansig van die app gedeaktiveer.</string>
+    <string name="pause_listen_history">Pouseer luistergeskiedenis</string>
+    <string name="clear_listen_history">Maak luistergeskiedenis skoon</string>
+    <string name="clear_listen_history_confirm">Is jy seker jy wil alle luistergeskiedenis skoonmaak?</string>
+    <string name="pause_search_history">Pouseer soekgeskiedenis</string>
+    <string name="clear_search_history">Maak soekgeskiedenis skoon</string>
+    <string name="clear_search_history_confirm">Is jy seker jy wil alle soekgeskiedenis skoonmaak?</string>
+    <string name="disable_screenshot">Deaktiveer skermkiekie</string>
+    <string name="disable_screenshot_desc">Wanneer hierdie opsie aan is, word skermkiekies en die app se aansig in Onlangs gedeaktiveer.</string>
 
-    <string name="hide_explicit">Verberg eksplisiete inhoud</string>
+    <string name="hide_explicit">Versteek eksplisiete inhoud</string>
 
     <string name="backup_restore">Rugsteun en herstel</string>
     <string name="backup">Rugsteun</string>
-    <string name="restore">Restoreer</string>
+    <string name="restore">Herstel</string>
     <string name="backup_create_success">Rugsteun suksesvol geskep</string>
     <string name="backup_create_failed">Kon nie rugsteun skep nie</string>
-    <string name="restore_failed">Kon nie die rugsteun herstel nie</string>
+    <string name="restore_failed">Kon nie rugsteun herstel nie</string>
 
-    <string name="discord_integration">Onenigheidsintegrasie</string>
-    <string name="discord_information">Opentune gebruik die KizzyRPC -biblioteek om u status van u Discord -rekening in te stel. Dit behels die gebruik van die Discord Gateway -verbinding, wat beskou kan word as "n oortreding van die TOS van Discord. Daar is egter geen bekende gevalle van gebruikersrekeninge wat om hierdie rede opgeskort word nie. Gebruik u eie risiko.  Opentunne sal net u teken uittrek, en alles anders word plaaslik geberg.</string>
-    <string name="dismiss">Afdank</string>
+    <string name="discord_integration">Discord-integrasie</string>
+    <string name="discord_information">OpenTune gebruik die KizzyRPC-biblioteek om jou Discord-rekening se status in te stel. Dit behels die gebruik van die Discord Gateway-verbinding, wat as 'n oortreding van Discord se TOS beskou kan word. Daar is egter geen bekende gevalle van gebruikersrekeninge wat om hierdie rede geskors is nie. Gebruik op eie risiko. OpenTune sal net jou token onttrek, en alles anders word plaaslik gestoor.</string>
+    <string name="dismiss">Laat vaar</string>
     <string name="options">Opsies</string>
     <string name="preview">Voorskou</string>
     <string name="login_failed">Aanmelding het misluk</string>
 
-    <string name="enable_discord_rpc">Aktiveer ryk teenwoordigheid</string>
+    <string name="enable_discord_rpc">Aktiveer Ryk Teenwoordigheid</string>
 
     <string name="default_links">Open ondersteunde skakels</string>
 
     <string name="release_notes">Vrystellingsnotas</string>
 
-    <string name="about">Rondom</string>
-    <string name="app_version">App -weergawe</string>
+    <string name="about">Oor</string>
+    <string name="app_version">App-weergawe</string>
 
     <string name="new_version_available">Nuwe weergawe beskikbaar</string>
-    <string name="clear_translation_models">Duidelike vertaalmodelle</string>
+    <string name="clear_translation_models">Maak vertaalmodelle skoon</string>
 
     <string name="all_time">Alle tyd</string>
-    <string name="past_24_hours">Die afgelope 24 uur</string>
-    <string name="past_week">Die afgelope week</string>
-    <string name="past_month">Die afgelope maand</string>
-    <string name="past_year">Die afgelope jaar</string>
-    <string name="top_length">My lengte van die boonste lys</string>
-    <string name="history_duration">Geskiedenisduur</string>
+    <string name="past_24_hours">Afgelope 24 uur</string>
+    <string name="past_week">Afgelope week</string>
+    <string name="past_month">Afgelope maand</string>
+    <string name="past_year">Afgelope jaar</string>
+    <string name="top_length">My Top-lys lengte</string>
+    <string name="history_duration">Geskiedenisduratie</string>
     <string name="contributors">bydraers</string>
     <string name="donate">Skenk</string>
-    <string name="telegram_channel">Telegram Chanel</string>
+    <string name="telegram_channel">Telegram-kanaal</string>
     <string name="contribution">Bydrae</string>
-    <string name="new_version">Nuwe weergawe</string>
-    <string name="changelog">Changelog</string>
-    <string name="changelogs">Changelogs</string>
+    <string name="new_version">Nuwe Weergawe</string>
+    <string name="changelog">Veranderingslog</string>
+    <string name="changelogs">Veranderingslogs</string>
     <string name="no_changes">Geen veranderinge nie</string>
     <string name="translate">Vertaal</string>
-    <string name="redirect">Redirección</string>
-    <string name="poeditor_redirect">U is op die punt om na peditor.com herlei te word</string>
-    <string name="backup_restore_warning">Aandag wanneer u die rugsteun herstel, word die voorheen afgelaaide liedjies nie afgelaai nie. Dit word sterk aanbeveel om die herstelde liedjies te speel om enige aflaaifoute te vermy.</string>
+    <string name="redirect">Herleiding</string>
+    <string name="poeditor_redirect">Jy is op die punt om na poeditor.com herlei te word</string>
+    <string name="backup_restore_warning">Let op wanneer die rugsteninge herstel word, word die voorheen afgelaaide liedjies nie afgelaai nie. Dit word HOOG AANBEVEEL om die herstelde liedjies te speel om enige aflaalfoute te vermy.</string>
     <string name="backup_link_title">Rugsteun suksesvol opgelaai!</string>
-    <string name="backup_link_description">U rugsteun is vir 14 dae beskikbaar.</string>
-    <string name="copy_link">Kopie skakel</string>
-    <string name="customize_thumbnail_corner_radius">Pas die kleinkiekie -hoekradius aan</string>
-    <string name="corner_radius_label">Hoekradius: %1 $ S</string>
-    <string name="unmute">Verpligting</string>
+    <string name="backup_link_description">Jou rugsteun sal vir 14 dae beskikbaar wees.</string>
+    <string name="copy_link">Kopieer skakel</string>
+    <string name="customize_thumbnail_corner_radius">Pas duimnael-hoekradius aan</string>
+    <string name="corner_radius_label">Hoekradius: %1$s</string>
+    <string name="unmute">Herstel klank</string>
     <plurals name="seconds">
         <item quantity="one">1 sekonde</item>
         <item quantity="other">%d sekondes</item>
     </plurals>
-    <string name="mute">Stom</string>
+    <string name="mute">Demp</string>
     <string name="explore">Verken</string>
-    <string name="custom_avatar">"Custom Avatar"</string>
-    <string name="select_image">Kies Beeld</string>
-    <string name="default_avatar">Standaard avatar</string>
-    <string name="restore_default_avatar">Herstel standaard avatar</string>
+    <string name="custom_avatar">Aangepaste avatar</string>
+    <string name="select_image">Kies beeld</string>
+    <string name="default_avatar">Verstek-avatar</string>
+    <string name="restore_default_avatar">Herstel verstek-avatar</string>
     <string name="search_results">Soekresultate</string>
     <string name="suggestions">Voorstelle</string>
-    <string name="collapse">Ineenstort</string>
-    <string name="expand">Uitbrei</string>
-    <string name="custom">Gebruik</string>
-    <string name="close">Dig</string>
+    <string name="collapse">Vou in</string>
+    <string name="expand">Vou uit</string>
+    <string name="custom">Aangepas</string>
+    <string name="close">Sluit</string>
     <string name="custom_value">Aangepaste waarde</string>
-    <string name="adjust_radius">Radius verstel</string>
+    <string name="adjust_radius">Stel radius aan</string>
     <string name="cancel">Kanselleer</string>
-    <string name="apply">Aansoek doen</string>
-    <string name="player_buttons_style">Spelerknoppies styl</string>
-    <string name="default_style">Standaardstyl</string>
+    <string name="apply">Pas toe</string>
+    <string name="player_buttons_style">Spelerknoppies-styl</string>
+    <string name="default_style">Verstekstyl</string>
     <string name="secondary_color_style">Sekondêre kleurstyl</string>
-    <string name="update_version">UPDATE V%1 $ S</string>
-    <string name="download_question">Wil u die nuwe weergawe aflaai?</string>
-    <string name="update_download">Aflaai</string>
-    <string name="update_downloading">Aflaai -opdatering …</string>
+    <string name="update_version">Dateer v%1$s op</string>
+    <string name="download_question">Wil jy die nuwe weergawe aflaai?</string>
+    <string name="update_download">Laai af</string>
+    <string name="update_downloading">Laai opdatering af…</string>
     <string name="download_completed">Aflaai voltooi</string>
     <string name="install">Installeer</string>
-    <string name="update_download_error">Fout met die aflaai van die opdatering</string>
+    <string name="update_download_error">Fout met aflaai van opdatering</string>
     <string name="tap_to_update">Tik om op te dateer</string>
-    <string name="info_title">Informasie</string>
-    <string name="info_description">Hierdie afdeling bevat sleutelbesonderhede oor die rugsteun- en herstelproses, insluitend die sekuriteit van u data en hoe u inligting veilig en maklik toeganklik bly.</string>
-    <string name="backup_info_title">Belangrike inligting</string>
-    <string name="backup_info_description">As u u data rugsteun, is u aflaaie nie ingesluit nie. Dit word aanbeveel om u kas deur die app skoon te maak vir optimale prestasie. Die rugsteundiens is veilig en verseker dat u data privaat en beskerm bly.</string>
+    <string name="info_title">Inligting</string>
+    <string name="info_description">Hierdie afdeling verskaf sleutelbesonderhede oor die rugsteun- en herstelproses, insluitend die sekuriteit van jou data en hoe om te verseker jou inligting veilig en maklik toeganklik bly.</string>
+    <string name="backup_info_title">Belangrike Inligting</string>
+    <string name="backup_info_description">Wanneer jy jou data rugsteun, is jou aflaaie nie ingesluit nie. Dit word aanbeveel om jou kas deur die app skoon te maak vir optimale prestasie. Die rugsteundiens is veilig, wat verseker jou data privaat en beskerm bly.</string>
 
-    <string name="backup_description">Skep "n rugsteunlêer van u huidige data</string>
-    <string name="restore_description">Herstel u data uit "n rugsteunlêer</string>
+    <string name="backup_description">Skep 'n rugsteunlêer van jou huidige data</string>
+    <string name="restore_description">Herwin jou data uit 'n rugsteunlêer</string>
     <string name="link_copied">Skakel gekopieër</string>
     <string name="version">Weergawe</string>
-    <string name="notification">Aktiveer kennisgewings</string>
+    <string name="notification">Aktiveer Kennisgewings</string>
     <string name="cached_playlist">Kas</string>
-    <string name="added_to_queue">by die tou gevoeg</string>
-    <string name="warn">Opmerking: die APK word afgelaai vanaf die amptelike GitHub-bewaarplek, nie van F-Droid nie.</string>
-</resources>
+    <string name="added_to_queue">By tou gevoeg</string>
+    <string name="warn">Nota: Die APK word afgelaai vanaf die amptelike GitHub-bewaarplek, nie van F-Droid nie.</string>
+    <string name="edit_thumbnail">Wysig duimnael</string>
+    <string name="remove_thumbnail">Verwyder duimnael</string>
+    <string name="add_thumbnail">Voeg duimnael by</string>
+    <string name="storage_overview">Bergingoorsig</string>
 
+    <string name="clear_downloads_confirmation">Is jy seker jy wil alle afgelaaide liedjies verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.</string>
+    <string name="clear_song_cache_confirmation">Is jy seker jy wil die liedjiekas skoonmaak? Dit sal spasie vrymaak maar kan speelverrigting tydelik beïnvloed.</string>
+    <string name="clear_image_cache_confirmation">Is jy seker jy wil die beeldkas skoonmaak? Albumkuns en kunstenaarbeelde sal weer afgelaai moet word.</string>
+    <string name="confirm">Bevestig</string>
+    <string name="action_login">Meld aan</string>
+    <string name="generating_image">Genereer beeld</string>
+    <string name="please_wait">Wag asseblief</string>
+    <string name="share_lyrics">Deel lirieke</string>
+    <string name="share_as_text">Deel as teks</string>
+    <string name="share_as_image">Deel as beeld</string>
+    <string name="max_selection_limit">Maksimum keiselimiet</string>
+    <string name="share_selected">Deel gekose</string>
+    <string name="customize_colors">Pas kleure aan</string>
+    <string name="more_options">Meer opsies</string>
+    <string name="text_color">Tekskleur</string>
+    <string name="background_color">Agtergrondkleur</string>
+    <string name="back">Terug</string>
+    <string name="error_navigation">Navigasiefout</string>
+    <string name="notifications_enabled">Kennisgewings geaktiveer</string>
+    <string name="notifications_disabled">Kennisgewings gedeaktiveer</string>
+
+    <string name="visitor_data_title">Foutopsporing</string>
+    <string name="visitor_data_description">As jy konnektiwiteitsprobleme met YouTube ervaar, kan die herstel van VISITOR_DATA dalk help.</string>
+    <string name="visitor_data_info_button">Wat is dit?</string>
+    <string name="visitor_data_reset_button">Herstel</string>
+
+    <string name="visitor_data_info_title">Wat is VISITOR_DATA?</string>
+    <string name="visitor_data_info_intro">VISITOR_DATA is 'n identifiseerder wat deur YouTube gebruik word om jou sessie na te spoor. Wanneer dit korrup is, kan dit veroorsaak:</string>
+    <string name="visitor_data_info_problems">• Konnektiwiteitsfoute\n• Probleme met laai van inhoud\n• Soekmislukkings\n• Afspeelonderbrekings</string>
+    <string name="visitor_data_info_solution">Die herstel van VISITOR_DATA genereer 'n nuwe identifiseerder en los gewoonlik hierdie probleme op.</string>
+    <string name="visitor_data_info_note">Dit werk vir beide anonieme gebruikers en aangemelde gebruikers.</string>
+    <string name="visitor_data_info_confirm">Ek verstaan</string>
+
+    <string name="visitor_data_reset_title">Herstel VISITOR_DATA</string>
+    <string name="visitor_data_reset_message">Is jy seker jy wil VISITOR_DATA herstel? Dit sal 'n nuwe identifiseerder vir YouTube genereer en kan konnektiwiteitsprobleme oplos.\n\nDie app sal outomaties herbegin.</string>
+    <string name="visitor_data_reset_confirm">Herstel</string>
+    <string name="visitor_data_reset_cancel">Kanselleer</string>
+
+    <string name="widget_title">Musiek-widget</string>
+    <string name="error_saving_image">Fout met stoor van beeld</string>
+    <string name="processing">Verwerk</string>
+    <string name="subscribed">Ingeteken</string>
+    <string name="subscribe">Teken in</string>
+    <string name="language">Applikasietaal</string>
+    <string name="selection_mode_active">Aktiewe keisemodus</string>
+
+    <!-- Avatar Selection -->
+    <string name="avatar_selection">Avatar-keuse</string>
+
+    <!-- Avatar Descriptions for Predefined Avatars -->
+    <string name="discord_use_details">Gebruik besonderhede in plaas van status</string>
+    <string name="discord_use_details_description">Wys liedjietitel prominent in plaas van kunstenaarsname</string>
+    <string name="community">Gemeenskap</string>
+    <string name="app_info">App-inligting</string>
+    <string name="hide_controls">Versteek beheer</string>
+    <string name="show_controls">Wys beheer</string>
+
+    <string name="customize_image">Pas beeld aan</string>
+    <string name="select_theme">Kies tema</string>
+    <string name="from_cover">Van voorblad</string>
+    <string name="preset_themes">Voorgedefinieerde temas</string>
+    <string name="share_lyrics_image">Deel lirieke as beeld</string>
+    <string name="cover_color">Kleur voorblad</string>
+    <string name="rotate_lyrics_background">Roteer die lirieke-agtergrond</string>
+    <string name="playlist_add_local_to_synced_note">Nota: Die byvoeg van plaaslike liedjies by gesinkroniseerde/afgeleë snitlyste word nie ondersteun nie. Enige ander kombinasie is geldig</string>
+    <string name="manage">Bestuur</string>
+    <string name="clear">Maak skoon</string>
+    <string name="playing_from">Speel van:</string>
+
+    <string name="cloud_upload_title">Outomatiese wolk-oplading</string>
+    <string name="cloud_upload_enabled_description">Rugsteninge sal na filebin.net opgelaai word</string>
+    <string name="cloud_upload_disabled_description">Rugsteninge sal slegs plaaslik gestoor word</string>
+    <string name="backup_with_cloud">Skep plaaslike rugsteun en laai na wolk op</string>
+    <string name="uploading_backup">Laai rugsteun op…</string>
+    <string name="backup_success">Rugsteun suksesvol</string>
+    <string name="backup_upload_error">Fout met oplaai van rugsteun</string>
+    <string name="cache_clearing">Maak skoon…</string>
+    <string name="info_button">Inligting</string>
+    <string name="reset_button">Herstel</string>
+    <string name="processing_songs">Verwerk liedjies…</string>
+    <string name="understood">Verstaan</string>
+    <string name="tap_to_open">Tik om oop te maak</string>
+    <string name="credits_lead_dev">Hoofontwikkelaar</string>
+    <string name="credits_translator_br_icon_designer">Vertaaler (pt_BR), Ikoonontwerper</string>
+    <string name="credits_code_refactor">Kode-herstrukturering</string>
+    <string name="credits_translator_ru">Vertaaler (ru_RU)</string>
+    <string name="credits_language_selector">Taalkeuse</string>
+    <string name="credits_forker_translator_ro">Onderhouer van vurk, Vertaaler (ro_RO)</string>
+    <string name="randomize_avatars">Randomiseer avatars</string>
+    <string name="choose_a_style">Kies 'n styl</string>
+    <string name="backup_upload_failed">Fout met oplaai van rugsteun</string>
+    <string name="backup_uploading">Laai rugsteun op...</string>
+    <string name="app_logo">OpenTune-logo</string>
+    <string name="app_motto">Jou musiek, geen perke</string>
+    <string name="icon_save_img">Stoor beeld na galery</string>
+    <string name="image_save_success">Beeld suksesvol gestoor!</string>
+    <string name="image_save_failure">Kon nie albumbeeld stoor nie</string>
+    <string name="error_invalid_album">Fout: Ongeldige album-ID</string>
+    <string name="downloaded">Afgelaai</string>
+    <string name="download_failed">Aflaai het misluk</string>
+    <string name="avatars">Avatars</string>
+    <string name="choose_predefined_avatar">Kies 'n avatar</string>
+    <string name="applying">Pas toe...</string>
+    <string name="restarting">Herbegin...</string>
+    <string name="search_language">Soek tale...</string>
+    <string name="last_update">Laaste opdatering:</string>
+    <string name="by">deur %1$s</string>
+    <string name="enable_musixmatch">Aktiveer MusixMatch-liriekeverskaffer</string>
+    <string name="small_button_shape">Klein Knoppies-vorm</string>
+    <string name="try_another_query">Probeer 'n ander navraag</string>
+    <string name="clear_search">Maak soek skoon</string>
+    <string name="changing_language">Verander taal...</string>
+    <string name="animate_lyrics">Animeer lirieke</string>
+    <string name="animate_lyrics_desc">Vloeiende oorgang tussen lirieke</string>
+    <string name="widget_portrait_title">Musiek-widget Portret</string>
+</resources>

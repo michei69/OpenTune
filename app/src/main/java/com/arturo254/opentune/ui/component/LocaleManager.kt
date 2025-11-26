@@ -145,27 +145,29 @@ class LocaleManager private constructor(private val context: Context) {
         private val LANGUAGE_METADATA = mapOf(
             "en" to LanguageMetadata("🇺🇸", CompletionStatus.COMPLETE),
             "es" to LanguageMetadata("🇪🇸", CompletionStatus.COMPLETE),
-            "fr" to LanguageMetadata("🇫🇷", CompletionStatus.COMPLETE),
-            "de" to LanguageMetadata("🇩🇪", CompletionStatus.COMPLETE),
-            "it" to LanguageMetadata("🇮🇹", CompletionStatus.COMPLETE),
-            "pt-rBR" to LanguageMetadata("🇧🇷", CompletionStatus.COMPLETE),
+            "fr" to LanguageMetadata("🇫🇷", CompletionStatus.BETA),
+            "de" to LanguageMetadata("🇩🇪", CompletionStatus.BETA),
+            "it" to LanguageMetadata("🇮🇹", CompletionStatus.BETA),
+            "pt-rBR" to LanguageMetadata("🇧🇷", CompletionStatus.BETA),
             "pt" to LanguageMetadata("🇵🇹", CompletionStatus.COMPLETE),
-            "ru" to LanguageMetadata("🇷🇺", CompletionStatus.COMPLETE),
-            "zh-rCN" to LanguageMetadata("🇨🇳", CompletionStatus.COMPLETE),
+            "ru" to LanguageMetadata("🇷🇺", CompletionStatus.BETA),
+            "zh-rCN" to LanguageMetadata("🇨🇳", CompletionStatus.INCOMPLETE),
             "zh-rTW" to LanguageMetadata("🇹🇼", CompletionStatus.COMPLETE),
-            "ja" to LanguageMetadata("🇯🇵", CompletionStatus.COMPLETE),
-            "ko" to LanguageMetadata("🇰🇷", CompletionStatus.COMPLETE),
+            "ja" to LanguageMetadata("🇯🇵", CompletionStatus.BETA),
+            "ko" to LanguageMetadata("🇰🇷", CompletionStatus.INCOMPLETE),
             "ar" to LanguageMetadata("🇸🇦", CompletionStatus.BETA),
             "hi" to LanguageMetadata("🇮🇳", CompletionStatus.BETA),
             "th" to LanguageMetadata("🇹🇭", CompletionStatus.INCOMPLETE),
             "vi" to LanguageMetadata("🇻🇳", CompletionStatus.INCOMPLETE),
             "tr" to LanguageMetadata("🇹🇷", CompletionStatus.BETA),
-            "pl" to LanguageMetadata("🇵🇱", CompletionStatus.INCOMPLETE),
+            "pl" to LanguageMetadata("🇵🇱", CompletionStatus.BETA),
             "nl" to LanguageMetadata("🇳🇱", CompletionStatus.INCOMPLETE),
             "id" to LanguageMetadata("🇮🇩", CompletionStatus.BETA),
             "uk" to LanguageMetadata("🇺🇦", CompletionStatus.BETA),
-            "he" to LanguageMetadata("🇮🇱", CompletionStatus.BETA),
-            "ro" to LanguageMetadata("🇷🇴", CompletionStatus.COMPLETE)
+            "he" to LanguageMetadata("🇮🇱", CompletionStatus.INCOMPLETE),
+            "ro" to LanguageMetadata("🇷🇴", CompletionStatus.COMPLETE),
+            "af" to LanguageMetadata("🇿🇦", CompletionStatus.COMPLETE),
+            "be" to LanguageMetadata("🇧🇾", CompletionStatus.COMPLETE)
         )
 
         private data class LanguageMetadata(
@@ -241,11 +243,7 @@ class LocaleManager private constructor(private val context: Context) {
             }
 
             if (availableLocales.isEmpty()) {
-                val commonLocales = listOf(
-                    "en", "es", "fr", "de", "it", "pt", "pt-rBR",
-                    "ru", "zh-rCN", "zh-rTW", "ja", "ko", "ar",
-                    "hi", "th", "vi", "tr", "pl", "nl", "id", "uk", "he", "ro"
-                )
+                val commonLocales = LANGUAGE_METADATA.keys
 
                 commonLocales.forEach { localeCode ->
                     if (hasTranslationsForLocale(localeCode)) {
