@@ -23,18 +23,17 @@ enum class SliderStyle {
 }
 
 const val SYSTEM_DEFAULT = "SYSTEM_DEFAULT"
-val ContentLanguageKey = stringPreferencesKey("contentLanguage")
-val ContentCountryKey = stringPreferencesKey("contentCountry")
-val EnableKugouKey = booleanPreferencesKey("enableKugou")
-val EnableLrcLibKey = booleanPreferencesKey("enableLrclib")
-val EnableMusixMatchKey = booleanPreferencesKey("enableMusixMatch")
-val HideExplicitKey = booleanPreferencesKey("hideExplicit")
+val ContentLanguageKey = stringPreferencesKey("content_language")
+val ContentCountryKey = stringPreferencesKey("content_country")
+val EnableKugouKey = booleanPreferencesKey("enable_kugou")
+val EnableLrcLibKey = booleanPreferencesKey("enable_lrclib")
+val EnableMusixMatchKey = booleanPreferencesKey("enable_musixmatch")
+val HideExplicitKey = booleanPreferencesKey("hide_explicit")
 val LastNewReleaseCheckKey = longPreferencesKey("last_new_release_check")
-val minPlaybackDurKey = intPreferencesKey("minPlaybackDur")
-val ProxyEnabledKey = booleanPreferencesKey("proxyEnabled")
-val ProxyUrlKey = stringPreferencesKey("proxyUrl")
-val ProxyTypeKey = stringPreferencesKey("proxyType")
-val YtmSyncKey = booleanPreferencesKey("ytmSync")
+val ProxyEnabledKey = booleanPreferencesKey("proxy_enabled")
+val ProxyUrlKey = stringPreferencesKey("proxy_url")
+val ProxyTypeKey = stringPreferencesKey("proxy_type")
+val YtmSyncKey = booleanPreferencesKey("ytm_sync")
 
 val AudioQualityKey = stringPreferencesKey("audioQuality")
 
@@ -56,12 +55,6 @@ val MaxImageCacheSizeKey = intPreferencesKey("maxImageCacheSize")
 val MaxSongCacheSizeKey = intPreferencesKey("maxSongCacheSize")
 
 val DisableLoadMoreWhenRepeatAllKey = booleanPreferencesKey("disableLoadMoreWhenRepeatAll")
-val ScrobbleDelayPercentKey = floatPreferencesKey("scrobbleDelayPercent")
-val ScrobbleMinSongDurationKey = intPreferencesKey("scrobbleMinSongDuration")
-val ScrobbleDelaySecondsKey = intPreferencesKey("scrobbleDelaySeconds")
-val EnableLastFMScrobblingKey = booleanPreferencesKey("enableLastFMScrobbling")
-val LastFMUseNowPlaying = booleanPreferencesKey("lastFMUseNowPlaying")
-val AudioOffload = booleanPreferencesKey("audioOffload")
 
 val PlayerTextAlignmentKey = stringPreferencesKey("playerTextAlignment")
 
@@ -115,7 +108,7 @@ val PlaylistViewTypeKey = stringPreferencesKey("playlistViewType")
 
 val PlaylistEditLockKey = booleanPreferencesKey("playlistEditLock")
 val QuickPicksKey = stringPreferencesKey("discover")
-val PreferredLyricsProviderKey = stringPreferencesKey("lyricsProvider")
+val PreferredLyricsProviderKey = stringPreferencesKey("preferred_lyrics_provider")
 val QueueEditLockKey = booleanPreferencesKey("queueEditLock")
 
 val LyricFontSizeKey = intPreferencesKey("lyricFontSize")
