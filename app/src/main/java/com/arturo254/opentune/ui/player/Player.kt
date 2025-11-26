@@ -1353,7 +1353,8 @@ fun BottomSheetPlayer(
                     modifier =
                         Modifier
                             .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Horizontal))
-                            .padding(bottom = queueSheetState.collapsedBound + 48.dp),
+//                            .padding(bottom = queueSheetState.collapsedBound + 48.dp),
+                            .padding(top = queueSheetState.collapsedBound)
                 ) {
                     Box(
                         contentAlignment = Alignment.Center,
