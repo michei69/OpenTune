@@ -72,10 +72,10 @@
     <string name="liked">Упадабаныя</string>
     <string name="offline">Спампаваныя</string>
     <string name="my_top">Мой Топ</string>
-    <string name="library_song_empty">Песні з бібліятэкі з'явяцца тут</string>
-    <string name="library_artist_empty">Выканаўцы з бібліятэкі з'явяцца тут</string>
-    <string name="library_album_empty">Альбомы з бібліятэкі з'явяцца тут</string>
-    <string name="library_playlist_empty">Вашы плэй-лісты з'явяцца тут</string>
+    <string name="library_song_empty">Песні з бібліятэкі з\'явяцца тут</string>
+    <string name="library_artist_empty">Выканаўцы з бібліятэкі з\'явяцца тут</string>
+    <string name="library_album_empty">Альбомы з бібліятэкі з\'явяцца тут</string>
+    <string name="library_playlist_empty">Вашы плэй-лісты з\'явяцца тут</string>
 
     <!-- Playlist -->
     <string name="liked_songs">Упадабаныя песні</string>

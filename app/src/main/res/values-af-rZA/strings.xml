@@ -51,7 +51,7 @@
     <string name="filter_downloaded">Afgelaai</string>
     <string name="filter_all">Alles</string>
     <string name="filter_songs">Liedjies</string>
-    <string name="filter_videos">Video's</string>
+    <string name="filter_videos">Video\'s</string>
     <string name="filter_albums">Albums</string>
     <string name="filter_artists">Kunstenaars</string>
     <string name="filter_playlists">Snitlyste</string>
@@ -248,7 +248,7 @@
     <string name="settings">Instellings</string>
     <string name="login_settings">Aanmeldinstellings</string>
     <string name="use_login_for_browse">Gebruik aanmelding om premium-inhoud te blaai</string>
-    <string name="use_login_for_browse_desc">Dit kan slegs-premium albums wys as jy aangemeld is met 'n Premium-rekening</string>
+    <string name="use_login_for_browse_desc">Dit kan slegs-premium albums wys as jy aangemeld is met \'n Premium-rekening</string>
 
     <string name="general_settings">Algemene instellings</string>
 
@@ -293,7 +293,7 @@
     <string name="not_logged_in">Nie aangemeld nie</string>
     <string name="token_hidden">Tik om token te wys</string>
     <string name="token_shown">Tik weer om te kopieer of te wysig</string>
-    <string name="token_adv_login_description">Dit is 'n GEVORDERDE aanmeldmetode. As alternatief vir die webportaal, kan jy jou aanmeldtoken hier direk invoer of opdateer. Byvoorbeeld, dit kan aanmelding op verskeie toestelle bespoedig. Let daarop dat enige ongeldige tokenformate wat die app nie kan ontleed nie, nie aanvaar sal word nie</string>
+    <string name="token_adv_login_description">Dit is \'n GEVORDERDE aanmeldmetode. As alternatief vir die webportaal, kan jy jou aanmeldtoken hier direk invoer of opdateer. Byvoorbeeld, dit kan aanmelding op verskeie toestelle bespoedig. Let daarop dat enige ongeldige tokenformate wat die app nie kan ontleed nie, nie aanvaar sal word nie</string>
     <string name="ytm_sync">Sinkroniseer outomaties met jou YouTube Musiek-rekening</string>
     <string name="general">Algemeen</string>
     <string name="content_language">Verstek-inhoudstaal</string>
@@ -368,7 +368,7 @@
     <string name="restore_failed">Kon nie rugsteun herstel nie</string>
 
     <string name="discord_integration">Discord-integrasie</string>
-    <string name="discord_information">OpenTune gebruik die KizzyRPC-biblioteek om jou Discord-rekening se status in te stel. Dit behels die gebruik van die Discord Gateway-verbinding, wat as 'n oortreding van Discord se TOS beskou kan word. Daar is egter geen bekende gevalle van gebruikersrekeninge wat om hierdie rede geskors is nie. Gebruik op eie risiko. OpenTune sal net jou token onttrek, en alles anders word plaaslik gestoor.</string>
+    <string name="discord_information">OpenTune gebruik die KizzyRPC-biblioteek om jou Discord-rekening se status in te stel. Dit behels die gebruik van die Discord Gateway-verbinding, wat as \'n oortreding van Discord se TOS beskou kan word. Daar is egter geen bekende gevalle van gebruikersrekeninge wat om hierdie rede geskors is nie. Gebruik op eie risiko. OpenTune sal net jou token onttrek, en alles anders word plaaslik gestoor.</string>
     <string name="dismiss">Laat vaar</string>
     <string name="options">Opsies</string>
     <string name="preview">Voorskou</string>
@@ -447,8 +447,8 @@
     <string name="backup_info_title">Belangrike Inligting</string>
     <string name="backup_info_description">Wanneer jy jou data rugsteun, is jou aflaaie nie ingesluit nie. Dit word aanbeveel om jou kas deur die app skoon te maak vir optimale prestasie. Die rugsteundiens is veilig, wat verseker jou data privaat en beskerm bly.</string>
 
-    <string name="backup_description">Skep 'n rugsteunlêer van jou huidige data</string>
-    <string name="restore_description">Herwin jou data uit 'n rugsteunlêer</string>
+    <string name="backup_description">Skep \'n rugsteunlêer van jou huidige data</string>
+    <string name="restore_description">Herwin jou data uit \'n rugsteunlêer</string>
     <string name="link_copied">Skakel gekopieër</string>
     <string name="version">Weergawe</string>
     <string name="notification">Aktiveer Kennisgewings</string>
@@ -487,14 +487,14 @@
     <string name="visitor_data_reset_button">Herstel</string>
 
     <string name="visitor_data_info_title">Wat is VISITOR_DATA?</string>
-    <string name="visitor_data_info_intro">VISITOR_DATA is 'n identifiseerder wat deur YouTube gebruik word om jou sessie na te spoor. Wanneer dit korrup is, kan dit veroorsaak:</string>
+    <string name="visitor_data_info_intro">VISITOR_DATA is \'n identifiseerder wat deur YouTube gebruik word om jou sessie na te spoor. Wanneer dit korrup is, kan dit veroorsaak:</string>
     <string name="visitor_data_info_problems">• Konnektiwiteitsfoute\n• Probleme met laai van inhoud\n• Soekmislukkings\n• Afspeelonderbrekings</string>
-    <string name="visitor_data_info_solution">Die herstel van VISITOR_DATA genereer 'n nuwe identifiseerder en los gewoonlik hierdie probleme op.</string>
+    <string name="visitor_data_info_solution">Die herstel van VISITOR_DATA genereer \'n nuwe identifiseerder en los gewoonlik hierdie probleme op.</string>
     <string name="visitor_data_info_note">Dit werk vir beide anonieme gebruikers en aangemelde gebruikers.</string>
     <string name="visitor_data_info_confirm">Ek verstaan</string>
 
     <string name="visitor_data_reset_title">Herstel VISITOR_DATA</string>
-    <string name="visitor_data_reset_message">Is jy seker jy wil VISITOR_DATA herstel? Dit sal 'n nuwe identifiseerder vir YouTube genereer en kan konnektiwiteitsprobleme oplos.\n\nDie app sal outomaties herbegin.</string>
+    <string name="visitor_data_reset_message">Is jy seker jy wil VISITOR_DATA herstel? Dit sal \'n nuwe identifiseerder vir YouTube genereer en kan konnektiwiteitsprobleme oplos.\n\nDie app sal outomaties herbegin.</string>
     <string name="visitor_data_reset_confirm">Herstel</string>
     <string name="visitor_data_reset_cancel">Kanselleer</string>
 
@@ -549,7 +549,7 @@
     <string name="credits_language_selector">Taalkeuse</string>
     <string name="credits_forker_translator_ro">Onderhouer van vurk, Vertaaler (ro_RO)</string>
     <string name="randomize_avatars">Randomiseer avatars</string>
-    <string name="choose_a_style">Kies 'n styl</string>
+    <string name="choose_a_style">Kies \'n styl</string>
     <string name="backup_upload_failed">Fout met oplaai van rugsteun</string>
     <string name="backup_uploading">Laai rugsteun op...</string>
     <string name="app_logo">OpenTune-logo</string>
@@ -561,7 +561,7 @@
     <string name="downloaded">Afgelaai</string>
     <string name="download_failed">Aflaai het misluk</string>
     <string name="avatars">Avatars</string>
-    <string name="choose_predefined_avatar">Kies 'n avatar</string>
+    <string name="choose_predefined_avatar">Kies \'n avatar</string>
     <string name="applying">Pas toe...</string>
     <string name="restarting">Herbegin...</string>
     <string name="search_language">Soek tale...</string>
@@ -569,7 +569,7 @@
     <string name="by">deur %1$s</string>
     <string name="enable_musixmatch">Aktiveer MusixMatch-liriekeverskaffer</string>
     <string name="small_button_shape">Klein Knoppies-vorm</string>
-    <string name="try_another_query">Probeer 'n ander navraag</string>
+    <string name="try_another_query">Probeer \'n ander navraag</string>
     <string name="clear_search">Maak soek skoon</string>
     <string name="changing_language">Verander taal...</string>
     <string name="animate_lyrics">Animeer lirieke</string>
