@@ -246,7 +246,6 @@
     <string name="follow_theme">"テーマと同じものを使用"</string>
     <string name="gradient">"グラデーション"</string>
     <string name="player_background_blur">"ぼかし"</string>
-    <string name="enable_squiggly_slider">"波線形式のスライダーを有効化"</string>
     <string name="enable_swipe_thumbnail">"スワイプして楽曲を変更するようにする"</string>
     <string name="pure_black">"ピュアブラックな外観"</string>
     <string name="player">"プレイヤー"</string>

@@ -268,7 +268,6 @@
     <string name="follow_theme">"Urmărește tema"</string>
     <string name="gradient">"Gradient"</string>
     <string name="player_background_blur">"Blurat"</string>
-    <string name="enable_squiggly_slider">"Activează bara de progres jucăușe"</string>
     <string name="enable_swipe_thumbnail">"Activează tragerea pentru a schimba melodia"</string>
     <string name="pure_black">"Utilizează negru pur"</string>
     <string name="player">"Player"</string>
@@ -492,7 +491,7 @@
 Aplicația se va reporni automat."</string>
     <string name="visitor_data_reset_confirm">"Resetează"</string>
     <string name="visitor_data_reset_cancel">"Anulează"</string>
-    <string name="widget_title">"Widget muzică"</string>
+    <string name="widget_title">Widget Muzical</string>
     <string name="error_saving_image">"Eroare la salvarea imaginii"</string>
     <string name="processing">"Se procesează"</string>
     <string name="subscribed">"Abonat"</string>
@@ -570,4 +569,5 @@ Aplicația se va reporni automat."</string>
     <string name="changing_language">Se schimbă limba...</string>
     <string name="animate_lyrics">Versuri animate</string>
     <string name="animate_lyrics_desc">Tranziționează fluid de la un vers la altul</string>
+    <string name="widget_portrait_title">Widget Muzical Portret</string>
 </resources>

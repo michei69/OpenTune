@@ -333,7 +333,6 @@
     <string name="follow_theme">Seguir tema</string>
     <string name="gradient">Gradiente</string>
     <string name="player_background_blur">Desenfoque</string>
-    <string name="enable_squiggly_slider">Activar la barra ondulada</string>
     <string name="player">Reproductor</string>
     <string name="lyrics_click_change">Cambiar letra al hacer clic</string>
     <string name="grid_cell_size">Tamaño de la celda de la cuadrícula</string>
