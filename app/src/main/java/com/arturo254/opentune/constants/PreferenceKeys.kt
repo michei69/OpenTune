@@ -62,7 +62,7 @@ val RotateBackgroundKey = booleanPreferencesKey("rotate_background")
 
 
 val SmallButtonsShapeKey = stringPreferencesKey("small_buttons_shape")
-const val DefaultSmallButtonsShape = "Pill"
+const val DefaultSmallButtonsShape = "Circle"
 
 val PauseListenHistoryKey = booleanPreferencesKey("pauseListenHistory")
 val PauseSearchHistoryKey = booleanPreferencesKey("pauseSearchHistory")
