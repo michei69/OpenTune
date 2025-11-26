@@ -510,7 +510,6 @@
     <!-- Avatar Selection -->
     <string name="avatar_selection">Seleção de Avatar</string>
 
-    <string name="blue_initial_avatar">Avatar de Iniciais Azuis</string>
     <string name="discord_use_details">Usar detalhes em vez de estado</string>
     <string name="discord_use_details_description">Mostrar título da música em destaque em vez de nomes de artistas</string>
     <string name="community">Comunidade</string>
@@ -523,14 +522,12 @@
     <string name="from_cover">Da Capa</string>
     <string name="preset_themes">Temas Pré-definidos</string>
     <string name="share_lyrics_image">Compartilhar Letras como Imagem</string>
-    <string name="error_generating_image">Erro ao gerar imagem</string>
     <string name="cover_color">Cor da Capa</string>
     <string name="rotate_lyrics_background">Rotacionar o fundo das letras</string>
     <string name="playlist_add_local_to_synced_note">Nota: Adicionar músicas locais a playlists sincronizadas/remotas não é suportado. Qualquer outra combinação é válida</string>
     <string name="manage">Gerenciar</string>
     <string name="clear">Limpar</string>
     <string name="playing_from">"Reproduzindo de: "</string>
-    <string name="SmallButtonsShape">Botões pequenos Forma</string>
     <string name="cloud_upload_title">Upload automático para a nuvem</string>
     <string name="cloud_upload_enabled_description">Os backups serão enviados para filebin.net</string>
     <string name="cloud_upload_disabled_description">Os backups serão salvos apenas localmente</string>

@@ -96,6 +96,7 @@ import com.arturo254.opentune.ui.component.ChangelogScreen
 import com.arturo254.opentune.ui.component.IconButton
 import com.arturo254.opentune.ui.component.SettingsCategory
 import com.arturo254.opentune.ui.component.SettingsCategoryItem
+import com.arturo254.opentune.ui.component.SettingsPage
 import com.arturo254.opentune.ui.utils.backToMain
 import com.arturo254.opentune.utils.rememberPreference
 import kotlinx.coroutines.Dispatchers
@@ -529,27 +530,21 @@ fun SettingsScreen(
     var showTranslateDialog by remember { mutableStateOf(false) }
     var showChangelogSheet by remember { mutableStateOf(false) }
 
-    Column(
-        Modifier
-            .windowInsetsPadding(LocalPlayerAwareWindowInsets.current.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom))
-            .verticalScroll(rememberScrollState())
-    ) {
-        Spacer(
-            Modifier.windowInsetsPadding(
-                LocalPlayerAwareWindowInsets.current.only(
-                    WindowInsetsSides.Top
-                )
-            )
-        )
-        val context = LocalContext.current
-        val avatarManager = remember { AvatarPreferenceManager(context) }
-        val currentSelection by avatarManager.getAvatarSelection.collectAsState(initial = AvatarSelection.Default)
-        val accountName by rememberPreference(AccountNameKey, "")
-        val innerTubeCookie by rememberPreference(InnerTubeCookieKey, "")
-        val isLoggedIn = remember(innerTubeCookie) {
-            "SAPISID" in parseCookieString(innerTubeCookie)
-        }
+    val context = LocalContext.current
+    val avatarManager = remember { AvatarPreferenceManager(context) }
+    val currentSelection by avatarManager.getAvatarSelection.collectAsState(initial = AvatarSelection.Default)
+    val accountName by rememberPreference(AccountNameKey, "")
+    val innerTubeCookie by rememberPreference(InnerTubeCookieKey, "")
+    val isLoggedIn = remember(innerTubeCookie) {
+        "SAPISID" in parseCookieString(innerTubeCookie)
+    }
 
+    // Main category of settings
+    SettingsPage(
+        title = stringResource(R.string.settings),
+        navController = navController,
+        scrollBehavior = scrollBehavior
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -802,7 +797,6 @@ fun SettingsScreen(
             }
         }
 
-        // Main category of settings
         SettingsCategory(
             title = stringResource(R.string.general_settings),
             items = listOf(
@@ -846,11 +840,12 @@ fun SettingsScreen(
                     title = { Text(stringResource(R.string.about)) },
                     onClick = { navController.navigate("settings/about") }
                 ),
-                SettingsCategoryItem(
-                    icon = painterResource(R.drawable.translate),
-                    title = { Text(stringResource(R.string.translate)) },
-                    onClick = { showTranslateDialog = true }
-                )
+                // Disabled until i create a different crowdin / poeditor instance OR Arturo pulls the up to date translations
+//                    SettingsCategoryItem(
+//                        icon = painterResource(R.drawable.translate),
+//                        title = { Text(stringResource(R.string.translate)) },
+//                        onClick = { showTranslateDialog = true }
+//                    )
             )
         )
 
@@ -886,8 +881,6 @@ fun SettingsScreen(
 
         // Version card
         VersionCard(uriHandler)
-
-        Spacer(Modifier.height(16.dp))
     }
 
     // Translation dialogue
@@ -938,22 +931,4 @@ fun SettingsScreen(
             }
         }
     }
-
-    TopAppBar(
-        title = { Text(stringResource(R.string.settings)) },
-        modifier = Modifier
-            .clip(RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp)),
-        navigationIcon = {
-            IconButton(
-                onClick = navController::navigateUp,
-                onLongClick = navController::backToMain,
-            ) {
-                Icon(
-                    painterResource(R.drawable.arrow_back),
-                    contentDescription = null,
-                )
-            }
-        },
-        scrollBehavior = scrollBehavior
-    )
 }

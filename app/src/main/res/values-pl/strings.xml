@@ -516,7 +516,6 @@ Aplikacja zrestartuje się automatycznie."</string>
     <string name="avatar_selection">"Wybór avatara"</string>
 
     <!-- Avatar Descriptions for Predefined Avatars -->
-    <string name="blue_initial_avatar">"Niebieskie awatary"</string>
     <string name="discord_use_details">"Wyświetl utwór zamiast artysty"</string>
     <string name="discord_use_details_description">"Priorytetowo pokazuje tytuł utworu zamiast nazwy artystów"</string>
     <string name="community">"Społeczność"</string>
@@ -528,14 +527,12 @@ Aplikacja zrestartuje się automatycznie."</string>
     <string name="from_cover">"Z okładki"</string>
     <string name="preset_themes">"Presety"</string>
     <string name="share_lyrics_image">"Udostępnij tekst jako obraz"</string>
-    <string name="error_generating_image">"Błąd przy generowaniu obrazu"</string>
     <string name="cover_color">"Kolor okładki"</string>
     <string name="rotate_lyrics_background">"Obracaj tło za tekstem utworu"</string>
     <string name="playlist_add_local_to_synced_note">"Notka: Dodanie lokalnych utworów do zsynchronizowanych/zdalnych playlist nie jest wspierane. Każda inna kombinacja jest prawidłowa"</string>
     <string name="manage">"Zarządzaj"</string>
     <string name="clear">"Wyczyść"</string>
     <string name="playing_from">"Odtwarzane z"</string>
-    <string name="SmallButtonsShape">"Kształt małych przycisków"</string>
     <string name="cloud_upload_title">"Automatyczne przesyłanie do chmury"</string>
     <string name="cloud_upload_enabled_description">"Kopie zapasowe będą zapisywane na filebin.net"</string>
     <string name="cloud_upload_disabled_description">"Kopie zapasowe będą zapisywane lokalnie"</string>

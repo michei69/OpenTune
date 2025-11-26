@@ -483,7 +483,6 @@
     <string name="language">Idioma de la aplicación</string>
     <string name="selection_mode_active">Modo de selección activo</string>
     <string name="avatar_selection">Selección de avatar</string>
-    <string name="blue_initial_avatar">Avatar con iniciales azules</string>
     <string name="discord_use_details">Usar detalles en lugar del estado</string>
     <string name="discord_use_details_description">Mostrar el título de la canción de forma destacada en lugar de los nombres de los artistas</string>
     <string name="community">Comunidad</string>
@@ -495,14 +494,12 @@
     <string name="from_cover">Desde la portada</string>
     <string name="preset_themes">Temas predefinidos</string>
     <string name="share_lyrics_image">Compartir la letra como imagen</string>
-    <string name="error_generating_image">Error al generar la imagen</string>
     <string name="cover_color">Portada en color</string>
     <string name="rotate_lyrics_background">Girar el fondo de la letra</string>
     <string name="playlist_add_local_to_synced_note">Nota: No se admite añadir canciones locales a listas de reproducción sincronizadas/remotas. Cualquier otra combinación es válida.</string>
     <string name="manage">Administrar</string>
     <string name="clear">Borrar</string>
     <string name="playing_from">"Reproduciendo desde: "</string>
-    <string name="SmallButtonsShape">Forma de Botones pequeños</string>
     <string name="cloud_upload_title">Carga automática en la nube</string>
     <string name="cloud_upload_enabled_description">Las copias de seguridad se cargarán en filebin.net</string>
     <string name="cloud_upload_disabled_description">Las copias de seguridad solo se guardarán localmente</string>
@@ -518,6 +515,9 @@
     <string name="app_logo">Logo de OpenTune</string>
     <string name="app_motto">Tu música, sin límites</string>
     <string name="icon_save_img">Guardar imagen en galería</string>
+    <string name="try_another_query">Prueba con otro término</string>
+    <string name="clear_search">Limpiar búsqueda</string>
+    <string name="changing_language">Cambiando idioma...</string>
 
 
 </resources>

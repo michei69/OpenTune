@@ -265,7 +265,7 @@ fun SmallButtonShapeSelectorButton(
     val sheetState = rememberModalBottomSheetState()
 
     PreferenceEntry(
-        title = { Text(stringResource(R.string.SmallButtonsShape)) },
+        title = { Text(stringResource(R.string.small_button_shape)) },
         description = currentShapeName,
         icon = {
             Icon(

@@ -110,8 +110,8 @@ data class LanguageItem(
 /** Translation completion status */
 enum class CompletionStatus(val label: String, val color: @Composable () -> Color) {
     COMPLETE("", { Color.Transparent }),
-    INCOMPLETE("Incomplete", { MaterialTheme.colorScheme.tertiary }),
     BETA("Beta", { MaterialTheme.colorScheme.primary }),
+    INCOMPLETE("Incomplete", { MaterialTheme.colorScheme.tertiary }),
     EXPERIMENTAL("Experimental", { MaterialTheme.colorScheme.secondary })
 }
 
@@ -165,7 +165,7 @@ class LocaleManager private constructor(private val context: Context) {
             "id" to LanguageMetadata("🇮🇩", CompletionStatus.BETA),
             "uk" to LanguageMetadata("🇺🇦", CompletionStatus.BETA),
             "he" to LanguageMetadata("🇮🇱", CompletionStatus.BETA),
-            "ro" to LanguageMetadata("🇷🇴", CompletionStatus.BETA)
+            "ro" to LanguageMetadata("🇷🇴", CompletionStatus.COMPLETE)
         )
 
         private data class LanguageMetadata(
@@ -738,7 +738,7 @@ private fun SearchBar(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Clear,
-                        contentDescription = "Limpiar búsqueda",
+                        contentDescription = stringResource(R.string.clear_search),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.size(18.dp)
                     )
@@ -797,12 +797,12 @@ private fun EmptySearchResult(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Sin resultados",
+            text = stringResource(R.string.no_results_found),
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Text(
-            text = "Prueba con otro término",
+            text = stringResource(R.string.try_another_query),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
             modifier = Modifier.padding(top = 4.dp)
@@ -853,7 +853,7 @@ private fun LanguageItem(
             Text(
                 text = language.flag,
                 style = MaterialTheme.typography.headlineMedium,
-                modifier = Modifier.size(28.dp),
+//                modifier = Modifier.size(20.dp),
                 textAlign = TextAlign.Center
             )
 
@@ -941,9 +941,9 @@ fun LanguagePreference(
             .find { it.code == selectedCode }
             ?.let { language ->
                 if (language.isSystemDefault) {
-                    language.displayName
+                    language.nativeName
                 } else {
-                    "${language.displayName} ${language.flag}".trim()
+                    "${language.nativeName} ${language.flag}".trim()
                 }
             } ?: selectedCode
     }
@@ -953,16 +953,12 @@ fun LanguagePreference(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(30.dp))
+            .clip(RoundedCornerShape(12.dp))
             .clickable(enabled = !isChanging) {
                 showLanguageSelector = true
             },
         colors = CardDefaults.cardColors(
-            containerColor = if (isChanging) {
-                MaterialTheme.colorScheme.surfaceVariant
-            } else {
-                MaterialTheme.colorScheme.surface
-            }
+            containerColor = Color.Transparent
         )
     ) {
         Row(
@@ -1003,7 +999,7 @@ fun LanguagePreference(
 
                 Text(
                     text = if (isChanging) {
-                        "Cambiando idioma..."
+                        stringResource(R.string.changing_language)
                     } else {
                         currentLanguageDisplay
                     },
@@ -1026,7 +1022,7 @@ fun LanguagePreference(
             } else {
                 Icon(
                     imageVector = Icons.Default.ArrowForward,
-                    contentDescription = "Cambiar idioma",
+                    contentDescription = stringResource(R.string.configure_app_language),
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.size(20.dp)
                 )

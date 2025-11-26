@@ -62,6 +62,7 @@ import com.arturo254.opentune.BuildConfig
 import com.arturo254.opentune.LocalPlayerAwareWindowInsets
 import com.arturo254.opentune.R
 import com.arturo254.opentune.ui.component.IconButton
+import com.arturo254.opentune.ui.component.SettingsPage
 import com.arturo254.opentune.ui.utils.backToMain
 
 @Composable
@@ -179,15 +180,12 @@ fun AboutScreen(
     val uriHandler = LocalUriHandler.current
     val shimmerBrush = shimmerEffect()
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .windowInsetsPadding(LocalPlayerAwareWindowInsets.current)
-            .verticalScroll(rememberScrollState()),
+    SettingsPage(
+        title = stringResource(R.string.about),
+        navController = navController,
+        scrollBehavior = scrollBehavior,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(Modifier.height(20.dp))
-
         // Image with shimmer effect
         Box(
             modifier = Modifier
@@ -268,12 +266,37 @@ fun AboutScreen(
                         )
                 )
             }
+
+            Spacer(Modifier.width(4.dp))
+            Text(
+                text = "FORK",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.secondary,
+                modifier = Modifier
+                    .border(
+                        width = 1.dp,
+                        color = MaterialTheme.colorScheme.secondary,
+                        shape = CircleShape
+                    )
+                    .padding(
+                        horizontal = 6.dp,
+                        vertical = 2.dp
+                    )
+            )
         }
 
         Spacer(Modifier.height(10.dp))
 
         Text(
             text = " Dev By Arturo Cervantes 亗",
+            style = MaterialTheme.typography.titleMedium.copy(
+                fontFamily = FontFamily.Monospace
+            ),
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.secondary
+        )
+        Text(
+            text = " Fork By michei69 亗",
             style = MaterialTheme.typography.titleMedium.copy(
                 fontFamily = FontFamily.Monospace
             ),
@@ -383,9 +406,21 @@ fun AboutScreen(
         }
 
         UserCards(uriHandler)
-        Spacer(modifier = Modifier.width(12.dp))
-
     }
+
+//    Column(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .windowInsetsPadding(LocalPlayerAwareWindowInsets.current)
+//            .verticalScroll(rememberScrollState()),
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        Spacer(Modifier.height(20.dp))
+//
+//
+//        Spacer(modifier = Modifier.width(12.dp))
+//
+//    }
 
     TopAppBar(
         title = {

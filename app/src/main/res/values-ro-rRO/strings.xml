@@ -524,6 +524,7 @@ Aplicația se va reporni automat."</string>
     <string name="playing_from">"Se redă din: "</string>
 
     <!--  Credits  -->
+    <string name="tap_to_open">Apasă pentru a deschide</string>
     <string name="credits_lead_dev">Dezvoltator Principal</string>
     <string name="credits_translator_br_icon_designer">Traducător (pt_BR), Designerul Iconiței</string>
     <string name="credits_code_refactor">Restructurarea Codului</string>
@@ -551,4 +552,20 @@ Aplicația se va reporni automat."</string>
     <string name="last_update">Ultima actualizare:</string>
     <string name="by">de %1$s</string>
     <string name="enable_musixmatch">Activează furnizorul MusixMatch pentru versuri</string>
+    <string name="cloud_upload_title">Încărcare automată în cloud</string>
+    <string name="cloud_upload_enabled_description">Copiile de rezervă vor fi încărcate automat pe filebin.net</string>
+    <string name="cloud_upload_disabled_description">Copiile de rezervă vor fi salvate doar local</string>
+    <string name="backup_with_cloud">Creează o copie de rezervă locală și încarc-o în cloud</string>
+    <string name="uploading_backup">Se încarcă în cloud...</string>
+    <string name="backup_success">Copie de rezervă realizată cu succes</string>
+    <string name="backup_upload_error">Eroare la încărcarea copiei de rezervă în cloud</string>
+    <string name="cache_clearing">Se curăță</string>
+    <string name="info_button">Info</string>
+    <string name="reset_button">Resetează</string>
+    <string name="processing_songs">Se procesează melodiile...</string>
+    <string name="understood">Am înțeles</string>
+    <string name="small_button_shape">Forma Butoanelor Mici</string>
+    <string name="try_another_query">Încearcă alt termen</string>
+    <string name="clear_search">Golește căutarea</string>
+    <string name="changing_language">Se schimbă limba...</string>
 </resources>

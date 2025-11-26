@@ -25,6 +25,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowForward
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
@@ -47,6 +49,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -97,7 +100,6 @@ object AppConfig {
 
 @Composable
 fun ThumbnailCornerRadiusSelectorButton(
-    modifier: Modifier = Modifier,
     onRadiusSelected: (Float) -> Unit
 ) {
     val context = LocalContext.current
@@ -119,15 +121,22 @@ fun ThumbnailCornerRadiusSelectorButton(
 //        color = MaterialTheme.colorScheme.surface,
 //        onClick = { showDialog = true }
 //    ) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(12.dp))
+            .clickable(
+                enabled = true,
+                onClick = { showDialog = true }
+            ),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.Transparent
+        )
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(12.dp))
-                .padding(horizontal = 20.dp, vertical = 16.dp)
-                .clickable(
-                    enabled = true,
-                    onClick = { showDialog = true }
-                ),
+                .padding(horizontal = 20.dp, vertical = 16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
@@ -164,10 +173,11 @@ fun ThumbnailCornerRadiusSelectorButton(
             Icon(
                 imageVector = Icons.AutoMirrored.Outlined.ArrowForward,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(20.dp)
             )
         }
-//    }
+    }
 
     // Modal para seleccionar el radio
     if (showDialog) {

@@ -512,7 +512,6 @@
     <string name="avatar_selection">Avatar Selection</string>
 
     <!-- Avatar Descriptions for Predefined Avatars -->
-    <string name="blue_initial_avatar">Blue Initials Avatar</string>
     <string name="discord_use_details">Use details instead of state</string>
     <string name="discord_use_details_description">Show song title prominently instead of artist names</string>
     <string name="community">Community</string>
@@ -526,15 +525,12 @@
     <string name="from_cover">From Cover</string>
     <string name="preset_themes">Predefined Themes</string>
     <string name="share_lyrics_image">Share Lyrics as Image</string>
-    <string name="error_generating_image">Error generating image</string>
     <string name="cover_color">Color Cover</string>
     <string name="rotate_lyrics_background">Rotate the lyrics background</string>
     <string name="playlist_add_local_to_synced_note">Note: Adding local songs to synced/remote playlists is unsupported. Any other combination is valid</string>
     <string name="manage">Manage</string>
     <string name="clear">Clear</string>
     <string name="playing_from">"Playing from: "</string>
-    <string name="SmallButtonsShape">Small Buttons Shape</string>
-
 
 
     <string name="cloud_upload_title">Automatic cloud upload</string>
@@ -576,4 +572,8 @@
     <string name="last_update">Last update:</string>
     <string name="by">by %1$s</string>
     <string name="enable_musixmatch">Enable MusixMatch lyrics provider</string>
+    <string name="small_button_shape">Small Buttons Shape</string>
+    <string name="try_another_query">Try another query</string>
+    <string name="clear_search">Clear search</string>
+    <string name="changing_language">Changing language...</string>
 </resources>

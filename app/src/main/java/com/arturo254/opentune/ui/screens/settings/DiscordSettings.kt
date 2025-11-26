@@ -91,6 +91,9 @@ import com.arturo254.opentune.ui.component.IconButton
 import com.arturo254.opentune.ui.component.InfoLabel
 import com.arturo254.opentune.ui.component.PreferenceEntry
 import com.arturo254.opentune.ui.component.PreferenceGroupTitle
+import com.arturo254.opentune.ui.component.SettingsGeneralCategory
+import com.arturo254.opentune.ui.component.SettingsPage
+import com.arturo254.opentune.ui.component.SettingsTopAppBar
 import com.arturo254.opentune.ui.component.SwitchPreference
 import com.arturo254.opentune.ui.component.TextFieldDialog
 import com.arturo254.opentune.ui.utils.backToMain
@@ -181,21 +184,11 @@ fun DiscordSettings(
         )
     }
 
-    Column(
-        Modifier
-            .windowInsetsPadding(
-                LocalPlayerAwareWindowInsets.current.only(
-                    WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
-                )
-            )
-            .verticalScroll(rememberScrollState())
+    SettingsPage(
+        title = stringResource(R.string.discord_integration),
+        navController = navController,
+        scrollBehavior = scrollBehavior
     ) {
-        Spacer(
-            Modifier.windowInsetsPadding(
-                LocalPlayerAwareWindowInsets.current.only(WindowInsetsSides.Top)
-            )
-        )
-
         // Improved informational banner
         AnimatedVisibility(
             visible = !infoDismissed,
@@ -248,107 +241,112 @@ fun DiscordSettings(
             }
         }
 
-        // Enhanced account section
-        PreferenceGroupTitle(title = stringResource(R.string.account))
-
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant
-            )
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Surface(
-                    shape = CircleShape,
-                    color = if (isLoggedIn) {
-                        MaterialTheme.colorScheme.primary
-                    } else {
-                        MaterialTheme.colorScheme.outline
-                    },
-                    modifier = Modifier.size(48.dp)
+        SettingsGeneralCategory(
+            title = stringResource(R.string.account),
+            items = listOf(
+                {Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant
+                    )
                 ) {
-                    Icon(
-                        painter = painterResource(R.drawable.discord),
-                        contentDescription = null,
-                        tint = if (isLoggedIn) {
-                            MaterialTheme.colorScheme.onPrimary
-                        } else {
-                            MaterialTheme.colorScheme.onSurface
-                        },
-                        modifier = Modifier.padding(12.dp)
-                    )
-                }
-
-                Spacer(Modifier.width(16.dp))
-
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = if (isLoggedIn) discordName else stringResource(R.string.not_logged_in),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.alpha(if (isLoggedIn) 1f else 0.7f)
-                    )
-                    if (discordUsername.isNotEmpty()) {
-                        Text(
-                            text = "@$discordUsername",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-
-                if (isLoggedIn) {
-                    OutlinedButton(
-                        onClick = {
-                            discordName = ""
-                            discordToken = ""
-                            discordUsername = ""
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Surface(
+                            shape = CircleShape,
+                            color = if (isLoggedIn) {
+                                MaterialTheme.colorScheme.primary
+                            } else {
+                                MaterialTheme.colorScheme.outline
+                            },
+                            modifier = Modifier.size(48.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.discord),
+                                contentDescription = null,
+                                tint = if (isLoggedIn) {
+                                    MaterialTheme.colorScheme.onPrimary
+                                } else {
+                                    MaterialTheme.colorScheme.onSurface
+                                },
+                                modifier = Modifier.padding(12.dp)
+                            )
                         }
-                    ) {
-                        Text(stringResource(R.string.logout))
-                    }
-                } else {
-                    FilledTonalButton(
-                        onClick = { navController.navigate("settings/discord/login") }
-                    ) {
-                        Text(stringResource(R.string.action_login))
-                    }
-                }
-            }
-        }
 
-        if (!isLoggedIn) {
-            PreferenceEntry(
-                title = { Text(stringResource(R.string.advanced_login)) },
-                icon = { Icon(painterResource(R.drawable.token), null) },
-                onClick = { showTokenDialog = true }
+                        Spacer(Modifier.width(16.dp))
+
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = if (isLoggedIn) discordName else stringResource(R.string.not_logged_in),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                modifier = Modifier.alpha(if (isLoggedIn) 1f else 0.7f)
+                            )
+                            if (discordUsername.isNotEmpty()) {
+                                Text(
+                                    text = "@$discordUsername",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+
+                        if (isLoggedIn) {
+                            OutlinedButton(
+                                onClick = {
+                                    discordName = ""
+                                    discordToken = ""
+                                    discordUsername = ""
+                                }
+                            ) {
+                                Text(stringResource(R.string.logout))
+                            }
+                        } else {
+                            FilledTonalButton(
+                                onClick = { navController.navigate("settings/discord/login") }
+                            ) {
+                                Text(stringResource(R.string.action_login))
+                            }
+                        }
+                    }
+                }},
+
+                {if (!isLoggedIn) {
+                    PreferenceEntry(
+                        title = { Text(stringResource(R.string.advanced_login)) },
+                        icon = { Icon(painterResource(R.drawable.token), null) },
+                        onClick = { showTokenDialog = true }
+                    )
+                }}
             )
-        }
-
-        // Options
-        PreferenceGroupTitle(title = stringResource(R.string.options))
-
-        SwitchPreference(
-            title = { Text(stringResource(R.string.enable_discord_rpc)) },
-            checked = discordRPC,
-            onCheckedChange = onDiscordRPCChange,
-            isEnabled = isLoggedIn,
         )
 
-        SwitchPreference(
-            title = { Text(stringResource(R.string.discord_use_details)) },
-            description = stringResource(R.string.discord_use_details_description),
-            checked = useDetails,
-            onCheckedChange = onUseDetailsChange,
-            isEnabled = isLoggedIn && discordRPC,
+        SettingsGeneralCategory(
+            title = stringResource(R.string.options),
+            items = listOf(
+                {SwitchPreference(
+                    title = { Text(stringResource(R.string.enable_discord_rpc)) },
+                    checked = discordRPC,
+                    onCheckedChange = onDiscordRPCChange,
+                    isEnabled = isLoggedIn,
+                )},
+
+                {SwitchPreference(
+                    title = { Text(stringResource(R.string.discord_use_details)) },
+                    description = stringResource(R.string.discord_use_details_description),
+                    checked = useDetails,
+                    onCheckedChange = onUseDetailsChange,
+                    isEnabled = isLoggedIn && discordRPC,
+                )}
+            )
         )
+
 
         // Enhanced preview
         PreferenceGroupTitle(title = stringResource(R.string.preview))
@@ -360,25 +358,7 @@ fun DiscordSettings(
             isPlaying = isPlaying,
             sliderStyle = sliderStyle
         )
-
-        Spacer(Modifier.height(16.dp))
     }
-
-    TopAppBar(
-        title = { Text(stringResource(R.string.discord_integration)) },
-        navigationIcon = {
-            IconButton(
-                onClick = navController::navigateUp,
-                onLongClick = navController::backToMain,
-            ) {
-                Icon(
-                    painterResource(R.drawable.arrow_back),
-                    contentDescription = null,
-                )
-            }
-        },
-        scrollBehavior = scrollBehavior
-    )
 }
 
 @Composable

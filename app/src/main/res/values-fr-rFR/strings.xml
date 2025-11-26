@@ -499,7 +499,6 @@
     <string name="avatar_selection"></string>
 
     <!-- Avatar Descriptions for Predefined Avatars -->
-    <string name="blue_initial_avatar"></string>
     <string name="discord_use_details"></string>
     <string name="discord_use_details_description"></string>
     <string name="community"></string>
@@ -511,14 +510,12 @@
     <string name="from_cover"></string>
     <string name="preset_themes"></string>
     <string name="share_lyrics_image"></string>
-    <string name="error_generating_image"></string>
     <string name="cover_color"></string>
     <string name="rotate_lyrics_background"></string>
     <string name="playlist_add_local_to_synced_note"></string>
     <string name="manage"></string>
     <string name="clear"></string>
     <string name="playing_from">"Lecture depuis"</string>
-    <string name="SmallButtonsShape"></string>
     <string name="cloud_upload_title"></string>
     <string name="cloud_upload_enabled_description"></string>
     <string name="cloud_upload_disabled_description"></string>

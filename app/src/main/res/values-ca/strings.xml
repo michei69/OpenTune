@@ -488,7 +488,6 @@ Treu el m'agrada a tot"</string>
     <string name="avatar_selection"></string>
 
     <!-- Avatar Descriptions for Predefined Avatars -->
-    <string name="blue_initial_avatar"></string>
     <string name="discord_use_details"></string>
     <string name="discord_use_details_description"></string>
     <string name="community"></string>
@@ -500,14 +499,12 @@ Treu el m'agrada a tot"</string>
     <string name="from_cover">"De la portada"</string>
     <string name="preset_themes">"Predefinits"</string>
     <string name="share_lyrics_image">"Compartiu la imatge de la lletra"</string>
-    <string name="error_generating_image">"S'ha produït un error generant la imatge"</string>
     <string name="cover_color">"Color de la portada"</string>
     <string name="rotate_lyrics_background"></string>
     <string name="playlist_add_local_to_synced_note"></string>
     <string name="manage">"Gestiona"</string>
     <string name="clear">"Neteja"</string>
     <string name="playing_from">"Reproduïnt des de"</string>
-    <string name="SmallButtonsShape"></string>
     <string name="cloud_upload_title"></string>
     <string name="cloud_upload_enabled_description"></string>
     <string name="cloud_upload_disabled_description"></string>

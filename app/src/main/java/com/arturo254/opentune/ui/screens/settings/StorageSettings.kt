@@ -65,6 +65,7 @@ import com.arturo254.opentune.db.entities.Song
 import com.arturo254.opentune.extensions.tryOrNull
 import com.arturo254.opentune.ui.component.IconButton
 import com.arturo254.opentune.ui.component.ListPreference
+import com.arturo254.opentune.ui.component.SettingsPage
 import com.arturo254.opentune.ui.utils.backToMain
 import com.arturo254.opentune.ui.utils.formatFileSize
 import com.arturo254.opentune.utils.rememberPreference
@@ -138,113 +139,97 @@ fun StorageSettings(
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier
-                .windowInsetsPadding(LocalPlayerAwareWindowInsets.current)
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            // Downloads
-            StorageCard(
-                title = stringResource(R.string.downloaded_songs),
-                icon = R.drawable.download,
-                usedSize = downloadCacheSize,
-                maxSize = null,
-                progress = if (downloadCacheSize > 0) animatedDownloadCacheSize else 0f,
-                onClearClick = {
-                    coroutineScope.launch(Dispatchers.IO) {
-                        try {
-                            downloadCache.keys.toList().forEach { key ->
-                                tryOrNull { downloadCache.removeResource(key) }
-                            }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
+    SettingsPage(
+        title = stringResource(R.string.storage),
+        navController = navController,
+        scrollBehavior = scrollBehavior,
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        // Downloads
+        StorageCard(
+            title = stringResource(R.string.downloaded_songs),
+            icon = R.drawable.download,
+            usedSize = downloadCacheSize,
+            maxSize = null,
+            progress = if (downloadCacheSize > 0) animatedDownloadCacheSize else 0f,
+            onClearClick = {
+                coroutineScope.launch(Dispatchers.IO) {
+                    try {
+                        downloadCache.keys.toList().forEach { key ->
+                            tryOrNull { downloadCache.removeResource(key) }
                         }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
-                },
-                onManageClick = null
-            )
-
-            // Song cache
-            StorageCard(
-                title = stringResource(R.string.song_cache),
-                icon = R.drawable.music_note,
-                usedSize = playerCacheSize,
-                maxSize = if (maxSongCacheSize == -1) -1L else maxSongCacheSize * 1024 * 1024L,
-                progress = animatedPlayerCacheSize,
-                onClearClick = {
-                    coroutineScope.launch(Dispatchers.IO) {
-                        try {
-                            playerCache.keys.toList().forEach { key ->
-                                tryOrNull { playerCache.removeResource(key) }
-                            }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                    }
-                },
-                onManageClick = { showCachedSongsSheet = true },
-                extraContent = {
-                    ListPreference(
-                        title = { Text(stringResource(R.string.max_cache_size)) },
-                        selectedValue = maxSongCacheSize,
-                        values = listOf(-1, 128, 256, 512, 1024, 2048, 4096, 8192),
-                        valueText = {
-                            if (it == -1) stringResource(R.string.unlimited)
-                            else formatFileSize(it * 1024 * 1024L)
-                        },
-                        onValueSelected = onMaxSongCacheSizeChange,
-                    )
-                }
-            )
-
-            // Image cache
-            StorageCard(
-                title = stringResource(R.string.image_cache),
-                icon = R.drawable.image,
-                usedSize = imageCacheSize,
-                maxSize = if (maxImageCacheSize == -1) -1L else maxImageCacheSize * 1024 * 1024L,
-                progress = animatedImageCacheSize,
-                onClearClick = {
-                    coroutineScope.launch(Dispatchers.IO) {
-                        try {
-                            imageDiskCache.clear()
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                    }
-                },
-                onManageClick = null,
-                extraContent = {
-                    ListPreference(
-                        title = { Text(stringResource(R.string.max_cache_size)) },
-                        selectedValue = maxImageCacheSize,
-                        values = listOf(-1, 128, 256, 512, 1024, 2048, 4096, 8192),
-                        valueText = {
-                            if (it == -1) stringResource(R.string.unlimited)
-                            else formatFileSize(it * 1024 * 1024L)
-                        },
-                        onValueSelected = onMaxImageCacheSizeChange,
-                    )
-                }
-            )
-        }
-
-        TopAppBar(
-            title = { Text(stringResource(R.string.storage)) },
-            navigationIcon = {
-                IconButton(
-                    onClick = navController::navigateUp,
-                    onLongClick = navController::backToMain,
-                ) {
-                    Icon(
-                        painterResource(R.drawable.arrow_back),
-                        contentDescription = null,
-                    )
                 }
             },
+            onManageClick = null
+        )
+
+        // Song cache
+        StorageCard(
+            title = stringResource(R.string.song_cache),
+            icon = R.drawable.music_note,
+            usedSize = playerCacheSize,
+            maxSize = if (maxSongCacheSize == -1) -1L else maxSongCacheSize * 1024 * 1024L,
+            progress = animatedPlayerCacheSize,
+            onClearClick = {
+                coroutineScope.launch(Dispatchers.IO) {
+                    try {
+                        playerCache.keys.toList().forEach { key ->
+                            tryOrNull { playerCache.removeResource(key) }
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            },
+            onManageClick = { showCachedSongsSheet = true },
+            extraContent = {
+                ListPreference(
+                    title = { Text(stringResource(R.string.max_cache_size)) },
+                    selectedValue = maxSongCacheSize,
+                    values = listOf(-1, 128, 256, 512, 1024, 2048, 4096, 8192),
+                    valueText = {
+                        if (it == -1) stringResource(R.string.unlimited)
+                        else formatFileSize(it * 1024 * 1024L)
+                    },
+                    onValueSelected = onMaxSongCacheSizeChange,
+                )
+            }
+        )
+
+        // Image cache
+        StorageCard(
+            title = stringResource(R.string.image_cache),
+            icon = R.drawable.image,
+            usedSize = imageCacheSize,
+            maxSize = if (maxImageCacheSize == -1) -1L else maxImageCacheSize * 1024 * 1024L,
+            progress = animatedImageCacheSize,
+            onClearClick = {
+                coroutineScope.launch(Dispatchers.IO) {
+                    try {
+                        imageDiskCache.clear()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            },
+            onManageClick = null,
+            extraContent = {
+                ListPreference(
+                    title = { Text(stringResource(R.string.max_cache_size)) },
+                    selectedValue = maxImageCacheSize,
+                    values = listOf(-1, 128, 256, 512, 1024, 2048, 4096, 8192),
+                    valueText = {
+                        if (it == -1) stringResource(R.string.unlimited)
+                        else formatFileSize(it * 1024 * 1024L)
+                    },
+                    onValueSelected = onMaxImageCacheSizeChange,
+                )
+            }
         )
     }
 
