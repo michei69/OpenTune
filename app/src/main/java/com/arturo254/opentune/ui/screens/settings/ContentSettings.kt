@@ -54,6 +54,7 @@ object PreferenceKeys {
     val QuickPicksKey = stringPreferencesKey("quick_picks")
     val EnableKugouKey = booleanPreferencesKey("enable_kugou")
     val EnableLrcLibKey = booleanPreferencesKey("enable_lrclib")
+    val EnableMusixMatchKey = booleanPreferencesKey("enable_musixmatch")
     val PreferredLyricsProviderKey = stringPreferencesKey("preferred_lyrics_provider")
     val AppLanguageKey = stringPreferencesKey("app_language")
 }
@@ -106,6 +107,10 @@ fun ContentSettings(
     )
     val (enableKugou, onEnableKugouChange) = rememberPreference(
         key = PreferenceKeys.EnableKugouKey,
+        defaultValue = true
+    )
+    val (enableMusixMatch, onEnableMusixMatchChange) = rememberPreference(
+        key = PreferenceKeys.EnableMusixMatchKey,
         defaultValue = true
     )
     val (enableLrclib, onEnableLrclibChange) = rememberPreference(
@@ -203,11 +208,18 @@ fun ContentSettings(
             checked = enableKugou,
             onCheckedChange = onEnableKugouChange,
         )
+        SwitchPreference(
+            title = { Text(stringResource(R.string.enable_musixmatch)) },
+            icon = { Icon(painterResource(R.drawable.lyrics), null) },
+            checked = enableMusixMatch,
+            onCheckedChange = onEnableMusixMatchChange,
+        )
         ListPreference(
             title = { Text(stringResource(R.string.set_first_lyrics_provider)) },
             icon = { Icon(painterResource(R.drawable.lyrics), null) },
             selectedValue = preferredProvider,
-            values = listOf(PreferredLyricsProvider.KUGOU, PreferredLyricsProvider.LRCLIB),
+            values = listOf(PreferredLyricsProvider.KUGOU, PreferredLyricsProvider.LRCLIB,
+                PreferredLyricsProvider.MUSIXMATCH),
             valueText = {
                 it.name.toLowerCase(androidx.compose.ui.text.intl.Locale.current)
                     .capitalize(androidx.compose.ui.text.intl.Locale.current)

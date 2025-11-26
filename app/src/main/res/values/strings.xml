@@ -575,4 +575,5 @@
     <string name="search_language">Search languages...</string>
     <string name="last_update">Last update:</string>
     <string name="by">by %1$s</string>
+    <string name="enable_musixmatch">Enable MusixMatch lyrics provider</string>
 </resources>

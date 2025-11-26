@@ -2,6 +2,7 @@ package com.arturo254.opentune.lyrics
 
 import android.content.Context
 import android.util.LruCache
+import com.arturo254.opentune.LocalPlayerConnection
 import com.arturo254.opentune.constants.PreferredLyricsProvider
 import com.arturo254.opentune.constants.PreferredLyricsProviderKey
 import com.arturo254.opentune.db.entities.LyricsEntity.Companion.LYRICS_NOT_FOUND
@@ -23,8 +24,9 @@ constructor(
         listOf(
             LrcLibLyricsProvider,
             KuGouLyricsProvider,
+            MusixMatchLyricsProvider,
             YouTubeSubtitleLyricsProvider,
-            YouTubeLyricsProvider
+            YouTubeLyricsProvider,
         )
     val preferred =
         context.dataStore.data
@@ -37,16 +39,27 @@ constructor(
                         listOf(
                             LrcLibLyricsProvider,
                             KuGouLyricsProvider,
+                            MusixMatchLyricsProvider,
                             YouTubeSubtitleLyricsProvider,
                             YouTubeLyricsProvider
                         )
                     } else {
-                        listOf(
-                            KuGouLyricsProvider,
-                            LrcLibLyricsProvider,
-                            YouTubeSubtitleLyricsProvider,
-                            YouTubeLyricsProvider
-                        )
+                        if (it == PreferredLyricsProvider.KUGOU)
+                            listOf(
+                                KuGouLyricsProvider,
+                                LrcLibLyricsProvider,
+                                MusixMatchLyricsProvider,
+                                YouTubeSubtitleLyricsProvider,
+                                YouTubeLyricsProvider
+                            )
+                        else
+                            listOf(
+                                MusixMatchLyricsProvider,
+                                LrcLibLyricsProvider,
+                                KuGouLyricsProvider,
+                                YouTubeSubtitleLyricsProvider,
+                                YouTubeLyricsProvider
+                            )
                     }
             }
     private val cache = LruCache<String, List<LyricsResult>>(MAX_CACHE_SIZE)

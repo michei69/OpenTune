@@ -550,4 +550,5 @@ Aplicația se va reporni automat."</string>
     <string name="search_language">Caută limbi...</string>
     <string name="last_update">Ultima actualizare:</string>
     <string name="by">de %1$s</string>
+    <string name="enable_musixmatch">Activează furnizorul MusixMatch pentru versuri</string>
 </resources>

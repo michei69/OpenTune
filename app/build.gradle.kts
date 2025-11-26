@@ -148,6 +148,7 @@ dependencies {
     implementation(projects.lrclib)
     implementation(projects.kizzy)
     implementation(project(":jossredconnect"))
+    implementation(project(":musixmatch"))
 
     implementation(libs.ktor.client.core)
 
