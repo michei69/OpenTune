@@ -5,14 +5,12 @@
     <string name="artists">Umělci</string>
     <string name="albums">Alba</string>
     <string name="playlists">Playlisty</string>
-    <string name="explore">Prozkoumat</string>
 
     <!-- Top bar -->
     <plurals name="n_selected">
-        <item quantity="one">Vybrána %d</item>
-        <item quantity="few">Vybrány %d</item>
-        <item quantity="many">Vybráno %d</item>
-        <item quantity="other">Vybráno %d</item>
+        <item quantity="one">Vybrána %d položka</item>
+        <item quantity="few">Vybrány %d položky</item>
+        <item quantity="other">Vybráno %d položek</item>
     </plurals>
 
     <!-- Home -->
@@ -26,18 +24,24 @@
     <string name="forgotten_favorites">Zapomenuté oblíbené</string>
     <string name="similar_to">Podobné jako</string>
     <string name="keep_listening">Poslouchejte dál</string>
-    <string name="your_ytb_playlists">Vaše YouTube playlisty</string>
+    <string name="your_ytb_playlists">Váš YouTube účet</string>
 
     <!-- History -->
     <string name="today">Dnes</string>
     <string name="yesterday">Včera</string>
     <string name="this_week">Tento týden</string>
     <string name="last_week">Minulý týden</string>
+    <string name="local_history">Místní</string>
+    <string name="remote_history">Vzdálená</string>
 
     <!-- Stats -->
     <string name="most_played_songs">Nejčastěji přehrávané skladby</string>
     <string name="most_played_artists">Nejčastěji přehrávaní umělci</string>
     <string name="most_played_albums">Nejčastěji přehrávaná alba</string>
+    <string name="weeks">Týdny</string>
+    <string name="months">Měsíce</string>
+    <string name="years">Roky</string>
+    <string name="continuous">Průběžně</string>
 
     <!-- Search -->
     <string name="search">Vyhledávání</string>
@@ -60,24 +64,33 @@
     <!-- Artist screen -->
     <string name="from_your_library">Z vaší knihovny</string>
 
+    <!-- Album screen -->
+    <string name="other_versions">Jiné verze</string>
+
     <!-- Library -->
     <string name="liked">Oblíbené</string>
-    <string name="offline">Offline</string>
+    <string name="offline">Stažené</string>
     <string name="my_top">Moje nej</string>
-
+    <string name="library_song_empty">Skladby z knihovny se zobrazí zde</string>
+    <string name="library_artist_empty">Umělci z knihovny se zobrazí zde</string>
+    <string name="library_album_empty">Alba z knihovny se zobrazí zde</string>
+    <string name="library_playlist_empty">Vaše playlisty se zobrazí zde</string>
 
     <!-- Playlist -->
     <string name="liked_songs">Oblíbené skladby</string>
     <string name="downloaded_songs">Stažené skladby</string>
+    <string name="sync_playlist">Synchronizovat playlist</string>
     <string name="playlist_is_empty">Playlist je prázdný</string>
     <string name="remove_download_playlist_confirm">Opravdu chcete odebrat všechny skladby z playlistu „%s“ ze stažených?</string>
     <string name="delete_playlist_confirm">Opravdu chcete odstranit playlist „%s“?</string>
+    <string name="elements_selected">Vybráno %1$d prvků</string>
+    <string name="allows_for_sync_witch_youtube">Poznámka: Umožňuje synchronizaci s YouTube Music. Toto nastavení nelze později změnit.</string>
 
     <!-- Button -->
     <string name="retry">Zkusit znovu</string>
     <string name="radio">Rádio</string>
     <string name="shuffle">Náhodně</string>
-    <string name="reset">Reset</string>
+    <string name="reset">Resetovat</string>
 
     <!-- Menu -->
     <string name="details">Podrobnosti</string>
@@ -88,8 +101,9 @@
     <string name="add_to_queue">Přidat do fronty</string>
     <string name="add_to_library">Přidat do knihovny</string>
     <string name="remove_from_library">Odstranit z knihovny</string>
+    <string name="remove_from_playlist">Odstranit z playlistu</string>
     <string name="download">Stáhnout</string>
-    <string name="downloading">Stahování</string>
+    <string name="downloading">Stahování…</string>
     <string name="remove_download">Odstranit ze stažených</string>
     <string name="import_playlist">Importovat playlist</string>
     <string name="add_to_playlist">Přidat do playlistu</string>
@@ -104,6 +118,8 @@
     <string name="advanced">Pokročilé</string>
     <string name="select">Vybrat vše</string>
     <string name="like_all">Vše do oblíbených</string>
+    <string name="dislike_all">Vše z oblíbených</string>
+    <string name="tempo_and_pitch">Tempo a výška</string>
 
     <!-- Sort menu -->
     <string name="sort_by_create_date">Datum přidání</string>
@@ -122,7 +138,7 @@
     <string name="codecs">Kodeky</string>
     <string name="bitrate">Přenosová rychlost</string>
     <string name="sample_rate">Vzorkovací frekvence</string>
-    <string name="loudness">Hlučnost</string>
+    <string name="loudness">Hlasitost</string>
     <string name="volume">Hlasitost</string>
     <string name="file_size">Velikost souboru</string>
     <string name="unknown">Neznámé</string>
@@ -130,6 +146,7 @@
 
     <string name="edit_lyrics">Upravit texty</string>
     <string name="search_lyrics">Hledat texty</string>
+    <string name="lyrics">Texty</string>
 
     <string name="edit_song">Upravit skladbu</string>
     <string name="song_title">Název skladby</string>
@@ -149,54 +166,57 @@
     <string name="artist_name">Jméno umělce</string>
     <string name="error_artist_name_empty">Jméno umělce nemůže být prázdné.</string>
 
+    <string name="duplicates">Duplikáty</string>
+    <string name="skip_duplicates">Přeskočit duplikáty</string>
+    <string name="add_anyway">Přesto přidat</string>
+    <string name="duplicates_description_single">Skladba je již ve vašem playlistu</string>
+    <string name="duplicates_description_multiple">%d skladeb je již ve vašem playlistu</string>
+
     <!-- Noun -->
     <plurals name="n_song">
         <item quantity="one">%d skladba</item>
         <item quantity="few">%d skladby</item>
-        <item quantity="many">%d skladeb</item>
         <item quantity="other">%d skladeb</item>
     </plurals>
     <plurals name="n_artist">
         <item quantity="one">%d umělec</item>
         <item quantity="few">%d umělci</item>
-        <item quantity="many">%d umělců</item>
         <item quantity="other">%d umělců</item>
     </plurals>
     <plurals name="n_album">
         <item quantity="one">%d album</item>
         <item quantity="few">%d alba</item>
-        <item quantity="many">%d alb</item>
         <item quantity="other">%d alb</item>
     </plurals>
     <plurals name="n_playlist">
         <item quantity="one">%d playlist</item>
         <item quantity="few">%d playlisty</item>
-        <item quantity="many">%d playlistů</item>
         <item quantity="other">%d playlistů</item>
     </plurals>
     <plurals name="n_week">
         <item quantity="one">%d týden</item>
         <item quantity="few">%d týdny</item>
-        <item quantity="many">%d týdnů</item>
         <item quantity="other">%d týdnů</item>
     </plurals>
     <plurals name="n_month">
         <item quantity="one">%d měsíc</item>
         <item quantity="few">%d měsíce</item>
-        <item quantity="many">%d měsíců</item>
         <item quantity="other">%d měsíců</item>
     </plurals>
     <plurals name="n_year">
         <item quantity="one">%d rok</item>
         <item quantity="few">%d roky</item>
-        <item quantity="many">%d let</item>
         <item quantity="other">%d let</item>
     </plurals>
     <plurals name="n_element">
         <item quantity="one">%d prvek</item>
         <item quantity="few">%d prvky</item>
-        <item quantity="many">%d prvků</item>
         <item quantity="other">%d prvků</item>
+    </plurals>
+    <plurals name="n_time">
+        <item quantity="one">%d čas</item>
+        <item quantity="few">%d časy</item>
+        <item quantity="other">%d časů</item>
     </plurals>
 
     <!-- Snackbar -->
@@ -211,7 +231,6 @@
     <plurals name="minute">
         <item quantity="one">1 minuta</item>
         <item quantity="few">%d minuty</item>
-        <item quantity="many">%d minut</item>
         <item quantity="other">%d minut</item>
     </plurals>
     <string name="error_no_stream">Není dostupný žádný stream</string>
@@ -231,27 +250,63 @@
     <!-- Queue Title -->
     <string name="queue_all_songs">Všechny skladby</string>
     <string name="queue_searched_songs">Hledané skladby</string>
+    <string name="similar_content">Podobný obsah</string>
 
     <!-- Notification name -->
     <string name="music_player">Hudební přehrávač</string>
 
     <!-- Settings -->
     <string name="settings">Nastavení</string>
+    <string name="login_settings">Přihlašovací nastavení</string>
+    <string name="use_login_for_browse">Použít přihlášení pro prohlížení prémiového obsahu</string>
+    <string name="use_login_for_browse_desc">Může zobrazit alba pouze pro předplatitele, pokud jste přihlášeni s prémiovým účtem</string>
+
+    <string name="general_settings">Obecná nastavení</string>
+
     <string name="appearance">Vzhled</string>
+    <string name="theme">Motiv</string>
     <string name="enable_dynamic_theme">Povolit dynamický motiv</string>
     <string name="dark_theme">Tmavý motiv</string>
-    <string name="dark_theme_on">Zap</string>
-    <string name="dark_theme_off">Vyp</string>
+    <string name="dark_theme_on">Zapnuto</string>
+    <string name="dark_theme_off">Vypnuto</string>
     <string name="dark_theme_follow_system">Podle systému</string>
+    <string name="player_background_style">Styl pozadí přehrávače</string>
+    <string name="follow_theme">Podle motivu</string>
+    <string name="gradient">Přechod</string>
+    <string name="player_background_blur">Rozmazání</string>
+    <string name="enable_swipe_thumbnail">Povolit přejetí pro změnu skladby</string>
     <string name="pure_black">Čistě černá</string>
-    <string name="default_open_tab">Výchozí karta</string>
+    <string name="player">Přehrávač</string>
+    <string name="player_text_alignment">Zarovnání textu přehrávače</string>
     <string name="lyrics_text_position">Pozice textů</string>
+    <string name="sided">Po stranách</string>
     <string name="left">Vlevo</string>
-    <string name="center">Uprostřed</string>
+    <string name="center">Na střed</string>
     <string name="right">Vpravo</string>
+    <string name="lyrics_click_change">Měnit texty při kliknutí</string>
+    <string name="grid_cell_size">Velikost buněk mřížky</string>
+    <string name="small">Malá</string>
+    <string name="big">Velká</string>
+    <string name="player_slider_style">Styl posuvníku přehrávače</string>
+    <string name="default_">Výchozí</string>
+    <string name="squiggly">Vlnovka</string>
+    <string name="slim">Úzký</string>
+    <string name="misc">Různé</string>
+    <string name="default_open_tab">Výchozí karta</string>
+    <string name="slim_navbar">Skrýt popisky spodní navigace</string>
 
     <string name="content">Obsah</string>
+    <string name="google">Google</string>
+    <string name="discord">Discord</string>
     <string name="login">Přihlásit se</string>
+    <string name="advanced_login">Pokročilé přihlášení (token)</string>
+    <string name="logout">Odhlásit se</string>
+    <string name="not_logged_in">Nepřihlášeno</string>
+    <string name="token_hidden">Klepnutím zobrazíte token</string>
+    <string name="token_shown">Klepněte znovu pro kopírování nebo úpravu</string>
+    <string name="token_adv_login_description">Toto je POKROČILÁ metoda přihlášení. Jako alternativu k webovému portálu můžete přímo zadat nebo aktualizovat svůj přihlašovací token. To může například urychlit přihlášení na více zařízeních. Upozorňujeme, že jakékoli neplatné formáty tokenů, které aplikace nedokáže analyzovat, nebudou přijaty</string>
+    <string name="ytm_sync">Automaticky synchronizovat s vaším účtem YouTube Music</string>
+    <string name="general">Obecné</string>
     <string name="content_language">Výchozí jazyk obsahu</string>
     <string name="content_country">Výchozí země obsahu</string>
     <string name="system_default">Podle systému</string>
@@ -262,15 +317,31 @@
     <string name="default_lib_chips">Změnit výchozí stránku knihovny</string>
     <string name="set_quick_picks">Nastavit rychlý výběr</string>
     <string name="last_song_listened">Podle poslední poslouchané skladby</string>
+    <string name="app_language">Jazyk aplikace (Beta)</string>
+    <string name="configure_app_language">Nastavit jazyky aplikace</string>
+    <string name="configure_supported_links">Nastavit podporované odkazy</string>
+    <string name="enable_kugou">Povolit poskytovatele textů KuGou</string>
+    <string name="enable_lrclib">Povolit poskytovatele textů LrcLib</string>
+    <string name="set_first_lyrics_provider">Preferovaný poskytovatel textů</string>
 
     <string name="player_and_audio">Přehrávání a zvuk</string>
     <string name="audio_quality">Kvalita zvuku</string>
+    <string name="audio_quality_max">Maximální (beta)</string>
     <string name="audio_quality_auto">Automatická</string>
     <string name="audio_quality_high">Vysoká</string>
     <string name="audio_quality_low">Nízká</string>
-    <string name="persistent_queue">Ukládat frontu</string>
+    <string name="queue">Fronta</string>
+    <string name="persistent_queue">Trvalá fronta</string>
+    <string name="persistent_queue_desc">Obnovit poslední frontu při spuštění aplikace</string>
+    <string name="auto_load_more">Automaticky načíst více skladeb</string>
+    <string name="auto_load_more_desc">Automaticky přidat více skladeb při dosažení konce fronty, pokud je to možné</string>
+    <string name="enable_similar_content">Povolit podobný obsah</string>
+    <string name="similar_content_desc">Automaticky přidat více podobných skladeb při dosažení konce fronty</string>
     <string name="skip_silence">Přeskakovat ticho</string>
     <string name="audio_normalization">Normalizace zvuku</string>
+    <string name="auto_skip_next_on_error">Automaticky přeskočit na další skladbu při chybě</string>
+    <string name="auto_skip_next_on_error_desc">Zajistit plynulý poslech</string>
+    <string name="stop_music_on_task_clear">Zastavit hudbu při zavření úlohy</string>
     <string name="equalizer">Ekvalizér</string>
 
     <string name="storage">Úložiště</string>
@@ -287,14 +358,18 @@
     <string name="size_used">Využito %s</string>
 
     <string name="privacy">Soukromí</string>
+    <string name="listen_history">Historie poslechu</string>
+    <string name="search_history">Historie vyhledávání</string>
     <string name="pause_listen_history">Pozastavit historii poslechu</string>
     <string name="clear_listen_history">Vymazat historii poslechu</string>
     <string name="clear_listen_history_confirm">Opravdu chcete vymazat celou historii poslechu?</string>
     <string name="pause_search_history">Pozastavit historii vyhledávání</string>
     <string name="clear_search_history">Vymazat historii vyhledávání</string>
     <string name="clear_search_history_confirm">Opravdu chcete vymazat celou historii vyhledávání?</string>
-    <string name="enable_kugou">Povolit poskytovatele textů KuGou</string>
-    <string name="enable_lrclib">Povolit poskytovatele textů LrcLib</string>
+    <string name="disable_screenshot">Zakázat snímky obrazovky</string>
+    <string name="disable_screenshot_desc">Když je tato možnost zapnuta, snímky obrazovky a zobrazení aplikace v Přehledu úloh jsou zakázány.</string>
+
+    <string name="hide_explicit">Skrýt nevhodný obsah</string>
 
     <string name="backup_restore">Záloha a obnovení</string>
     <string name="backup">Zálohovat</string>
@@ -302,6 +377,19 @@
     <string name="backup_create_success">Záloha úspěšně vytvořena</string>
     <string name="backup_create_failed">Nepodařilo se vytvořit zálohu</string>
     <string name="restore_failed">Nepodařilo se obnovit zálohu</string>
+
+    <string name="discord_integration">Integrace s Discordem</string>
+    <string name="discord_information">OpenTune používá knihovnu KizzyRPC pro nastavení stavu vašeho účtu Discord. To zahrnuje použití připojení Discord Gateway, což může být považováno za porušení podmínek služby Discord. Nicméně nejsou známy žádné případy pozastavení uživatelských účtů z tohoto důvodu. Používejte na vlastní nebezpečí. OpenTune pouze extrahuje váš token a vše ostatní je uloženo lokálně.</string>
+    <string name="dismiss">Zavřít</string>
+    <string name="options">Možnosti</string>
+    <string name="preview">Náhled</string>
+    <string name="login_failed">Přihlášení selhalo</string>
+
+    <string name="enable_discord_rpc">Povolit Rich Presence</string>
+
+    <string name="default_links">Otevírat podporované odkazy</string>
+
+    <string name="release_notes">Poznámky k vydání</string>
 
     <string name="about">O aplikaci</string>
     <string name="app_version">Verze aplikace</string>
@@ -314,5 +402,189 @@
     <string name="past_week">Poslední týden</string>
     <string name="past_month">Poslední měsíc</string>
     <string name="past_year">Poslední rok</string>
-    <string name="top_length">Délka mého Seznamu nejlepších</string>
+    <string name="top_length">Délka mého seznamu nejlepších</string>
+    <string name="history_duration">Délka historie</string>
+    <string name="contributors">přispěvatelé</string>
+    <string name="donate">Přispět</string>
+    <string name="telegram_channel">Telegramový kanál</string>
+    <string name="contribution">Příspěvek</string>
+    <string name="new_version">Nová verze</string>
+    <string name="changelog">Seznam změn</string>
+    <string name="changelogs">Seznamy změn</string>
+    <string name="no_changes">Žádné změny</string>
+    <string name="translate">Přeložit</string>
+    <string name="redirect">Přesměrování</string>
+    <string name="poeditor_redirect">Budete přesměrováni na poeditor.com</string>
+    <string name="backup_restore_warning">Pozor při obnovování záloh, dříve stažené skladby nejsou staženy. DOPORUČUJE SE přehrát obnovené skladby, aby se předešlo chybám při stahování.</string>
+    <string name="backup_link_title">Záloha úspěšně nahrána!</string>
+    <string name="backup_link_description">Vaše záloha bude dostupná po dobu 14 dnů.</string>
+    <string name="copy_link">Kopírovat odkaz</string>
+    <string name="customize_thumbnail_corner_radius">Přizpůsobit zaoblení náhledů</string>
+    <string name="corner_radius_label">Zaoblení: %1$s</string>
+    <string name="unmute">Zapnout zvuk</string>
+    <plurals name="seconds">
+        <item quantity="one">1 sekunda</item>
+        <item quantity="few">%d sekundy</item>
+        <item quantity="other">%d sekund</item>
+    </plurals>
+    <string name="mute">Ztlumit</string>
+    <string name="explore">Prozkoumat</string>
+    <string name="custom_avatar">Vlastní avatar</string>
+    <string name="select_image">Vybrat obrázek</string>
+    <string name="default_avatar">Výchozí avatar</string>
+    <string name="restore_default_avatar">Obnovit výchozí avatar</string>
+    <string name="search_results">Výsledky hledání</string>
+    <string name="suggestions">Návrhy</string>
+    <string name="collapse">Sbalit</string>
+    <string name="expand">Rozbalit</string>
+    <string name="custom">Vlastní</string>
+    <string name="close">Zavřít</string>
+    <string name="custom_value">Vlastní hodnota</string>
+    <string name="adjust_radius">Upravit poloměr</string>
+    <string name="cancel">Zrušit</string>
+    <string name="apply">Použít</string>
+    <string name="player_buttons_style">Styl tlačítek přehrávače</string>
+    <string name="default_style">Výchozí styl</string>
+    <string name="secondary_color_style">Styl sekundární barvy</string>
+    <string name="update_version">Aktualizace v%1$s</string>
+    <string name="download_question">Chcete stáhnout novou verzi?</string>
+    <string name="update_download">Stáhnout</string>
+    <string name="update_downloading">Stahování aktualizace…</string>
+    <string name="download_completed">Stahování dokončeno</string>
+    <string name="install">Instalovat</string>
+    <string name="update_download_error">Chyba při stahování aktualizace</string>
+    <string name="tap_to_update">Klepnutím aktualizovat</string>
+    <string name="info_title">Informace</string>
+    <string name="info_description">Tato část poskytuje klíčové podrobnosti o procesu zálohování a obnovení, včetně zabezpečení vašich dat a jak zajistit, aby vaše informace zůstaly v bezpečí a snadno dostupné.</string>
+    <string name="backup_info_title">Důležité informace</string>
+    <string name="backup_info_description">Když zálohujete svá data, vaše stahování nejsou zahrnuta. Doporučuje se vyčistit mezipaměť prostřednictvím aplikace pro optimální výkon. Služba zálohování je bezpečná, což zajišťuje, že vaše data zůstanou soukromá a chráněná.</string>
+
+    <string name="backup_description">Vytvořit záložní soubor aktuálních dat</string>
+    <string name="restore_description">Obnovit data ze záložního souboru</string>
+    <string name="link_copied">Odkaz zkopírován</string>
+    <string name="version">Verze</string>
+    <string name="notification">Aktivovat oznámení</string>
+    <string name="cached_playlist">V mezipaměti</string>
+    <string name="added_to_queue">Přidáno do fronty</string>
+    <string name="warn">Poznámka: APK se stahuje z oficiálního úložiště GitHub, nikoli z F-Droid.</string>
+    <string name="edit_thumbnail">Upravit náhled</string>
+    <string name="remove_thumbnail">Odstranit náhled</string>
+    <string name="add_thumbnail">Přidat náhled</string>
+    <string name="storage_overview">Přehled úložiště</string>
+
+    <string name="clear_downloads_confirmation">Opravdu chcete odstranit všechny stažené skladby? Tuto akci nelze vrátit zpět.</string>
+    <string name="clear_song_cache_confirmation">Opravdu chcete vymazat mezipaměť skladeb? Uvolní se tím místo, ale může to dočasně ovlivnit výkon přehrávání.</string>
+    <string name="clear_image_cache_confirmation">Opravdu chcete vymazat mezipaměť obrázků? Obálky alb a obrázky umělců bude nutné znovu stáhnout.</string>
+    <string name="confirm">Potvrdit</string>
+    <string name="action_login">Přihlásit se</string>
+    <string name="generating_image">Generování obrázku</string>
+    <string name="please_wait">Čekejte prosím</string>
+    <string name="share_lyrics">Sdílet texty</string>
+    <string name="share_as_text">Sdílet jako text</string>
+    <string name="share_as_image">Sdílet jako obrázek</string>
+    <string name="max_selection_limit">Maximální limit výběru</string>
+    <string name="share_selected">Sdílet vybrané</string>
+    <string name="customize_colors">Přizpůsobit barvy</string>
+    <string name="more_options">Další možnosti</string>
+    <string name="text_color">Barva textu</string>
+    <string name="background_color">Barva pozadí</string>
+    <string name="back">Zpět</string>
+    <string name="error_navigation">Chyba navigace</string>
+    <string name="notifications_enabled">Oznámení povolena</string>
+    <string name="notifications_disabled">Oznámení zakázána</string>
+
+    <string name="visitor_data_title">Řešení problémů</string>
+    <string name="visitor_data_description">Pokud máte problémy s připojením k YouTube, resetování VISITOR_DATA může pomoci.</string>
+    <string name="visitor_data_info_button">Co to je?</string>
+    <string name="visitor_data_reset_button">Resetovat</string>
+
+    <string name="visitor_data_info_title">Co je VISITOR_DATA?</string>
+    <string name="visitor_data_info_intro">VISITOR_DATA je identifikátor používaný YouTube ke sledování vaší relace. Když je poškozen, může způsobit:</string>
+    <string name="visitor_data_info_problems">• Chyby připojení\n• Problémy s načítáním obsahu\n• Selhání vyhledávání\n• Přerušení přehrávání</string>
+    <string name="visitor_data_info_solution">Resetování VISITOR_DATA vygeneruje nový identifikátor a obvykle tyto problémy vyřeší.</string>
+    <string name="visitor_data_info_note">Funguje to pro anonymní uživatele i přihlášené uživatele.</string>
+    <string name="visitor_data_info_confirm">Rozumím</string>
+
+    <string name="visitor_data_reset_title">Resetovat VISITOR_DATA</string>
+    <string name="visitor_data_reset_message">Opravdu chcete resetovat VISITOR_DATA? Tím se vygeneruje nový identifikátor pro YouTube a může to opravit problémy s připojením.\n\nAplikace se automaticky restartuje.</string>
+    <string name="visitor_data_reset_confirm">Resetovat</string>
+    <string name="visitor_data_reset_cancel">Zrušit</string>
+
+    <string name="widget_title">Hudební widget</string>
+    <string name="error_saving_image">Chyba ukládání obrázku</string>
+    <string name="processing">Zpracovávání</string>
+    <string name="subscribed">Odebíráno</string>
+    <string name="subscribe">Odebírat</string>
+    <string name="language">Jazyk aplikace</string>
+    <string name="selection_mode_active">Aktivní režim výběru</string>
+
+    <!-- Avatar Selection -->
+    <string name="avatar_selection">Výběr avatara</string>
+
+    <!-- Avatar Descriptions for Predefined Avatars -->
+    <string name="discord_use_details">Použít podrobnosti místo stavu</string>
+    <string name="discord_use_details_description">Zobrazit název skladby místo jmen umělců</string>
+    <string name="community">Komunita</string>
+    <string name="app_info">Informace o aplikaci</string>
+    <string name="hide_controls">Skrýt ovládací prvky</string>
+    <string name="show_controls">Zobrazit ovládací prvky</string>
+
+    <string name="customize_image">Přizpůsobit obrázek</string>
+    <string name="select_theme">Vybrat motiv</string>
+    <string name="from_cover">Z obálky</string>
+    <string name="preset_themes">Předdefinované motivy</string>
+    <string name="share_lyrics_image">Sdílet texty jako obrázek</string>
+    <string name="cover_color">Barevná obálka</string>
+    <string name="rotate_lyrics_background">Otáčet pozadí textů</string>
+    <string name="playlist_add_local_to_synced_note">Poznámka: Přidávání místních skladeb do synchronizovaných/vzdálených playlistů není podporováno. Jakákoli jiná kombinace je platná</string>
+    <string name="manage">Spravovat</string>
+    <string name="clear">Vymazat</string>
+    <string name="playing_from">Přehrává se z:</string>
+
+    <string name="cloud_upload_title">Automatické nahrávání do cloudu</string>
+    <string name="cloud_upload_enabled_description">Zálohy budou nahrány na filebin.net</string>
+    <string name="cloud_upload_disabled_description">Zálohy budou uloženy pouze lokálně</string>
+    <string name="backup_with_cloud">Vytvořit lokální zálohu a nahrát do cloudu</string>
+    <string name="uploading_backup">Nahrávání zálohy…</string>
+    <string name="backup_success">Záloha úspěšná</string>
+    <string name="backup_upload_error">Chyba při nahrávání zálohy</string>
+    <string name="cache_clearing">Čištění…</string>
+    <string name="info_button">Info</string>
+    <string name="reset_button">Resetovat</string>
+    <string name="processing_songs">Zpracovávání skladeb…</string>
+    <string name="understood">Rozumím</string>
+    <string name="tap_to_open">Klepnutím otevřít</string>
+    <string name="credits_lead_dev">Hlavní vývojář</string>
+    <string name="credits_translator_br_icon_designer">Překladatel (pt_BR), designér ikon</string>
+    <string name="credits_code_refactor">Refaktorování kódu</string>
+    <string name="credits_translator_ru">Překladatel (ru_RU)</string>
+    <string name="credits_language_selector">Výběr jazyka</string>
+    <string name="credits_forker_translator_ro">Správce forku, překladatel (ro_RO)</string>
+    <string name="randomize_avatars">Náhodné avatary</string>
+    <string name="choose_a_style">Vybrat styl</string>
+    <string name="backup_upload_failed">Chyba při nahrávání zálohy</string>
+    <string name="backup_uploading">Nahrávání zálohy...</string>
+    <string name="app_logo">Logo OpenTune</string>
+    <string name="app_motto">Vaše hudba, žádná omezení</string>
+    <string name="icon_save_img">Uložit obrázek do galerie</string>
+    <string name="image_save_success">Obrázek úspěšně uložen!</string>
+    <string name="image_save_failure">Nepodařilo se uložit obrázek alba</string>
+    <string name="error_invalid_album">Chyba: Neplatné ID alba</string>
+    <string name="downloaded">Staženo</string>
+    <string name="download_failed">Stažení selhalo</string>
+    <string name="avatars">Avatary</string>
+    <string name="choose_predefined_avatar">Vybrat avatara</string>
+    <string name="applying">Používání...</string>
+    <string name="restarting">Restartování...</string>
+    <string name="search_language">Hledat jazyky...</string>
+    <string name="last_update">Poslední aktualizace:</string>
+    <string name="by">od %1$s</string>
+    <string name="enable_musixmatch">Povolit poskytovatele textů MusixMatch</string>
+    <string name="small_button_shape">Tvar malých tlačítek</string>
+    <string name="try_another_query">Zkuste jiný dotaz</string>
+    <string name="clear_search">Vymazat hledání</string>
+    <string name="changing_language">Změna jazyka...</string>
+    <string name="animate_lyrics">Animovat texty</string>
+    <string name="animate_lyrics_desc">Plynulý přechod mezi texty</string>
+    <string name="widget_portrait_title">Hudební widget na výšku</string>
 </resources>

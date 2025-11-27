@@ -111,8 +111,8 @@ data class LanguageItem(
 enum class CompletionStatus(val label: String, val color: @Composable () -> Color) {
     COMPLETE("", { Color.Transparent }),
     BETA("Beta", { MaterialTheme.colorScheme.primary }),
+    MACHINE("Machine Generated", { MaterialTheme.colorScheme.secondary }),
     INCOMPLETE("Incomplete", { MaterialTheme.colorScheme.tertiary }),
-    EXPERIMENTAL("Experimental", { MaterialTheme.colorScheme.secondary })
 }
 
 /** Language change operation statuses */
@@ -151,8 +151,8 @@ class LocaleManager private constructor(private val context: Context) {
             "pt-rBR" to LanguageMetadata("🇧🇷", CompletionStatus.BETA),
             "pt" to LanguageMetadata("🇵🇹", CompletionStatus.COMPLETE),
             "ru" to LanguageMetadata("🇷🇺", CompletionStatus.BETA),
-            "zh-rCN" to LanguageMetadata("🇨🇳", CompletionStatus.INCOMPLETE),
-            "zh-rTW" to LanguageMetadata("🇹🇼", CompletionStatus.COMPLETE),
+            "zh-rCN" to LanguageMetadata("🇨🇳", CompletionStatus.MACHINE),
+            "zh-rTW" to LanguageMetadata("🇹🇼", CompletionStatus.MACHINE),
             "ja" to LanguageMetadata("🇯🇵", CompletionStatus.BETA),
             "ko" to LanguageMetadata("🇰🇷", CompletionStatus.INCOMPLETE),
             "ar" to LanguageMetadata("🇸🇦", CompletionStatus.BETA),
@@ -161,13 +161,13 @@ class LocaleManager private constructor(private val context: Context) {
             "vi" to LanguageMetadata("🇻🇳", CompletionStatus.INCOMPLETE),
             "tr" to LanguageMetadata("🇹🇷", CompletionStatus.BETA),
             "pl" to LanguageMetadata("🇵🇱", CompletionStatus.BETA),
-            "nl" to LanguageMetadata("🇳🇱", CompletionStatus.INCOMPLETE),
+            "nl" to LanguageMetadata("🇳🇱", CompletionStatus.MACHINE),
             "id" to LanguageMetadata("🇮🇩", CompletionStatus.BETA),
             "uk" to LanguageMetadata("🇺🇦", CompletionStatus.BETA),
-            "he" to LanguageMetadata("🇮🇱", CompletionStatus.INCOMPLETE),
             "ro" to LanguageMetadata("🇷🇴", CompletionStatus.COMPLETE),
-            "af" to LanguageMetadata("🇿🇦", CompletionStatus.COMPLETE),
-            "be" to LanguageMetadata("🇧🇾", CompletionStatus.COMPLETE)
+            "af" to LanguageMetadata("🇿🇦", CompletionStatus.MACHINE),
+            "be" to LanguageMetadata("🇧🇾", CompletionStatus.MACHINE),
+            "hu" to LanguageMetadata("🇭🇺", CompletionStatus.INCOMPLETE)
         )
 
         private data class LanguageMetadata(
