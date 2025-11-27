@@ -52,7 +52,7 @@ This project is licensed under the MIT and GPL 3 licenses.
 
 ## 📝 **Changelog**
 
-**Full Changelog**: https://github.com/Arturo254/OpenTune/compare/{OLD_VERSION}...{VERSION}
+**Full Changelog**: https://github.com/michei69/OpenTune/compare/{OLD_VERSION}...{VERSION}
 
 ---
 
