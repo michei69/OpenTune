@@ -88,3 +88,4 @@ lint/tmp/
 .kotlin
 app/release
 output-metadata.json
+RELEASE_NOTE.md
