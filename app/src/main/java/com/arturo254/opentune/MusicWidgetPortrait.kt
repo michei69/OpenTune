@@ -124,7 +124,8 @@ class MusicWidgetPortrait : AppWidgetProvider() {
 
     private fun stopProgressUpdater() {
         isUpdating = false
-        handler.removeCallbacks(runnable)
+        if (this::runnable.isInitialized)
+            handler.removeCallbacks(runnable)
     }
 
     companion object {
