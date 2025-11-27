@@ -18,12 +18,27 @@ data class MacroCallSchema<T> (
 @Serializable
 data class RichSubtitleSchema (
     @SerialName("track.lyrics.get")
-    val trackLyricsGet: MessageSchema<LyricsSchema>? = null,
+    private val _trackLyricsGet: JsonElement,
     @SerialName("track.subtitles.get")
     private val _trackSubtitlesGet: JsonElement,
     @SerialName("matcher.track.get")
-    val matcherTrackGet: MessageSchema<MatcherTrackSchema>? = null,
+    private val _matcherTrackGet: JsonElement,
 ) {
+
+    val trackLyricsGet: MessageSchema<LyricsSchema>?
+        get() = try {
+            val json = Json {
+                ignoreUnknownKeys = true
+                isLenient = true
+                coerceInputValues = true
+            }
+            when (_trackSubtitlesGet) {
+                is JsonObject -> json.decodeFromJsonElement(MessageSchema.serializer(LyricsSchema.serializer()), _trackLyricsGet)
+                else -> null
+            }
+        } catch (e: Exception) {
+            null
+        }
 
     val trackSubtitlesGet: MessageSchema<SubtitleListSchema>?
         get() = try {
@@ -34,6 +49,22 @@ data class RichSubtitleSchema (
             }
             when (_trackSubtitlesGet) {
                 is JsonObject -> json.decodeFromJsonElement(MessageSchema.serializer(SubtitleListSchema.serializer()), _trackSubtitlesGet)
+                else -> null
+            }
+        } catch (e: Exception) {
+            null
+        }
+
+    val matcherTrackGet: MessageSchema<MatcherTrackSchema>?
+        get() = try {
+            val json = Json {
+                ignoreUnknownKeys = true
+                isLenient = true
+                coerceInputValues = true
+            }
+            when (_trackSubtitlesGet) {
+                is JsonObject -> json.decodeFromJsonElement(MessageSchema.serializer(
+                    MatcherTrackSchema.serializer()), _matcherTrackGet)
                 else -> null
             }
         } catch (e: Exception) {
