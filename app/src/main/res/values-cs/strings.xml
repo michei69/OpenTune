@@ -580,7 +580,7 @@
     <string name="last_update">Poslední aktualizace:</string>
     <string name="by">od %1$s</string>
     <string name="enable_musixmatch">Povolit poskytovatele textů MusixMatch</string>
-    <string name="small_button_shape">Tvar malých tlačítek</string>
+    <string name="button_shape">Tvar malých tlačítek</string>
     <string name="try_another_query">Zkuste jiný dotaz</string>
     <string name="clear_search">Vymazat hledání</string>
     <string name="changing_language">Změna jazyka...</string>

@@ -912,16 +912,8 @@ class MainActivity : ComponentActivity() {
                                                 onClick = {
                                                     when {
                                                         active -> onActiveChange(false)
-                                                        !isInNavigationItems -> {
-                                                            try {
-                                                                navController.navigateUp()
-                                                            } catch (e: Exception) {
-                                                                Log.e(
-                                                                    "Navigation",
-                                                                    "Error navigating up",
-                                                                    e
-                                                                )
-                                                            }
+                                                        !navigationItems.fastAny { it.route == navBackStackEntry?.destination?.route } -> {
+                                                            navController.navigateUp()
                                                         }
 
                                                         else -> onActiveChange(true)
@@ -929,19 +921,10 @@ class MainActivity : ComponentActivity() {
                                                 },
                                                 onLongClick = {
                                                     when {
-                                                        active -> { /* No action */
-                                                        }
+                                                        active -> {}
 
-                                                        !isInNavigationItems -> {
-                                                            try {
-                                                                navController.backToMain()
-                                                            } catch (e: Exception) {
-                                                                Log.e(
-                                                                    "Navigation",
-                                                                    "Error navigating to main",
-                                                                    e
-                                                                )
-                                                            }
+                                                        !navigationItems.fastAny { it.route == navBackStackEntry?.destination?.route } -> {
+                                                            navController.backToMain()
                                                         }
 
                                                         else -> { /* No action */
@@ -951,14 +934,14 @@ class MainActivity : ComponentActivity() {
                                             ) {
                                                 Icon(
                                                     painterResource(
-                                                        if (active || !isInNavigationItems) {
+                                                        if (active || !navigationItems.fastAny { it.route == navBackStackEntry?.destination?.route }) {
                                                             R.drawable.arrow_back
                                                         } else {
                                                             R.drawable.search
                                                         }
                                                     ),
                                                     contentDescription = stringResource(
-                                                        if (active || !isInNavigationItems) {
+                                                        if (active || !navigationItems.fastAny { it.route == navBackStackEntry?.destination?.route }) {
                                                             R.string.back
                                                         } else {
                                                             R.string.search
@@ -1113,7 +1096,7 @@ class MainActivity : ComponentActivity() {
                                             configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
                                     // Show NavigationBar only on phones or tablets in portrait mode
-                                    val shouldShowBottomNav = !isTabletLandscape
+                                    val shouldShowBottomNav = true
 
                                     if (shouldShowBottomNav) {
                                         NavigationBar(

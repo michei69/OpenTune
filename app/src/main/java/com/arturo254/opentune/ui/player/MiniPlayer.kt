@@ -4,9 +4,15 @@ package com.arturo254.opentune.ui.player
 import android.content.res.Configuration
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
@@ -45,6 +51,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -55,6 +62,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
@@ -69,17 +77,26 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.graphics.shapes.Morph
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import coil.compose.AsyncImage
 import com.arturo254.opentune.LocalPlayerConnection
 import com.arturo254.opentune.R
 import com.arturo254.opentune.constants.DarkModeKey
+import com.arturo254.opentune.constants.DefaultMiniPlayerThumbnailShape
+import com.arturo254.opentune.constants.DefaultMiniPlayerThumbnailShouldSpin
+import com.arturo254.opentune.constants.DefaultMiniPlayerThumbnailSpeed
+import com.arturo254.opentune.constants.MiniPlayerThumbnailShapeKey
+import com.arturo254.opentune.constants.MiniPlayerThumbnailShouldSpin
+import com.arturo254.opentune.constants.MiniPlayerThumbnailSpeed
 import com.arturo254.opentune.constants.PureBlackKey
 import com.arturo254.opentune.constants.ThumbnailCornerRadius
 import com.arturo254.opentune.extensions.togglePlayPause
 import com.arturo254.opentune.models.MediaMetadata
 import com.arturo254.opentune.ui.screens.settings.DarkMode
+import com.arturo254.opentune.utils.MorphPolygonShape
+import com.arturo254.opentune.utils.getMiniPlayerThumbnailShape
 import com.arturo254.opentune.utils.rememberEnumPreference
 import com.arturo254.opentune.utils.rememberPreference
 import kotlinx.coroutines.launch
@@ -111,6 +128,56 @@ fun MiniPlayer(
     val useDarkTheme = remember(darkTheme, isSystemInDarkTheme) {
         if (darkTheme == DarkMode.AUTO) isSystemInDarkTheme else darkTheme == DarkMode.ON
     }
+    val miniPlayerThumbnailShapeState = rememberPreference(
+        key = MiniPlayerThumbnailShapeKey,
+        defaultValue = DefaultMiniPlayerThumbnailShape
+    )
+    val miniPlayerThumbnailSpeedState = rememberPreference(
+        key = MiniPlayerThumbnailSpeed,
+        defaultValue = DefaultMiniPlayerThumbnailSpeed
+    )
+    val miniPlayerThumbnailShouldSpin by rememberPreference(
+        key = MiniPlayerThumbnailShouldSpin,
+        defaultValue = DefaultMiniPlayerThumbnailShouldSpin
+    )
+
+    val miniPlayerThumbnailShape = remember(miniPlayerThumbnailShapeState.value, isPlaying) {
+        getMiniPlayerThumbnailShape(miniPlayerThumbnailShapeState.value)
+    }
+
+    // In your ViewModel or state holder
+    val rotationAngle = remember { Animatable(0f) }
+    LaunchedEffect(isPlaying) {
+        if (isPlaying) {
+            // Continue from current value, rotating 360 degrees
+            rotationAngle.animateTo(
+                targetValue = rotationAngle.value + 360f,
+                animationSpec = infiniteRepeatable(
+                    animation = tween((miniPlayerThumbnailSpeedState.value * 1000).toInt(), easing = LinearEasing),
+                    repeatMode = RepeatMode.Restart
+                )
+            )
+        } else {
+            // Stop the animation
+            rotationAngle.stop()
+        }
+    }
+
+    val animationSpec = spring<Float>(
+        dampingRatio = Spring.DampingRatioNoBouncy,
+        stiffness = Spring.StiffnessLow
+    )
+
+    // Dynamic shape: when playing, uses the selected shape
+    // When paused, uses Square
+    val currentPlayPauseMorph = remember(miniPlayerThumbnailShape) {
+        Morph(miniPlayerThumbnailShape, MaterialShapes.Circle)
+    }
+    val animatedMorphProgress = animateFloatAsState(
+        targetValue = if (isPlaying) 0f else 1f,
+        label = "MorphProgress",
+        animationSpec = animationSpec
+    )
 
     // Calculate the correct background color
     val miniPlayerBackgroundColor = when {
@@ -118,7 +185,6 @@ fun MiniPlayer(
         else -> MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.95f)
     }
 
-    val currentView = LocalView.current
     val layoutDirection = LocalLayoutDirection.current
     val coroutineScope = rememberCoroutineScope()
 
@@ -130,23 +196,12 @@ fun MiniPlayer(
     var dragStartTime by remember { mutableLongStateOf(0L) }
     var totalDragDistance by remember { mutableFloatStateOf(0f) }
 
-    val animationSpec = spring<Float>(
-        dampingRatio = Spring.DampingRatioNoBouncy,
-        stiffness = Spring.StiffnessLow
-    )
-
     val overlayAlpha by animateFloatAsState(
         targetValue = if (isPlaying) 0.0f else 0.4f,
         label = "overlay_alpha",
         animationSpec = animationSpec
     )
 
-    // Convert RoundedPolygon to Shape using the official API
-    val currentThumbnailShape = if (isPlaying) {
-        remember { MaterialShapes.Cookie9Sided }.toShape()
-    } else {
-        remember { MaterialShapes.Circle }.toShape()
-    }
 
     /**
      * Calculates the auto-swipe threshold based on swipe sensitivity.
@@ -286,11 +341,12 @@ fun MiniPlayer(
                             contentAlignment = Alignment.Center,
                             modifier = Modifier
                                 .size(40.dp)
-                                .clip(currentThumbnailShape)
+                                .rotate(if (miniPlayerThumbnailShouldSpin) rotationAngle.value else 0f) // Rotates the thumbnail when playing
+                                .clip(MorphPolygonShape(currentPlayPauseMorph, animatedMorphProgress.value))
                                 .border(
                                     width = 1.dp,
                                     color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f),
-                                    shape = currentThumbnailShape
+                                    shape = MorphPolygonShape(currentPlayPauseMorph, animatedMorphProgress.value)
                                 )
                                 .clickable {
                                     if (playbackState == Player.STATE_ENDED) {
@@ -309,7 +365,7 @@ fun MiniPlayer(
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier
                                         .fillMaxSize()
-                                        .clip(currentThumbnailShape)
+                                        .clip(MorphPolygonShape(currentPlayPauseMorph, animatedMorphProgress.value))
                                 )
                             }
 
@@ -319,7 +375,7 @@ fun MiniPlayer(
                                     .fillMaxSize()
                                     .background(
                                         color = Color.Black.copy(alpha = overlayAlpha),
-                                        shape = currentThumbnailShape
+                                        shape = MorphPolygonShape(currentPlayPauseMorph, animatedMorphProgress.value)
                                     )
                             )
 
@@ -340,6 +396,7 @@ fun MiniPlayer(
                                     contentDescription = null,
                                     tint = Color.White,
                                     modifier = Modifier.size(20.dp)
+                                        .rotate(if (miniPlayerThumbnailShouldSpin) -rotationAngle.value else 0f)
                                 )
                             }
                         }
@@ -458,50 +515,6 @@ fun MiniPlayer(
                     ),
                     modifier = Modifier.size(24.dp)
                 )
-            }
-        }
-    }
-}
-
-@Composable
-fun MiniMediaInfo(
-    mediaMetadata: MediaMetadata,
-    error: PlaybackException?,
-    modifier: Modifier = Modifier,
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier,
-    ) {
-        Box(modifier = Modifier.padding(6.dp)) {
-            AsyncImage(
-                model = mediaMetadata.thumbnailUrl,
-                contentDescription = null,
-                modifier = Modifier
-                    .size(48.dp)
-                    .clip(RoundedCornerShape(ThumbnailCornerRadius)),
-            )
-            // Error overlay
-            androidx.compose.animation.AnimatedVisibility(
-                visible = error != null,
-                enter = fadeIn(),
-                exit = fadeOut(),
-            ) {
-                Box(
-                    Modifier
-                        .size(48.dp)
-                        .background(
-                            color = Color.Black.copy(alpha = 0.6f),
-                            shape = RoundedCornerShape(ThumbnailCornerRadius),
-                        ),
-                ) {
-                    Icon(
-                        painter = painterResource(R.drawable.info),
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.error,
-                        modifier = Modifier.align(Alignment.Center),
-                    )
-                }
             }
         }
     }

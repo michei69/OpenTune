@@ -568,7 +568,7 @@
     <string name="last_update">अंतिम अपडेट:</string>
     <string name="by">%1$s द्वारा</string>
     <string name="enable_musixmatch">MusixMatch बोल प्रोवाइडर सक्षम करें</string>
-    <string name="small_button_shape">छोटे बटन आकार</string>
+    <string name="button_shape">छोटे बटन आकार</string>
     <string name="try_another_query">दूसरा क्वेरी आज़माएं</string>
     <string name="clear_search">खोज साफ़ करें</string>
     <string name="changing_language">भाषा बदली जा रही है...</string>

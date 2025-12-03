@@ -1,9 +1,18 @@
-// SmallButtonShapes.kt
 package com.arturo254.opentune.utils
 
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.geometry.Size
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialShapes
+import androidx.compose.ui.graphics.Matrix
+import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.asComposePath
+import androidx.compose.ui.unit.Density
+import androidx.graphics.shapes.Morph
 import androidx.graphics.shapes.RoundedPolygon
+import androidx.graphics.shapes.toPath
+
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun getSmallButtonShape(shapeName: String): RoundedPolygon {
@@ -43,6 +52,32 @@ fun getSmallButtonShape(shapeName: String): RoundedPolygon {
         "PuffyDiamond" -> MaterialShapes.PuffyDiamond
         "Slanted" -> MaterialShapes.Slanted
         "ClamShell" -> MaterialShapes.ClamShell
-        else -> MaterialShapes.Pill
+        else -> MaterialShapes.Circle
+    }
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+fun getPlayPauseShape(shapeName: String): RoundedPolygon = getSmallButtonShape(shapeName)
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+fun getMiniPlayerThumbnailShape(shapeName: String): RoundedPolygon = getSmallButtonShape(shapeName)
+
+// https://developer.android.com/develop/ui/compose/graphics/draw/shapes#morph-button
+class MorphPolygonShape(
+    private val morph: Morph,
+    private val percentage: Float
+) : Shape {
+
+    private val matrix = Matrix()
+    override fun createOutline(
+        size: Size,
+        layoutDirection: LayoutDirection,
+        density: Density
+    ): Outline {
+        matrix.scale(size.width, size.height)
+
+        val path = morph.toPath(progress = percentage).asComposePath()
+        path.transform(matrix)
+        return Outline.Generic(path)
     }
 }

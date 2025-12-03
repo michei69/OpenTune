@@ -568,7 +568,7 @@
     <string name="last_update">Pembaruan terakhir:</string>
     <string name="by">oleh %1$s</string>
     <string name="enable_musixmatch">Aktifkan penyedia lirik MusixMatch</string>
-    <string name="small_button_shape">Bentuk Tombol Kecil</string>
+    <string name="button_shape">Bentuk Tombol Kecil</string>
     <string name="try_another_query">Coba pencarian lain</string>
     <string name="clear_search">Hapus pencarian</string>
     <string name="changing_language">Mengubah bahasa...</string>

@@ -568,7 +568,7 @@
     <string name="last_update">Laaste opdatering:</string>
     <string name="by">deur %1$s</string>
     <string name="enable_musixmatch">Aktiveer MusixMatch-liriekeverskaffer</string>
-    <string name="small_button_shape">Klein Knoppies-vorm</string>
+    <string name="button_shape">Klein Knoppies-vorm</string>
     <string name="try_another_query">Probeer \'n ander navraag</string>
     <string name="clear_search">Maak soek skoon</string>
     <string name="changing_language">Verander taal...</string>

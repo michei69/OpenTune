@@ -592,7 +592,7 @@
     <string name="last_update">Апошняе абнаўленне:</string>
     <string name="by">ад %1$s</string>
     <string name="enable_musixmatch">MusixMatch для тэкстаў</string>
-    <string name="small_button_shape">Форма маленькіх кнопак</string>
+    <string name="button_shape">Форма маленькіх кнопак</string>
     <string name="try_another_query">Паспрабаваць іншы запыт</string>
     <string name="clear_search">Ачысціць пошук</string>
     <string name="changing_language">Змена мовы...</string>

@@ -569,7 +569,7 @@
     <string name="last_update">最後更新：</string>
     <string name="by">由 %1$s</string>
     <string name="enable_musixmatch">啟用 MusixMatch 歌詞提供者</string>
-    <string name="small_button_shape">小按鈕形狀</string>
+    <string name="button_shape">小按鈕形狀</string>
     <string name="try_another_query">嘗試其他搜尋</string>
     <string name="clear_search">清除搜尋</string>
     <string name="changing_language">更改語言中…</string>

@@ -569,7 +569,7 @@
     <string name="last_update">Sidste opdatering:</string>
     <string name="by">af %1$s</string>
     <string name="enable_musixmatch">Aktivér MusixMatch sangtekstudbyder</string>
-    <string name="small_button_shape">Små knappers form</string>
+    <string name="button_shape">Små knappers form</string>
     <string name="try_another_query">Prøv en anden forespørgsel</string>
     <string name="clear_search">Ryd søgning</string>
     <string name="changing_language">Skifter sprog...</string>

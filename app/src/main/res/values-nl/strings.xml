@@ -568,7 +568,7 @@
     <string name="last_update">Laatste update:</string>
     <string name="by">door %1$s</string>
     <string name="enable_musixmatch">MusixMatch tekstprovider inschakelen</string>
-    <string name="small_button_shape">Kleine knoppen vorm</string>
+    <string name="button_shape">Kleine knoppen vorm</string>
     <string name="try_another_query">Probeer een andere zoekopdracht</string>
     <string name="clear_search">Zoekopdracht wissen</string>
     <string name="changing_language">Taal wijzigen…</string>

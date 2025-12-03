@@ -113,6 +113,21 @@ val QueueEditLockKey = booleanPreferencesKey("queueEditLock")
 
 val LyricFontSizeKey = intPreferencesKey("lyricFontSize")
 val fullScreenLyricsKey = booleanPreferencesKey("fullScreenLyrics")
+val AnimateLyricsKey = booleanPreferencesKey("animate_lyrics")
+
+val PlayPauseButtonShapeKey = stringPreferencesKey("playPauseButtonShape")
+const val DefaultPlayPauseButtonShape = "Cookie9Sided"
+val MiniPlayerThumbnailShapeKey = stringPreferencesKey("miniPlayerThumbnailShape")
+const val DefaultMiniPlayerThumbnailShape = "Circle"
+
+val MiniPlayerThumbnailSpeed = floatPreferencesKey("miniPlayerThumbnailSpeed")
+val DefaultMiniPlayerThumbnailSpeed = 8f
+val MiniPlayerThumbnailShouldSpin = booleanPreferencesKey("miniPlayerThumbnailShouldSpin")
+val DefaultMiniPlayerThumbnailShouldSpin = true
+val PlayerButtonSpeed = floatPreferencesKey("playerButtonSpeed")
+val DefaultPlayerButtonSpeed = 8f
+val PlayerButtonShouldSpin = booleanPreferencesKey("playerThumbnailShouldSpin")
+val DefaultPlayerButtonShouldSpin = true
 
 enum class LibraryViewType {
     LIST,
@@ -277,7 +292,6 @@ val PlayerBackgroundStyleKey = stringPreferencesKey("playerBackgroundStyle")
 val ShowLyricsKey = booleanPreferencesKey("showLyrics")
 val LyricsTextPositionKey = stringPreferencesKey("lyricsTextPosition")
 val LyricsClickKey = booleanPreferencesKey("lyricsClick")
-val AnimateLyricsKey = booleanPreferencesKey("animate_lyrics")
 val TranslateLyricsKey = booleanPreferencesKey("translateLyrics")
 
 val PlayerVolumeKey = floatPreferencesKey("playerVolume")

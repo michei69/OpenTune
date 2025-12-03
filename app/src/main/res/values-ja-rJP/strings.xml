@@ -569,7 +569,7 @@
     <string name="last_update">最終更新:</string>
     <string name="by">by %1$s</string>
     <string name="enable_musixmatch">MusixMatch歌詞プロバイダーを有効化</string>
-    <string name="small_button_shape">小ボタン形状</string>
+    <string name="button_shape">小ボタン形状</string>
     <string name="try_another_query">別のクエリを試す</string>
     <string name="clear_search">検索をクリア</string>
     <string name="changing_language">言語を変更中…</string>

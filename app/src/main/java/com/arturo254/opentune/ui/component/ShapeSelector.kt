@@ -10,6 +10,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,11 +29,14 @@ import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -41,9 +45,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.glance.LocalContext
 import androidx.graphics.shapes.RoundedPolygon
 import com.arturo254.opentune.R
 
@@ -53,8 +59,14 @@ import com.arturo254.opentune.R
 data class SmallButtonShapeOption(
     val name: String,
     val shape: RoundedPolygon,
-    val displayName: String
+    val displayName: Int
 )
+
+enum class ShapeType {
+    SMALL_BUTTONS,
+    PLAY_PAUSE,
+    MINIPLAYER_THUMBNAIL
+}
 
 /**
  * Bottom Sheet shape selector for small buttons (radio, download, sleep, more)
@@ -62,52 +74,70 @@ data class SmallButtonShapeOption(
  */
 @OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun SmallButtonShapeBottomSheet(
-    selectedShapeName: String,
-    onShapeSelected: (String) -> Unit,
+fun UnifiedShapeBottomSheet(
+    selectedSmallButtonsShape: String,
+    selectedPlayPauseShape: String,
+    selectedMiniPlayerShape: String,
+    onSmallButtonsShapeSelected: (String) -> Unit,
+    onPlayPauseShapeSelected: (String) -> Unit,
+    onMiniPlayerShapeSelected: (String) -> Unit,
     onDismiss: () -> Unit,
-    sheetState: SheetState = rememberModalBottomSheetState()
+    sheetState: SheetState = rememberModalBottomSheetState(),
+    initialTab: ShapeType = ShapeType.SMALL_BUTTONS
 ) {
+    var selectedTabIndex by remember {
+        mutableIntStateOf(
+            when (initialTab) {
+                ShapeType.SMALL_BUTTONS -> 0
+                ShapeType.PLAY_PAUSE -> 1
+                ShapeType.MINIPLAYER_THUMBNAIL -> 2
+            }
+        )
+    }
+
     // COMPLETE list of appropriate shapes for small buttons
     val availableShapes = remember {
         listOf(
-            SmallButtonShapeOption("Pill", MaterialShapes.Pill, "Pill"),
-            SmallButtonShapeOption("Circle", MaterialShapes.Circle, "Circle"),
-            SmallButtonShapeOption("Square", MaterialShapes.Square, "Square"),
-            SmallButtonShapeOption("Diamond", MaterialShapes.Diamond, "Diamond"),
-            SmallButtonShapeOption("Pentagon", MaterialShapes.Pentagon, "Pentagon"),
-            SmallButtonShapeOption("Heart", MaterialShapes.Heart, "Heart"),
-            SmallButtonShapeOption("Oval", MaterialShapes.Oval, "Oval"),
-            SmallButtonShapeOption("Arch", MaterialShapes.Arch, "Arch"),
-            SmallButtonShapeOption("SemiCircle", MaterialShapes.SemiCircle, "Semicircle"),
-            SmallButtonShapeOption("Triangle", MaterialShapes.Triangle, "Triangle"),
-            SmallButtonShapeOption("Arrow", MaterialShapes.Arrow, "Arrow"),
-            SmallButtonShapeOption("Fan", MaterialShapes.Fan, "Fan"),
-            SmallButtonShapeOption("Gem", MaterialShapes.Gem, "Gem"),
-            SmallButtonShapeOption("Bun", MaterialShapes.Bun, "Bun"),
-            SmallButtonShapeOption("Ghostish", MaterialShapes.Ghostish, "Ghost-ish"),
-            SmallButtonShapeOption("Cookie4Sided", MaterialShapes.Cookie4Sided, "Cookie 4"),
-            SmallButtonShapeOption("Cookie6Sided", MaterialShapes.Cookie6Sided, "Cookie 6"),
-            SmallButtonShapeOption("Cookie7Sided", MaterialShapes.Cookie7Sided, "Cookie 7"),
-            SmallButtonShapeOption("Cookie9Sided", MaterialShapes.Cookie9Sided, "Cookie 9"),
-            SmallButtonShapeOption("Cookie12Sided", MaterialShapes.Cookie12Sided, "Cookie 12"),
-            SmallButtonShapeOption("Clover4Leaf", MaterialShapes.Clover4Leaf, "Clover 4"),
-            SmallButtonShapeOption("Clover8Leaf", MaterialShapes.Clover8Leaf, "Clover 8"),
-            SmallButtonShapeOption("Sunny", MaterialShapes.Sunny, "Sunny"),
-            SmallButtonShapeOption("VerySunny", MaterialShapes.VerySunny, "Very Sunny"),
-            SmallButtonShapeOption("Burst", MaterialShapes.Burst, "Burst"),
-            SmallButtonShapeOption("SoftBurst", MaterialShapes.SoftBurst, "Soft Burst"),
-            SmallButtonShapeOption("Boom", MaterialShapes.Boom, "Boom"),
-            SmallButtonShapeOption("SoftBoom", MaterialShapes.SoftBoom, "Soft Boom"),
-            SmallButtonShapeOption("Flower", MaterialShapes.Flower, "Flower"),
-            SmallButtonShapeOption("PixelCircle", MaterialShapes.PixelCircle, "Pixel Circle"),
-            SmallButtonShapeOption("PixelTriangle", MaterialShapes.PixelTriangle, "Pixel Triangle"),
-            SmallButtonShapeOption("Puffy", MaterialShapes.Puffy, "Puffy"),
-            SmallButtonShapeOption("PuffyDiamond", MaterialShapes.PuffyDiamond, "Puffy Diamond"),
-            SmallButtonShapeOption("Slanted", MaterialShapes.Slanted, "Slanted"),
-            SmallButtonShapeOption("ClamShell", MaterialShapes.ClamShell, "Clam Shell")
+            SmallButtonShapeOption("Pill", MaterialShapes.Pill, R.string.shape_pill),
+            SmallButtonShapeOption("Circle", MaterialShapes.Circle, R.string.shape_circle),
+            SmallButtonShapeOption("Square", MaterialShapes.Square, R.string.shape_square),
+            SmallButtonShapeOption("Diamond", MaterialShapes.Diamond, R.string.shape_diamond),
+            SmallButtonShapeOption("Pentagon", MaterialShapes.Pentagon, R.string.shape_pentagon),
+            SmallButtonShapeOption("Heart", MaterialShapes.Heart, R.string.shape_heart),
+            SmallButtonShapeOption("Oval", MaterialShapes.Oval, R.string.shape_oval),
+            SmallButtonShapeOption("Arch", MaterialShapes.Arch, R.string.shape_arch),
+            SmallButtonShapeOption("SemiCircle", MaterialShapes.SemiCircle, R.string.shape_semicircle),
+            SmallButtonShapeOption("Triangle", MaterialShapes.Triangle, R.string.shape_triangle),
+            SmallButtonShapeOption("Arrow", MaterialShapes.Arrow, R.string.shape_arrow),
+            SmallButtonShapeOption("Fan", MaterialShapes.Fan, R.string.shape_fan),
+            SmallButtonShapeOption("Gem", MaterialShapes.Gem, R.string.shape_gem),
+            SmallButtonShapeOption("Bun", MaterialShapes.Bun, R.string.shape_bun),
+            SmallButtonShapeOption("Ghostish", MaterialShapes.Ghostish, R.string.shape_ghostish),
+            SmallButtonShapeOption("Cookie4Sided", MaterialShapes.Cookie4Sided, R.string.shape_cookie4sided),
+            SmallButtonShapeOption("Cookie6Sided", MaterialShapes.Cookie6Sided, R.string.shape_cookie6sided),
+            SmallButtonShapeOption("Cookie7Sided", MaterialShapes.Cookie7Sided, R.string.shape_cookie7sided),
+            SmallButtonShapeOption("Cookie9Sided", MaterialShapes.Cookie9Sided, R.string.shape_cookie9sided),
+            SmallButtonShapeOption("Cookie12Sided", MaterialShapes.Cookie12Sided, R.string.shape_cookie12sided),
+            SmallButtonShapeOption("Clover4Leaf", MaterialShapes.Clover4Leaf, R.string.shape_clover4leaf),
+            SmallButtonShapeOption("Clover8Leaf", MaterialShapes.Clover8Leaf, R.string.shape_clover8leaf),
+            SmallButtonShapeOption("Sunny", MaterialShapes.Sunny, R.string.shape_sunny),
+            SmallButtonShapeOption("VerySunny", MaterialShapes.VerySunny, R.string.shape_verysunny),
+            SmallButtonShapeOption("Burst", MaterialShapes.Burst, R.string.shape_burst),
+            SmallButtonShapeOption("SoftBurst", MaterialShapes.SoftBurst, R.string.shape_softburst),
+            SmallButtonShapeOption("Boom", MaterialShapes.Boom, R.string.shape_boom),
+            SmallButtonShapeOption("SoftBoom", MaterialShapes.SoftBoom, R.string.shape_softboom),
+            SmallButtonShapeOption("Flower", MaterialShapes.Flower, R.string.shape_flower),
+            SmallButtonShapeOption("PixelCircle", MaterialShapes.PixelCircle, R.string.shape_pixelcircle),
+            SmallButtonShapeOption("PixelTriangle", MaterialShapes.PixelTriangle, R.string.shape_pixeltriangle),
+            SmallButtonShapeOption("Puffy", MaterialShapes.Puffy, R.string.shape_puffy),
+            SmallButtonShapeOption("PuffyDiamond", MaterialShapes.PuffyDiamond, R.string.shape_puffydiamond),
+            SmallButtonShapeOption("Slanted", MaterialShapes.Slanted, R.string.shape_slanted),
+            SmallButtonShapeOption("ClamShell", MaterialShapes.ClamShell, R.string.shape_clamshell)
         )
     }
+
+    val tabTitles = listOf(stringResource(R.string.tab_small_buttons), stringResource(R.string.tab_play), stringResource(R.string.tab_miniplayer))
+    val tabIcons = listOf(R.drawable.scatter_plot, R.drawable.play, R.drawable.album)
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -119,13 +149,13 @@ fun SmallButtonShapeBottomSheet(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Custom drag handle Material 3
+                // Custom drag handle Material 3 Expressive
                 Box(
                     modifier = Modifier
-                        .padding(top = 12.dp, bottom = 8.dp)
-                        .width(32.dp)
+                        .padding(top = 16.dp, bottom = 12.dp)
+                        .width(40.dp)
                         .height(4.dp)
-                        .clip(RoundedCornerShape(2.dp))
+                        .clip(MaterialShapes.Pill.toShape())
                         .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f))
                 )
             }
@@ -139,26 +169,76 @@ fun SmallButtonShapeBottomSheet(
         ) {
             // Title with clear hierarchy
             Text(
-                text = "Small Buttons Shape",
+                text = stringResource(R.string.shape_selector),
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.onSurface,
+                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 20.dp)
             )
+
+            Text(
+                text = stringResource(R.string.customize_shapes),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 20.dp)
+            )
+
+            TabRow(
+                selectedTabIndex = selectedTabIndex,
+                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                contentColor = MaterialTheme.colorScheme.primary,
+                modifier = Modifier
+                    .padding(bottom = 24.dp)
+                    .clip(RoundedCornerShape(12.dp))
+            ) {
+                tabTitles.forEachIndexed { index, title ->
+                    Tab(
+                        selected = selectedTabIndex == index,
+                        onClick = { selectedTabIndex = index },
+                        icon = {
+                            Icon(
+                                painter = painterResource(tabIcons[index]),
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        },
+                        text = {
+                            Text(
+                                text = title,
+                                style = MaterialTheme.typography.labelLarge
+                            )
+                        },
+                        selectedContentColor = MaterialTheme.colorScheme.primary,
+                        unselectedContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+
+            // Grid de formas con espaciado coherente
+            val currentSelectedShape = when (selectedTabIndex) {
+                0 -> selectedSmallButtonsShape
+                1 -> selectedPlayPauseShape
+                2 -> selectedMiniPlayerShape
+                else -> selectedSmallButtonsShape
+            }
 
             // Grid of shapes with consistent spacing
             LazyVerticalGrid(
                 columns = GridCells.Fixed(4),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
-                modifier = Modifier.heightIn(max = 480.dp)
+                modifier = Modifier.heightIn(max = 400.dp)
             ) {
                 items(availableShapes) { shapeOption ->
                     SmallButtonShapeItem(
                         shapeOption = shapeOption,
-                        isSelected = shapeOption.name == selectedShapeName,
+                        isSelected = shapeOption.name == currentSelectedShape,
                         onClick = {
-                            onShapeSelected(shapeOption.name)
-                            onDismiss()
+                            when (selectedTabIndex) {
+                                0 -> onSmallButtonsShapeSelected(shapeOption.name)
+                                1 -> onPlayPauseShapeSelected(shapeOption.name)
+                                2 -> onMiniPlayerShapeSelected(shapeOption.name)
+                            }
                         }
                     )
                 }
@@ -238,7 +318,7 @@ private fun SmallButtonShapeItem(
 
         // Name of the form
         Text(
-            text = shapeOption.displayName,
+            text = stringResource(shapeOption.displayName),
             style = MaterialTheme.typography.labelSmall,
             textAlign = TextAlign.Center,
             maxLines = 2,
@@ -254,22 +334,26 @@ private fun SmallButtonShapeItem(
 /**
  * Button to open the shapes bottom sheet
  */
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-fun SmallButtonShapeSelectorButton(
-    currentShapeName: String,
-    onShapeSelected: (String) -> Unit,
+fun UnifiedShapeSelectorButton(
+    smallButtonsShape: String,
+    playPauseShape: String,
+    miniPlayerShape: String,
+    onSmallButtonsShapeSelected: (String) -> Unit,
+    onPlayPauseShapeSelected: (String) -> Unit,
+    onMiniPlayerShapeSelected: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var showBottomSheet by remember { mutableStateOf(false) }
     val sheetState = rememberModalBottomSheetState()
 
     PreferenceEntry(
-        title = { Text(stringResource(R.string.small_button_shape)) },
-        description = currentShapeName,
+        title = { Text(stringResource(R.string.button_shape)) },
+        description = stringResource(R.string.customize_button_shapes),
         icon = {
             Icon(
-                painter = androidx.compose.ui.res.painterResource(R.drawable.scatter_plot),
+                painter = painterResource(R.drawable.scatter_plot),
                 contentDescription = null
             )
         },
@@ -278,11 +362,16 @@ fun SmallButtonShapeSelectorButton(
     )
 
     if (showBottomSheet) {
-        SmallButtonShapeBottomSheet(
-            selectedShapeName = currentShapeName,
-            onShapeSelected = onShapeSelected,
+        UnifiedShapeBottomSheet(
+            selectedSmallButtonsShape = smallButtonsShape,
+            selectedPlayPauseShape = playPauseShape,
+            selectedMiniPlayerShape = miniPlayerShape,
+            onSmallButtonsShapeSelected = onSmallButtonsShapeSelected,
+            onPlayPauseShapeSelected = onPlayPauseShapeSelected,
+            onMiniPlayerShapeSelected = onMiniPlayerShapeSelected,
             onDismiss = { showBottomSheet = false },
-            sheetState = sheetState
+            sheetState = sheetState,
+            initialTab = ShapeType.SMALL_BUTTONS
         )
     }
 }
