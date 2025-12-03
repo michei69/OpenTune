@@ -1035,6 +1035,7 @@ fun LanguagePreference(
     }
 }
 
+
 abstract class LocaleAwareApplication : android.app.Application() {
 
     private val localeManager by lazy { LocaleManager.getInstance(this) }
