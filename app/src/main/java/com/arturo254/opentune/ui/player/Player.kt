@@ -63,6 +63,7 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -116,6 +117,7 @@ import androidx.media3.exoplayer.offline.Download
 import androidx.media3.exoplayer.offline.DownloadRequest
 import androidx.media3.exoplayer.offline.DownloadService
 import androidx.navigation.NavController
+import androidx.palette.graphics.Palette
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -156,10 +158,13 @@ import com.arturo254.opentune.ui.component.rememberBottomSheetState
 import com.arturo254.opentune.ui.menu.PlayerMenu
 import com.arturo254.opentune.ui.screens.settings.DarkMode
 import com.arturo254.opentune.ui.screens.settings.PlayerTextAlignment
+import com.arturo254.opentune.ui.theme.PlayerColorExtractor
+import com.arturo254.opentune.ui.theme.PlayerSliderColors
 import com.arturo254.opentune.ui.theme.extractGradientColors
 import com.arturo254.opentune.utils.MorphPolygonShape
 import com.arturo254.opentune.utils.getPlayPauseShape
 import com.arturo254.opentune.utils.getSmallButtonShape
+import com.arturo254.opentune.utils.invertedValue
 import com.arturo254.opentune.utils.makeTimeString
 import com.arturo254.opentune.utils.rememberEnumPreference
 import com.arturo254.opentune.utils.rememberPreference
@@ -175,7 +180,7 @@ import kotlin.math.roundToInt
 fun BottomSheetPlayer(
     state: BottomSheetState,
     navController: NavController,
-    onOpenFullscreenLyrics: () -> Unit, // NEW PARAMETER
+    onOpenFullscreenLyrics: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -185,13 +190,7 @@ fun BottomSheetPlayer(
     val clipboardManager = LocalClipboardManager.current
 
     var showFullscreenLyrics by remember { mutableStateOf(false) }
-
     val playerConnection = LocalPlayerConnection.current ?: return
-
-
-
-
-
 
     val playerTextAlignment by rememberEnumPreference(
         PlayerTextAlignmentKey,
@@ -240,7 +239,6 @@ fun BottomSheetPlayer(
     val canSkipNext by playerConnection.canSkipNext.collectAsState()
 
     val showLyrics by rememberPreference(ShowLyricsKey, defaultValue = false)
-
     val sliderStyle by rememberEnumPreference(SliderStyleKey, SliderStyle.SQUIGGLY)
 
     var position by rememberSaveable(playbackState) {
@@ -260,8 +258,6 @@ fun BottomSheetPlayer(
     var changeColor by remember {
         mutableStateOf(false)
     }
-
-
 
     // Animations for background effects
     var backgroundImageUrl by remember { mutableStateOf<String?>(null) }
@@ -288,16 +284,20 @@ fun BottomSheetPlayer(
         label = "overlayAlpha"
     )
 
-
     val playerButtonsStyle by rememberEnumPreference(
         key = PlayerButtonsStyleKey,
-        defaultValue = PlayerButtonsStyle.SECONDARY
+        defaultValue = PlayerButtonsStyle.DEFAULT
     )
+
     if (!canSkipNext && automix.isNotEmpty()) {
         playerConnection.service.addToQueueAutomix(automix[0], 0)
     }
 
-    LaunchedEffect(mediaMetadata, playerBackground) {
+    // Get theme color before LaunchedEffect
+    val surfaceColor = MaterialTheme.colorScheme.surface
+    val fallbackColorArgb = surfaceColor.toArgb()
+
+    LaunchedEffect(mediaMetadata, playerBackground, fallbackColorArgb) {
         // Update image URL for smooth transitions
         backgroundImageUrl = mediaMetadata?.thumbnailUrl
 
@@ -308,20 +308,31 @@ fun BottomSheetPlayer(
             gradientColors = listOf(Color.Black, Color.Black)
         } else if (playerBackground == PlayerBackgroundStyle.GRADIENT) {
             withContext(Dispatchers.IO) {
-                val result =
-                    (
-                            ImageLoader(context)
-                                .execute(
-                                    ImageRequest
-                                        .Builder(context)
-                                        .data(mediaMetadata?.thumbnailUrl)
-                                        .allowHardware(false)
-                                        .build(),
-                                ).drawable as? BitmapDrawable
-                            )?.bitmap?.extractGradientColors()
+                val result = runCatching {
+                    ImageLoader(context)
+                        .execute(
+                            ImageRequest
+                                .Builder(context)
+                                .data(mediaMetadata?.thumbnailUrl)
+                                .allowHardware(false)
+                                .build(),
+                        ).drawable as? BitmapDrawable
+                }.getOrNull()
 
-                result?.let {
-                    gradientColors = it
+                result?.bitmap?.let { bitmap ->
+                    val palette = Palette.from(bitmap)
+                        .maximumColorCount(8)
+                        .resizeBitmapArea(100 * 100)
+                        .generate()
+
+                    val extractedColors = PlayerColorExtractor.extractGradientColors(
+                        palette = palette,
+                        fallbackColor = fallbackColorArgb
+                    )
+
+                    withContext(Dispatchers.Main) {
+                        gradientColors = extractedColors
+                    }
                 }
             }
         } else {
@@ -329,94 +340,29 @@ fun BottomSheetPlayer(
         }
     }
 
-    val changeBound = state.expandedBound / 3
-
     val TextBackgroundColor =
         when (playerBackground) {
             PlayerBackgroundStyle.DEFAULT -> MaterialTheme.colorScheme.onBackground
-            PlayerBackgroundStyle.BLUR -> Color.White
-            else -> {
-                val whiteContrast =
-                    if (gradientColors.size >= 2) {
-                        ColorUtils.calculateContrast(
-                            gradientColors.first().toArgb(),
-                            Color.White.toArgb(),
-                        )
-                    } else {
-                        2.0
-                    }
-                val blackContrast: Double =
-                    if (gradientColors.size >= 2) {
-                        ColorUtils.calculateContrast(
-                            gradientColors.last().toArgb(),
-                            Color.Black.toArgb(),
-                        )
-                    } else {
-                        2.0
-                    }
-                if (gradientColors.size >= 2 &&
-                    whiteContrast < 2f &&
-                    blackContrast > 2f
-                ) {
-                    changeColor = true
-                    Color.Black
-                } else if (whiteContrast > 2f && blackContrast < 2f) {
-                    changeColor = true
-                    Color.White
-                } else {
-                    changeColor = false
-                    Color.White
-                }
-            }
+            else -> if (useDarkTheme) MaterialTheme.colorScheme.onBackground else MaterialTheme.colorScheme.onBackground.invertedValue
         }
 
     val icBackgroundColor =
         when (playerBackground) {
             PlayerBackgroundStyle.DEFAULT -> MaterialTheme.colorScheme.surface
-            PlayerBackgroundStyle.BLUR -> Color.Black
-            else -> {
-                val whiteContrast =
-                    if (gradientColors.size >= 2) {
-                        ColorUtils.calculateContrast(
-                            gradientColors.first().toArgb(),
-                            Color.White.toArgb(),
-                        )
-                    } else {
-                        2.0
-                    }
-                val blackContrast: Double =
-                    if (gradientColors.size >= 2) {
-                        ColorUtils.calculateContrast(
-                            gradientColors.last().toArgb(),
-                            Color.Black.toArgb(),
-                        )
-                    } else {
-                        2.0
-                    }
-                if (gradientColors.size >= 2 &&
-                    whiteContrast < 2f &&
-                    blackContrast > 2f
-                ) {
-                    changeColor = true
-                    Color.White
-                } else if (whiteContrast > 2f && blackContrast < 2f) {
-                    changeColor = true
-                    Color.Black
-                } else {
-                    changeColor = false
-                    Color.Black
-                }
-            }
+            else -> if (useDarkTheme) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.surface.invertedValue
         }
 
     val (textButtonColor, iconButtonColor) = when (playerButtonsStyle) {
         PlayerButtonsStyle.DEFAULT -> Pair(TextBackgroundColor, icBackgroundColor)
-        PlayerButtonsStyle.SECONDARY -> Pair(
-            MaterialTheme.colorScheme.secondary,
-            MaterialTheme.colorScheme.onSecondary
+        PlayerButtonsStyle.PRIMARY -> Pair(
+            MaterialTheme.colorScheme.primary,
+            MaterialTheme.colorScheme.onPrimary
+        )
+        PlayerButtonsStyle.TERTIARY -> Pair(
+            MaterialTheme.colorScheme.tertiary,
+            MaterialTheme.colorScheme.onTertiary
         )
     }
-
 
     val download by LocalDownloadUtil.current.getDownload(mediaMetadata?.id ?: "")
         .collectAsState(initial = null)
@@ -517,7 +463,6 @@ fun BottomSheetPlayer(
         mutableStateOf(false)
     }
 
-
     val smallButtonsShapeState = rememberPreference(
         key = SmallButtonsShapeKey,
         defaultValue = DefaultSmallButtonsShape
@@ -573,7 +518,6 @@ fun BottomSheetPlayer(
         label = "MorphProgress",
         animationSpec = tween(300)
     )
-
 
     // Function to create the modifier for small buttons
     val smallButtonModifier = @Composable {
@@ -782,9 +726,6 @@ fun BottomSheetPlayer(
                 label = "playPauseRoundness",
             )
 
-
-
-
             Row(
                 horizontalArrangement =
                     when (playerTextAlignment) {
@@ -820,7 +761,6 @@ fun BottomSheetPlayer(
             }
 
             Spacer(Modifier.height(6.dp))
-
 
             Row(
                 horizontalArrangement =
@@ -1032,9 +972,6 @@ fun BottomSheetPlayer(
                     }
                 }
 
-
-
-
                 Spacer(modifier = Modifier.size(12.dp))
 
                 Box(
@@ -1104,7 +1041,6 @@ fun BottomSheetPlayer(
                 }
             }
 
-
             Spacer(Modifier.height(6.dp))
 
             when (sliderStyle) {
@@ -1122,12 +1058,10 @@ fun BottomSheetPlayer(
                             }
                             sliderPosition = null
                         },
-                        colors = SliderDefaults.colors(
-                            activeTrackColor = TextBackgroundColor,
-                            inactiveTrackColor = Color.Gray,
-                            activeTickColor = TextBackgroundColor,
-                            inactiveTickColor = Color.Gray,
-                            thumbColor = TextBackgroundColor
+                        colors = PlayerSliderColors.getSliderColors(
+                            textButtonColor = TextBackgroundColor,
+                            playerBackground = playerBackground,
+                            useDarkTheme = useDarkTheme
                         ),
                         modifier = Modifier.padding(horizontal = PlayerHorizontalPadding),
                     )
@@ -1147,12 +1081,10 @@ fun BottomSheetPlayer(
                             }
                             sliderPosition = null
                         },
-                        colors = SliderDefaults.colors(
-                            activeTrackColor = TextBackgroundColor,
-                            inactiveTrackColor = Color.Gray,
-                            activeTickColor = TextBackgroundColor,
-                            inactiveTickColor = Color.Gray,
-                            thumbColor = TextBackgroundColor
+                        colors = PlayerSliderColors.getSliderColors(
+                            textButtonColor = TextBackgroundColor,
+                            playerBackground = playerBackground,
+                            useDarkTheme = useDarkTheme
                         ),
                         modifier = Modifier.padding(horizontal = PlayerHorizontalPadding),
                         squigglesSpec =
@@ -1181,11 +1113,10 @@ fun BottomSheetPlayer(
                         track = { sliderState ->
                             PlayerSliderTrack(
                                 sliderState = sliderState,
-                                colors = SliderDefaults.colors(
-                                    activeTrackColor = TextBackgroundColor,
-                                    inactiveTrackColor = Color.Gray,
-                                    activeTickColor = TextBackgroundColor,
-                                    inactiveTickColor = Color.Gray
+                                colors = PlayerSliderColors.getSliderColors(
+                                    textButtonColor = TextBackgroundColor,
+                                    playerBackground = playerBackground,
+                                    useDarkTheme = useDarkTheme
                                 )
                             )
                         },
@@ -1221,7 +1152,7 @@ fun BottomSheetPlayer(
                 )
             }
 
-            Spacer(Modifier.height(6.dp))
+            Spacer(Modifier.height(12.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -1416,7 +1347,6 @@ fun BottomSheetPlayer(
                     modifier =
                         Modifier
                             .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Horizontal))
-//                            .padding(bottom = queueSheetState.collapsedBound + 48.dp),
                             .padding(top = queueSheetState.collapsedBound)
                 ) {
                     Box(
@@ -1438,7 +1368,7 @@ fun BottomSheetPlayer(
                             ) {
                                 Column(
                                     horizontalAlignment = Alignment.CenterHorizontally,
-                                    modifier = Modifier.padding(bottom = 45.dp)
+//                                    modifier = Modifier.padding(bottom = 45.dp)
                                 ) {
                                     Text(
                                         text = stringResource(R.string.playing_from),

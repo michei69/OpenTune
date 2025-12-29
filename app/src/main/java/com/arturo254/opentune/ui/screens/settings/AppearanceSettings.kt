@@ -49,6 +49,7 @@ import com.arturo254.opentune.constants.DefaultPlayPauseButtonShape
 import com.arturo254.opentune.constants.DefaultPlayerButtonShouldSpin
 import com.arturo254.opentune.constants.DefaultSmallButtonsShape
 import com.arturo254.opentune.constants.DynamicThemeKey
+import com.arturo254.opentune.constants.GradientLyricsKey
 import com.arturo254.opentune.constants.GridItemSize
 import com.arturo254.opentune.constants.GridItemsSizeKey
 import com.arturo254.opentune.constants.LibraryFilter
@@ -143,6 +144,14 @@ fun AppearanceSettings(
     val (animateLyrics, onAnimateLyricsChange) = rememberPreference(
         AnimateLyricsKey,
         defaultValue = true
+    )
+    val (gradientLyrics, onGradientLyricsChange) = rememberPreference(
+        GradientLyricsKey,
+        defaultValue = false
+    )
+    val (bouncyLyrics, onBouncyLyricsChange) = rememberPreference(
+        GradientLyricsKey,
+        defaultValue = false
     )
 
 
@@ -469,7 +478,8 @@ fun AppearanceSettings(
                     valueText = {
                         when (it) {
                             PlayerButtonsStyle.DEFAULT -> stringResource(R.string.default_style)
-                            PlayerButtonsStyle.SECONDARY -> stringResource(R.string.secondary_color_style)
+                            PlayerButtonsStyle.PRIMARY -> stringResource(R.string.secondary_color_style)
+                            PlayerButtonsStyle.TERTIARY -> stringResource(R.string.tertiary_color_style)
                         }
                     },
                 )},
@@ -554,6 +564,20 @@ fun AppearanceSettings(
                     description = stringResource(R.string.animate_lyrics_desc),
                     checked = animateLyrics,
                     onCheckedChange = onAnimateLyricsChange
+                )},
+                {SwitchPreference(
+                    title = { Text(stringResource(R.string.gradient_lyrics)) },
+                    icon = { Icon(painterResource(R.drawable.lyrics), null) },
+                    description = stringResource(R.string.gradient_lyrics_desc),
+                    checked = gradientLyrics,
+                    onCheckedChange = onGradientLyricsChange
+                )},
+                {SwitchPreference(
+                    title = { Text(stringResource(R.string.bouncy_lyrics)) },
+                    icon = { Icon(painterResource(R.drawable.lyrics), null) },
+                    description = stringResource(R.string.bouncy_lyrics_desc),
+                    checked = bouncyLyrics,
+                    onCheckedChange = onBouncyLyricsChange
                 )}
             )
         )

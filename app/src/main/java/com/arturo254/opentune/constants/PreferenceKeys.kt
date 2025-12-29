@@ -114,6 +114,8 @@ val QueueEditLockKey = booleanPreferencesKey("queueEditLock")
 val LyricFontSizeKey = intPreferencesKey("lyricFontSize")
 val fullScreenLyricsKey = booleanPreferencesKey("fullScreenLyrics")
 val AnimateLyricsKey = booleanPreferencesKey("animate_lyrics")
+val GradientLyricsKey = booleanPreferencesKey("gradient_lyrics")
+val BouncyLyricsKey = booleanPreferencesKey("bouncy_lyrics")
 
 val PlayPauseButtonShapeKey = stringPreferencesKey("playPauseButtonShape")
 const val DefaultPlayPauseButtonShape = "Cookie9Sided"
@@ -282,7 +284,8 @@ enum class PlayerBackgroundStyle {
 
 enum class PlayerButtonsStyle {
     DEFAULT,
-    SECONDARY,
+    PRIMARY,
+    TERTIARY
 }
 
 val TopSize = stringPreferencesKey("topSize")

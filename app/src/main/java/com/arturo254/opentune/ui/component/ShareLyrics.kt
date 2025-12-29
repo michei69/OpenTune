@@ -69,6 +69,7 @@ import com.arturo254.opentune.R
 import com.arturo254.opentune.models.MediaMetadata
 import kotlinx.coroutines.launch
 import kotlin.math.min
+import androidx.compose.ui.res.stringResource
 
 // Enums
 enum class FontStyle {
@@ -89,6 +90,14 @@ enum class TextAlignment {
 
 enum class LogoSize {
     SMALL, MEDIUM, LARGE
+}
+
+enum class CoverArtStyle {
+    ROUNDED, CIRCLE, SQUARE
+}
+
+enum class LyricsStyle {
+    NORMAL, ITALIC, CONDENSED
 }
 
 // Data classes
@@ -113,18 +122,24 @@ data class ImageCustomization(
     val textShadowEnabled: Boolean = true,
     val borderEnabled: Boolean = false,
     val borderColor: Color = Color.White.copy(alpha = 0.3f),
-    val borderWidth: Float = 2f
+    val borderWidth: Float = 2f,
+    val coverArtStyle: CoverArtStyle = CoverArtStyle.ROUNDED,
+    val lyricsStyle: LyricsStyle = LyricsStyle.NORMAL,
+    val accentColor: Color? = null,
+    val showAccentLine: Boolean = false,
+    val spacingBetweenElements: Float = 16f,
+    val lyricsLineSpacing: Float = 1.3f
 )
 
 data class ColorPreset(
-    val name: String,
+    val name: Int,
     val customization: ImageCustomization
 )
 
 // Unified presets
 val colorPresets = listOf(
     ColorPreset(
-        "Dark",
+        R.string.preset_color_dark,
         ImageCustomization(
             backgroundColor = Color(0xFF1A1A1A),
             textColor = Color.White,
@@ -133,7 +148,7 @@ val colorPresets = listOf(
         )
     ),
     ColorPreset(
-        "Light",
+        R.string.preset_color_light,
         ImageCustomization(
             backgroundColor = Color(0xFFF5F5F5),
             textColor = Color.Black,
@@ -142,7 +157,7 @@ val colorPresets = listOf(
         )
     ),
     ColorPreset(
-        "Blue",
+        R.string.preset_color_blue,
         ImageCustomization(
             backgroundColor = Color(0xFF1E3A8A),
             textColor = Color.White,
@@ -151,7 +166,7 @@ val colorPresets = listOf(
         )
     ),
     ColorPreset(
-        "Purple",
+        R.string.preset_color_purple,
         ImageCustomization(
             backgroundColor = Color(0xFF4C1D95),
             textColor = Color.White,
@@ -160,7 +175,7 @@ val colorPresets = listOf(
         )
     ),
     ColorPreset(
-        "Red",
+        R.string.preset_color_red,
         ImageCustomization(
             backgroundColor = Color(0xFF991B1B),
             textColor = Color.White,
@@ -169,7 +184,7 @@ val colorPresets = listOf(
         )
     ),
     ColorPreset(
-        "Green",
+        R.string.preset_color_green,
         ImageCustomization(
             backgroundColor = Color(0xFF065F46),
             textColor = Color.White,
@@ -178,7 +193,7 @@ val colorPresets = listOf(
         )
     ),
     ColorPreset(
-        "Gradient Blue",
+        R.string.preset_color_gradient_blue,
         ImageCustomization(
             backgroundStyle = BackgroundStyle.GRADIENT,
             gradientColors = listOf(
@@ -192,7 +207,7 @@ val colorPresets = listOf(
         )
     ),
     ColorPreset(
-        "Gradient Purple",
+        R.string.preset_color_gradient_purple,
         ImageCustomization(
             backgroundStyle = BackgroundStyle.GRADIENT,
             gradientColors = listOf(
@@ -206,7 +221,7 @@ val colorPresets = listOf(
         )
     ),
     ColorPreset(
-        "Gradient Sunset",
+        R.string.preset_color_gradient_sunset,
         ImageCustomization(
             backgroundStyle = BackgroundStyle.GRADIENT,
             gradientColors = listOf(
@@ -522,17 +537,23 @@ fun LyricsImageCardPreview(
                     if (customization.showCoverArt) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                            horizontalArrangement = Arrangement.spacedBy(customization.spacingBetweenElements.dp)
                         ) {
+                            val coverShape = when (customization.coverArtStyle) {
+                                CoverArtStyle.CIRCLE -> CircleShape
+                                CoverArtStyle.SQUARE -> RoundedCornerShape(4.dp)
+                                CoverArtStyle.ROUNDED -> RoundedCornerShape(20.dp)
+                            }
+
                             Box(
                                 modifier = Modifier
                                     .size(thumbnailSize)
-                                    .clip(RoundedCornerShape(20.dp))
+                                    .clip(coverShape)
                                     .background(customization.textColor.copy(alpha = 0.1f))
                                     .border(
                                         1.dp,
                                         customization.textColor.copy(alpha = 0.2f),
-                                        RoundedCornerShape(20.dp)
+                                        coverShape
                                     )
                             ) {
                                 Image(
@@ -541,7 +562,7 @@ fun LyricsImageCardPreview(
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier
                                         .fillMaxSize()
-                                        .clip(RoundedCornerShape(20.dp))
+                                        .clip(coverShape)
                                 )
                             }
 
@@ -580,13 +601,23 @@ fun LyricsImageCardPreview(
                                 }
                             }
                         }
+
+                        if (customization.showAccentLine && customization.accentColor != null) {
+                            Spacer(modifier = Modifier.height(customization.spacingBetweenElements.dp))
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(3.dp)
+                                    .background(customization.accentColor, RoundedCornerShape(2.dp))
+                            )
+                        }
                     }
 
                     BoxWithConstraints(
                         modifier = Modifier
                             .fillMaxWidth()
                             .weight(1f)
-                            .padding(vertical = 16.dp),
+                            .padding(vertical = customization.spacingBetweenElements.dp),
                         contentAlignment = when (customization.textAlignment) {
                             TextAlignment.LEFT -> Alignment.CenterStart
                             TextAlignment.CENTER -> Alignment.Center
@@ -599,6 +630,20 @@ fun LyricsImageCardPreview(
                             textMeasurer = textMeasurer
                         )
 
+                        val lyricsWeight = when (customization.lyricsStyle) {
+                            LyricsStyle.NORMAL -> when (customization.fontStyle) {
+                                FontStyle.REGULAR -> FontWeight.Bold
+                                FontStyle.BOLD -> FontWeight.ExtraBold
+                                FontStyle.EXTRA_BOLD -> FontWeight.Black
+                            }
+                            LyricsStyle.ITALIC -> FontWeight.Bold
+                            LyricsStyle.CONDENSED -> when (customization.fontStyle) {
+                                FontStyle.REGULAR -> FontWeight.SemiBold
+                                FontStyle.BOLD -> FontWeight.Bold
+                                FontStyle.EXTRA_BOLD -> FontWeight.ExtraBold
+                            }
+                        }
+
                         Text(
                             text = lyricText,
                             textAlign = when (customization.textAlignment) {
@@ -607,24 +652,29 @@ fun LyricsImageCardPreview(
                                 TextAlignment.RIGHT -> TextAlign.Right
                             },
                             fontSize = optimalFontSize,
-                            fontWeight = when (customization.fontStyle) {
-                                FontStyle.REGULAR -> FontWeight.Bold
-                                FontStyle.BOLD -> FontWeight.ExtraBold
-                                FontStyle.EXTRA_BOLD -> FontWeight.Black
-                            },
+                            fontWeight = lyricsWeight,
                             color = customization.textColor,
-                            lineHeight = optimalFontSize * 1.3f,
+                            lineHeight = optimalFontSize * customization.lyricsLineSpacing,
                             modifier = Modifier.fillMaxWidth(),
-                            letterSpacing = 0.3.sp,
+                            letterSpacing = if (customization.lyricsStyle == LyricsStyle.CONDENSED) (-0.5).sp else 0.3.sp,
                             style = if (customization.textShadowEnabled) {
                                 TextStyle(
                                     shadow = Shadow(
                                         color = customization.backgroundColor.copy(alpha = 0.5f),
                                         offset = Offset(2f, 2f),
                                         blurRadius = 4f
-                                    )
+                                    ),
+                                    fontStyle = if (customization.lyricsStyle == LyricsStyle.ITALIC)
+                                        androidx.compose.ui.text.font.FontStyle.Italic
+                                    else
+                                        androidx.compose.ui.text.font.FontStyle.Normal
                                 )
-                            } else TextStyle.Default
+                            } else TextStyle(
+                                fontStyle = if (customization.lyricsStyle == LyricsStyle.ITALIC)
+                                    androidx.compose.ui.text.font.FontStyle.Italic
+                                else
+                                    androidx.compose.ui.text.font.FontStyle.Normal
+                            )
                         )
                     }
 
@@ -639,29 +689,16 @@ fun LyricsImageCardPreview(
                         ) {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                                horizontalArrangement = Arrangement.spacedBy(10.dp)
                             ) {
-                                Box(
-                                    modifier = Modifier
-                                        .size((36 * logoSizeMultiplier).dp)
-                                        .clip(CircleShape)
-                                        .background(customization.textColor.copy(alpha = 0.15f))
-                                        .border(
-                                            1.dp,
-                                            customization.textColor.copy(alpha = 0.3f),
-                                            CircleShape
-                                        ),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.opentune),
-                                        contentDescription = null,
-                                        modifier = Modifier.size((20 * logoSizeMultiplier).dp)
-                                    )
-                                }
+                                Image(
+                                    painter = painterResource(id = R.drawable.opentune),
+                                    contentDescription = null,
+                                    modifier = Modifier.size((28 * logoSizeMultiplier).dp)
+                                )
 
                                 Text(
-                                    text = context.getString(R.string.app_name),
+                                    text = stringResource(R.string.app_name),
                                     fontSize = (15 * logoSizeMultiplier).sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = customization.textColor,
@@ -751,7 +788,7 @@ private fun ColorPresetItem(
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = preset.name,
+            text = stringResource(preset.name),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurface.copy(
                 alpha = if (isSelected) 1f else 0.7f

@@ -21,7 +21,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Album
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.ShapeLine
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
@@ -47,6 +52,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.glance.LocalContext
@@ -72,7 +78,7 @@ enum class ShapeType {
  * Bottom Sheet shape selector for small buttons (radio, download, sleep, more)
  * Material 3 Expressive design with subtle animations and clear hierarchy
  */
-@OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun UnifiedShapeBottomSheet(
     selectedSmallButtonsShape: String,
@@ -137,7 +143,7 @@ fun UnifiedShapeBottomSheet(
     }
 
     val tabTitles = listOf(stringResource(R.string.tab_small_buttons), stringResource(R.string.tab_play), stringResource(R.string.tab_miniplayer))
-    val tabIcons = listOf(R.drawable.scatter_plot, R.drawable.play, R.drawable.album)
+    val tabIcons = listOf(Icons.Default.ShapeLine, Icons.Default.PlayArrow, Icons.Default.Album)
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -172,7 +178,7 @@ fun UnifiedShapeBottomSheet(
                 text = stringResource(R.string.shape_selector),
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.onSurface,
-                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 20.dp)
             )
 
@@ -185,10 +191,10 @@ fun UnifiedShapeBottomSheet(
 
             TabRow(
                 selectedTabIndex = selectedTabIndex,
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                containerColor = MaterialTheme.colorScheme.surfaceContainer,
                 contentColor = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
-                    .padding(bottom = 24.dp)
+                    .padding(bottom = 20.dp)
                     .clip(RoundedCornerShape(12.dp))
             ) {
                 tabTitles.forEachIndexed { index, title ->
@@ -197,7 +203,7 @@ fun UnifiedShapeBottomSheet(
                         onClick = { selectedTabIndex = index },
                         icon = {
                             Icon(
-                                painter = painterResource(tabIcons[index]),
+                                imageVector = tabIcons[index],
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp)
                             )
@@ -205,7 +211,7 @@ fun UnifiedShapeBottomSheet(
                         text = {
                             Text(
                                 text = title,
-                                style = MaterialTheme.typography.labelLarge
+                                style = MaterialTheme.typography.labelMedium
                             )
                         },
                         selectedContentColor = MaterialTheme.colorScheme.primary,
@@ -214,7 +220,6 @@ fun UnifiedShapeBottomSheet(
                 }
             }
 
-            // Grid de formas con espaciado coherente
             val currentSelectedShape = when (selectedTabIndex) {
                 0 -> selectedSmallButtonsShape
                 1 -> selectedPlayPauseShape
@@ -222,7 +227,6 @@ fun UnifiedShapeBottomSheet(
                 else -> selectedSmallButtonsShape
             }
 
-            // Grid of shapes with consistent spacing
             LazyVerticalGrid(
                 columns = GridCells.Fixed(4),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
