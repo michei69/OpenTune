@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.arturo254.opentune.R
 import com.arturo254.opentune.constants.AnimateLyricsKey
+import com.arturo254.opentune.constants.BouncyLyricsKey
 import com.arturo254.opentune.constants.ChipSortTypeKey
 import com.arturo254.opentune.constants.DarkModeKey
 import com.arturo254.opentune.constants.DefaultMiniPlayerThumbnailShape
@@ -150,7 +151,7 @@ fun AppearanceSettings(
         defaultValue = false
     )
     val (bouncyLyrics, onBouncyLyricsChange) = rememberPreference(
-        GradientLyricsKey,
+        BouncyLyricsKey,
         defaultValue = false
     )
 
