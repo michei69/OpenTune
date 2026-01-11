@@ -1,3 +1,9 @@
+# NO LONGER MAINTAINED!
+
+ive moved on to [metrolist](https://github.com/mostafaalagamy/Metrolist), so i no longer care for either this fork or OpenTune itself.
+
+---
+
 # OpenTune
 
 <div align="center">
